@@ -1,4 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This repository contains the source code for a high-performance landing page.
+
+**Tech Stack:**
+- **Next.js 15:** Utilizes the App Router for efficient routing and server-side rendering (SSR).
+- **React 19:** Leverages the new features and improvements for building a modern, component-based UI.
+- **GSAP (GreenSock Animation Platform):** Implements smooth, complex, and highly performant animations to create an engaging user experience.
+
+This project is a great example of how to combine these powerful technologies to build a fast, SEO-friendly, and visually stunning web page.
 
 ## Getting Started
 
