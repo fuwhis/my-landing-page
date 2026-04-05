@@ -2,10 +2,10 @@ import type { ExperienceItem } from '@/types/content'
 
 export const experiences: ExperienceItem[] = [
   {
-    company: 'NovaCommerce',
+    company: 'Gia Phuoc Express',
     role: 'Frontend Engineer',
     location: 'Ho Chi Minh City, Vietnam',
-    period: '2023 - Present',
+    period: '2025 - Present',
     summary:
       'Leading the frontend architecture for a multi-tenant commerce dashboard used by enterprise merchants.',
     highlights: [
