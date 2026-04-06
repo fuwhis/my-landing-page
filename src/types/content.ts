@@ -21,6 +21,7 @@ export type ExperienceItem = {
 
 export type ProjectItem = {
   title: string;
+  category: string;
   description: string;
   impact: string;
   stack: string[];
@@ -41,6 +42,9 @@ export type Profile = {
   email: string;
   availability: string;
   summary: string;
+  aboutParagraphs: string[];
+  contactTitle: string;
+  contactDescription: string;
   socialLinks: SocialLink[];
   metrics: Metric[];
 };
