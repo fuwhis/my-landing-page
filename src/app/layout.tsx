@@ -1,6 +1,6 @@
+import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import '@/styles/globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -15,31 +15,34 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfolio.example.com'),
   title: {
-    default: 'Alex Nguyen | Senior Frontend Engineer',
-    template: '%s | Alex Nguyen',
+    default: 'Nguyen Phu Quy | Senior Frontend Engineer',
+    template: '%s | Nguyen Phu Quy',
   },
   description:
-    'Premium portfolio and CV of Alex Nguyen, a Frontend Engineer with 4+ years delivering scalable, high-performance web products.',
+    'Premium portfolio and CV of Nguyen Phu Quy, a Frontend Engineer with 4+ years delivering scalable, high-performance web products.',
   keywords: [
     'Frontend Engineer',
+    'React',
     'Next.js',
+    'Vue',
+    'Nuxt',
     'TypeScript',
     'Tailwind CSS',
     'Portfolio',
     'CV',
   ],
   openGraph: {
-    title: 'Alex Nguyen | Senior Frontend Engineer',
+    title: 'Nguyen Phu Quy | Senior Frontend Engineer',
     description:
       'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
     url: 'https://portfolio.example.com',
-    siteName: 'Alex Nguyen Portfolio',
+    siteName: 'Nguyen Phu Quy Portfolio',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Nguyen | Senior Frontend Engineer',
+    title: 'Nguyen Phu Quy | Senior Frontend Engineer',
     description:
       'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
   },
