@@ -2695,6 +2695,11 @@ side-channel@^1.1.0:
     side-channel-map "^1.0.1"
     side-channel-weakmap "^1.0.2"
 
+simple-icons@^16.15.0:
+  version "16.15.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-16.15.0.tgz#dc41504f73560f6892a5407f63d66788e2f76fe2"
+  integrity sha512-hOyY4Cdvh1D/FJa1Qx4nTvypCT2BoI3jpc4xjxVgwVh1Hmd9mnqBqBTziDytCj2f5UOAXCfdnwODiNv710aqkQ==
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
