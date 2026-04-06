@@ -29,3 +29,209 @@ body {
 ::selection {
   background: rgb(99 102 241 / 0.18);
 }
+
+/* Hero fluid backdrop: morphing blob + rising bubbles (transform/opacity only on bubbles) */
+@keyframes hero-blob-morph {
+  0% {
+    border-radius: 58% 42% 63% 37% / 47% 53% 56% 44%;
+  }
+  33% {
+    border-radius: 44% 56% 41% 59% / 54% 46% 43% 57%;
+  }
+  66% {
+    border-radius: 61% 39% 48% 52% / 41% 59% 51% 49%;
+  }
+  100% {
+    border-radius: 39% 61% 55% 45% / 58% 42% 47% 53%;
+  }
+}
+
+@keyframes hero-bubble-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.55);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--bubble-peak-opacity, 0.38);
+  }
+  55% {
+    opacity: var(--bubble-mid-opacity, 0.32);
+    transform: translate3d(var(--bubble-drift, 0px), -42vh, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(calc(var(--bubble-drift, 0px) * 1.4), -108vh, 0) scale(0.75);
+    opacity: 0;
+  }
+}
+
+.hero-fluid {
+  contain: layout style;
+}
+
+.hero-fluid__blob {
+  position: absolute;
+  top: -18%;
+  right: -12%;
+  width: min(52vw, 420px);
+  height: min(52vw, 420px);
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgb(99 102 241 / 0.22),
+    rgb(129 140 248 / 0.12) 45%,
+    rgb(99 102 241 / 0.04) 70%,
+    transparent 100%
+  );
+  filter: blur(0.5px);
+  animation: hero-blob-morph 22s ease-in-out infinite alternate;
+  will-change: border-radius;
+}
+
+.hero-fluid__bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-fluid__bubble {
+  position: absolute;
+  bottom: -4%;
+  width: var(--bubble-size, 6px);
+  height: var(--bubble-size, 6px);
+  margin-left: calc(var(--bubble-size, 6px) / -2);
+  left: var(--bubble-x, 50%);
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgb(255 255 255 / 0.95),
+    rgb(99 102 241 / 0.35) 55%,
+    rgb(99 102 241 / 0.08) 100%
+  );
+  box-shadow: 0 0 12px rgb(99 102 241 / 0.15);
+  opacity: 0;
+  animation-name: hero-bubble-rise;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: var(--bubble-duration, 14s);
+  animation-delay: var(--bubble-delay, 0s);
+}
+
+.hero-fluid__bubble:nth-child(1) {
+  --bubble-x: 8%;
+  --bubble-size: 5px;
+  --bubble-delay: 0s;
+  --bubble-duration: 13s;
+  --bubble-peak-opacity: 0.34;
+  --bubble-mid-opacity: 0.28;
+  --bubble-drift: 6px;
+}
+.hero-fluid__bubble:nth-child(2) {
+  --bubble-x: 18%;
+  --bubble-size: 8px;
+  --bubble-delay: 2.2s;
+  --bubble-duration: 16s;
+  --bubble-peak-opacity: 0.42;
+  --bubble-mid-opacity: 0.3;
+  --bubble-drift: -10px;
+}
+.hero-fluid__bubble:nth-child(3) {
+  --bubble-x: 28%;
+  --bubble-size: 4px;
+  --bubble-delay: 5.1s;
+  --bubble-duration: 11s;
+  --bubble-peak-opacity: 0.3;
+  --bubble-mid-opacity: 0.22;
+  --bubble-drift: 4px;
+}
+.hero-fluid__bubble:nth-child(4) {
+  --bubble-x: 38%;
+  --bubble-size: 7px;
+  --bubble-delay: 1.4s;
+  --bubble-duration: 18s;
+  --bubble-peak-opacity: 0.38;
+  --bubble-mid-opacity: 0.26;
+  --bubble-drift: -14px;
+}
+.hero-fluid__bubble:nth-child(5) {
+  --bubble-x: 48%;
+  --bubble-size: 5px;
+  --bubble-delay: 7.8s;
+  --bubble-duration: 14s;
+  --bubble-peak-opacity: 0.33;
+  --bubble-mid-opacity: 0.24;
+  --bubble-drift: 8px;
+}
+.hero-fluid__bubble:nth-child(6) {
+  --bubble-x: 58%;
+  --bubble-size: 6px;
+  --bubble-delay: 3.6s;
+  --bubble-duration: 15s;
+  --bubble-peak-opacity: 0.4;
+  --bubble-mid-opacity: 0.3;
+  --bubble-drift: -6px;
+}
+.hero-fluid__bubble:nth-child(7) {
+  --bubble-x: 68%;
+  --bubble-size: 4px;
+  --bubble-delay: 9.2s;
+  --bubble-duration: 12s;
+  --bubble-peak-opacity: 0.28;
+  --bubble-mid-opacity: 0.2;
+  --bubble-drift: 12px;
+}
+.hero-fluid__bubble:nth-child(8) {
+  --bubble-x: 78%;
+  --bubble-size: 9px;
+  --bubble-delay: 0.8s;
+  --bubble-duration: 19s;
+  --bubble-peak-opacity: 0.36;
+  --bubble-mid-opacity: 0.27;
+  --bubble-drift: -8px;
+}
+.hero-fluid__bubble:nth-child(9) {
+  --bubble-x: 88%;
+  --bubble-size: 5px;
+  --bubble-delay: 4.4s;
+  --bubble-duration: 13.5s;
+  --bubble-peak-opacity: 0.32;
+  --bubble-mid-opacity: 0.25;
+  --bubble-drift: 5px;
+}
+.hero-fluid__bubble:nth-child(10) {
+  --bubble-x: 12%;
+  --bubble-size: 6px;
+  --bubble-delay: 11s;
+  --bubble-duration: 17s;
+  --bubble-peak-opacity: 0.35;
+  --bubble-mid-opacity: 0.23;
+  --bubble-drift: -12px;
+}
+.hero-fluid__bubble:nth-child(11) {
+  --bubble-x: 92%;
+  --bubble-size: 4px;
+  --bubble-delay: 6.3s;
+  --bubble-duration: 10.5s;
+  --bubble-peak-opacity: 0.29;
+  --bubble-mid-opacity: 0.21;
+  --bubble-drift: 9px;
+}
+.hero-fluid__bubble:nth-child(12) {
+  --bubble-x: 52%;
+  --bubble-size: 7px;
+  --bubble-delay: 8.5s;
+  --bubble-duration: 20s;
+  --bubble-peak-opacity: 0.37;
+  --bubble-mid-opacity: 0.26;
+  --bubble-drift: -5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fluid__blob {
+    animation: none;
+    border-radius: 52% 48% 55% 45% / 48% 52% 50% 50%;
+  }
+
+  .hero-fluid__bubble {
+    animation: none;
+    visibility: hidden;
+  }
+}
