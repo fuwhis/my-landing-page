@@ -16,7 +16,9 @@ export function SectionContainer({
   return (
     <section className={cn('relative py-14 sm:py-20', className)} {...props}>
       {decoration}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-10">{children}</div>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-10">
+        {children}
+      </div>
     </section>
   );
 }
