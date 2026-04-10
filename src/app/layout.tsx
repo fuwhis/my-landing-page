@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { siteUrl } from '@/lib/site';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://portfolio.example.com'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Nguyen Phu Quy | Senior Frontend Engineer',
     template: '%s | Nguyen Phu Quy',
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Nguyen Phu Quy | Senior Frontend Engineer',
     description:
       'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
-    url: 'https://portfolio.example.com',
+    url: siteUrl,
     siteName: 'Nguyen Phu Quy Portfolio',
     locale: 'en_US',
     type: 'website',
