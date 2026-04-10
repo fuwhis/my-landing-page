@@ -6,6 +6,7 @@
     "build": "next build",
     "clean": "rm -rf node_modules .next",
     "dev": "next dev --turbopack",
+    "lint:check": "next lint",
     "lint": "next lint --fix",
     "prettier": "prettier --write --ignore-unknown .",
     "serve": "next build && next start",
