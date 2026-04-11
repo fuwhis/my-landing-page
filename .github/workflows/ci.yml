@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
+      - 'feature/review-workflow'
   pull_request:
     branches:
       - main
+      - 'feature/review-workflow'
 
 jobs:
   quality:
