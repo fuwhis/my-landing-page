@@ -2,7 +2,7 @@
 
 ## 1) Repository and Branches
 - [ ] Protect `main` branch (require pull request + required CI checks).
-- [ ] Use short-lived branches named `feature/<topic>`.
+- [x] Use short-lived branches named `feature/<topic>`.
 - [ ] Enable GitHub Actions in the repository.
 
 ## 2) Hosting (Recommended: Vercel)
