@@ -1,6 +1,6 @@
+import { CtaButton } from '@/components/shared/cta-button';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
-import { CtaButton } from '@/components/shared/cta-button';
 import { profile } from '@/data/profile';
 
 export function ContactSection() {
@@ -15,7 +15,12 @@ export function ContactSection() {
 
         <div className="flex flex-wrap gap-3">
           {profile.socialLinks.map((link) => (
-            <CtaButton key={link.label} label={link.label} href={link.href} variant="outline" />
+            <CtaButton
+              key={link.label}
+              label={link.label}
+              href={link.href}
+              variant="outline"
+            />
           ))}
         </div>
       </div>
