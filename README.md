@@ -1,44 +1,92 @@
-This repository contains the source code for a high-performance landing page.
+# My Landing Page
 
-**Tech Stack:**
+A personal landing page built with Next.js App Router, React 19, Tailwind CSS v4, and GSAP animations.
 
-- **Next.js 15:** Utilizes the App Router for efficient routing and server-side rendering (SSR).
-- **React 19:** Leverages the new features and improvements for building a modern, component-based UI.
-- **GSAP (GreenSock Animation Platform):** Implements smooth, complex, and highly performant animations to create an engaging user experience.
+## Tech Stack
 
-This project is a great example of how to combine these powerful technologies to build a fast, SEO-friendly, and visually stunning web page.
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- GSAP (`gsap` + `@gsap/react`)
+- ESLint + Prettier
+
+## Requirements
+
+- Node.js 20+
+- npm 10+
+
+> This repository uses `npm` in CI (`npm ci`), so keep `package-lock.json` in sync with `package.json`.
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev`: Start development server (Turbopack).
+- `npm run build`: Create production build.
+- `npm run start`: Start production server.
+- `npm run serve`: Build then start production server.
+- `npm run lint:check`: Run ESLint checks.
+- `npm run lint`: Run ESLint with auto-fix.
+- `npm run prettier`: Format files with Prettier.
+- `npm run clean`: Remove `node_modules` and `.next`.
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create `.env.local` (optional for local development):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NEXT_PUBLIC_SITE_URL=https://fuwhis.io.vn
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Used for canonical URL metadata, `robots.txt`, and `sitemap.xml`.
+- If not provided, the app falls back to `https://fuwhis.io.vn`.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+src/
+  app/          # App Router pages and metadata routes
+  components/   # Shared UI and motion components
+  sections/     # Homepage sections (hero, about, projects, etc.)
+  data/         # Static content/data used by sections
+  lib/          # Shared utilities (site config, helpers)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## CI and Quality
+
+GitHub Actions workflow (`.github/workflows/ci.yml`) runs:
+
+1. `npm ci`
+2. `npm run lint:check`
+3. `npm run build`
+
+If CI fails with `npm ci` lockfile errors:
+
+```bash
+npm install
+git add package-lock.json yarn.lock
+git commit -m "update: sync lockfiles with package changes"
+```
+
+## Deployment
+
+- Recommended platform: Vercel
+- Production branch: `main`
+- Preview branch: `feature/preview`
+
+See `DEPLOYMENT_CHECKLIST.md` for a full deployment checklist and post-deploy validation steps.
