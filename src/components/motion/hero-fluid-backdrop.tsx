@@ -1,4 +1,4 @@
-const BUBBLE_COUNT = 12;
+const BUBBLE_COUNT = 24;
 
 /**
  * CSS-only hero ambiance: morphing gradient blob + rising bubbles.
@@ -6,7 +6,10 @@ const BUBBLE_COUNT = 12;
  */
 export function HeroFluidBackdrop() {
   return (
-    <div className="hero-fluid pointer-events-none absolute inset-0" aria-hidden>
+    <div
+      className="hero-fluid pointer-events-none absolute inset-0"
+      aria-hidden
+    >
       <div className="hero-fluid__blob" />
       <div className="hero-fluid__bubbles">
         {Array.from({ length: BUBBLE_COUNT }, (_, index) => (

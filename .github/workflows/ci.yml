@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - 'feature/review-workflow'
+      - 'feature/preview'
   pull_request:
     branches:
       - main
-      - 'feature/review-workflow'
+      - 'feature/preview'
 
 jobs:
   quality:
@@ -32,5 +32,5 @@ jobs:
 
       - name: Build
         env:
-          NEXT_PUBLIC_SITE_URL: https://example.com
+          NEXT_PUBLIC_SITE_URL: https://fuwhis.io.vn
         run: npm run build
