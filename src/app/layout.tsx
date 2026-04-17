@@ -16,6 +16,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    shortcut: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    apple: [{ url: '/favicon/apple-touch-icon.png', type: 'image/png' }],
+  },
   title: {
     default: 'Nguyen Phu Quy | Senior Frontend Engineer',
     template: '%s | Nguyen Phu Quy',
