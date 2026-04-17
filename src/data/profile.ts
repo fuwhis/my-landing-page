@@ -18,13 +18,13 @@ export const profile: Profile = {
     'Interested in scalable web applications and product-focused frontend roles. Contact actions below are placeholders and can be replaced with final links anytime.',
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/fuwhis' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    { label: 'Resume', href: '#' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/quynp01' },
+    { label: 'Resume', href: 'https://www.topcv.vn/xem-cv/DlcDDldUUVRZCwcHUFhUWg0DCwsOVlRUA1BfAg7ae4' },
   ],
   metrics: [
     { label: 'Years Experience', value: '4+', description: 'B2B and B2C products' },
     { label: 'Projects Shipped', value: '3+', description: 'From MVP to scale-up' },
     // { label: 'Lighthouse Score', value: '95+', description: 'Across key landing pages' },
-    { label: 'Performance Impact', value: '30%+', description: 'LCP improvement on production project' },
+    { label: 'Performance Impact', value: '30%', description: 'LCP improvement on production project' },
   ],
 }
