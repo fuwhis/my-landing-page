@@ -76,9 +76,9 @@ body {
   height: min(52vw, 420px);
   background: radial-gradient(
     circle at 35% 35%,
-    rgb(99 102 241 / 0.22),
-    rgb(129 140 248 / 0.12) 45%,
-    rgb(99 102 241 / 0.04) 70%,
+    rgb(186 230 253 / 0.38),
+    rgb(125 211 252 / 0.22) 42%,
+    rgb(56 189 248 / 0.1) 68%,
     transparent 100%
   );
   filter: blur(0.5px);
@@ -102,11 +102,12 @@ body {
   border-radius: 9999px;
   background: radial-gradient(
     circle at 30% 30%,
-    rgb(255 255 255 / 0.95),
-    rgb(99 102 241 / 0.35) 55%,
-    rgb(99 102 241 / 0.08) 100%
+    rgb(255 255 255 / 0.98),
+    rgb(224 242 254 / 0.72) 40%,
+    rgb(125 211 252 / 0.4) 68%,
+    rgb(56 189 248 / 0.12) 100%
   );
-  box-shadow: 0 0 12px rgb(99 102 241 / 0.15);
+  box-shadow: 0 0 14px rgb(14 165 233 / 0.22);
   opacity: 0;
   animation-name: hero-bubble-rise;
   animation-timing-function: ease-in-out;

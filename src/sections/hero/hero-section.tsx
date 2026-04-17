@@ -39,7 +39,7 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <CtaButton label="View Resume" href="#" />
+            <CtaButton label="View Resume" href={profile.resumeHref} />
             <CtaButton label="Contact Me" href="#contact" variant="outline" />
           </div>
         </div>

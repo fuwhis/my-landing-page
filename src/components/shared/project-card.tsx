@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { ArrowUpRight, Code2 } from 'lucide-react';
+import Link from 'next/link';
 
 import { TechStackList } from '@/components/shared/tech-stack-list';
 import type { ProjectItem } from '@/types/content';
@@ -11,10 +11,18 @@ type ProjectCardProps = {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7">
-      <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase">{project.category}</p>
-      <h3 className="text-lg font-semibold text-neutral-900">{project.title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-neutral-600">{project.description}</p>
-      <p className="mt-4 text-sm font-medium text-neutral-800">{project.impact}</p>
+      <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase">
+        {project.category}
+      </p>
+      <h3 className="text-lg font-semibold text-neutral-900">
+        {project.title}
+      </h3>
+      <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+        {project.description}
+      </p>
+      <p className="mt-4 text-sm font-medium text-neutral-800">
+        {project.impact}
+      </p>
 
       <div className="mt-5">
         <TechStackList items={project.stack} />

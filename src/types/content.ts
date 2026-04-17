@@ -40,6 +40,7 @@ export type Profile = {
   tagline: string;
   location: string;
   email: string;
+  resumeHref: string;
   availability: string;
   summary: string;
   aboutParagraphs: string[];

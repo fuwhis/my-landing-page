@@ -11,12 +11,16 @@ export function TimelineItem({ item }: TimelineItemProps) {
     <article className="relative rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7">
       <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-neutral-900">{item.role}</h3>
+          <h3 className="text-lg font-semibold text-neutral-900">
+            {item.role}
+          </h3>
           <p className="text-sm text-neutral-600">
             {item.company} · {item.location}
           </p>
         </div>
-        <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase">{item.period}</p>
+        <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase">
+          {item.period}
+        </p>
       </div>
 
       <p className="text-sm leading-relaxed text-neutral-600">{item.summary}</p>
