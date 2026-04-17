@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   manifest: '/manifest.webmanifest',
   icons: {
-    icon: [{ url: '/public/favicon/favicon.ico', type: 'image/x-icon' }],
-    shortcut: [{ url: '/public/favicon/favicon.ico', type: 'image/x-icon' }],
-    apple: [{ url: '/public/favicon/apple-touch-icon.png', type: 'image/png' }],
+    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    shortcut: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    apple: [{ url: '/favicon/apple-touch-icon.png', type: 'image/png' }],
   },
   title: {
     default: 'Nguyen Phu Quy | Senior Frontend Engineer',
