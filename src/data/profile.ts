@@ -6,6 +6,8 @@ export const profile: Profile = {
   tagline: 'Building high-converting products with scalable frontend architecture',
   location: 'Ho Chi Minh City, Vietnam',
   email: 'quynguyen.itengineer@gmail.com',
+  resumeHref:
+    'https://www.topcv.vn/xem-cv/DlcDDldUUVRZCwcHUFhUWg0DCwsOVlRUA1BfAg7ae4',
   availability: 'Open to frontend engineering opportunities on product-focused teams',
   summary:
     'Experienced across React, Vue, Next.js, and Nuxt.js with a strong focus on performance, maintainable UI architecture, and responsive user-centric interfaces.',
@@ -15,11 +17,11 @@ export const profile: Profile = {
   ],
   contactTitle: 'Open to frontend engineering opportunities',
   contactDescription:
-    'Interested in scalable web applications and product-focused frontend roles. Contact actions below are placeholders and can be replaced with final links anytime.',
+    'I usually respond within 24 hours. Feel free to reach out via LinkedIn or email for frontend roles, project collaboration, or technical discussion.',
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/fuwhis' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/quynp01' },
-    { label: 'Resume', href: 'https://www.topcv.vn/xem-cv/DlcDDldUUVRZCwcHUFhUWg0DCwsOVlRUA1BfAg7ae4' },
+    { label: 'CV Online', href: 'https://www.topcv.vn/xem-cv/DlcDDldUUVRZCwcHUFhUWg0DCwsOVlRUA1BfAg7ae4' },
   ],
   metrics: [
     { label: 'Years Experience', value: '4+', description: 'B2B and B2C products' },
