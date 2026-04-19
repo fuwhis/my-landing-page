@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     apple: [{ url: '/favicon/apple-touch-icon.png', type: 'image/png' }],
   },
   title: {
-    default: 'Nguyen Phu Quy | Senior Frontend Engineer',
+    default: 'Nguyen Phu Quy | Software Engineer',
     template: '%s | Nguyen Phu Quy',
   },
   description:
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     'CV',
   ],
   openGraph: {
-    title: 'Nguyen Phu Quy | Senior Frontend Engineer',
+    title: 'Nguyen Phu Quy | Software Engineer',
     description:
       'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
     url: siteUrl,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nguyen Phu Quy | Senior Frontend Engineer',
+    title: 'Nguyen Phu Quy | Software Engineer',
     description:
       'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
   },
