@@ -16,11 +16,11 @@ export function SectionHeading({
   return (
     <header className={cn('space-y-4', align === 'center' && 'text-center')}>
       {eyebrow ? (
-        <p className="text-xs font-semibold tracking-[0.22em] text-indigo-600 uppercase">
+        <p className="text-xs font-semibold tracking-[0.22em] text-sky-600 uppercase">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
+      <h2 className="text-2xl font-semibold tracking-tight text-sky-900 sm:text-3xl">
         {title}
       </h2>
       {description ? (

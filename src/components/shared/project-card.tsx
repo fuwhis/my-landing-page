@@ -32,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.href ? (
           <Link
             href={project.href}
-            className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+            className="inline-flex items-center gap-1 text-sm font-medium text-sky-600 hover:text-sky-500"
           >
             Live Preview <ArrowUpRight className="h-4 w-4" />
           </Link>
