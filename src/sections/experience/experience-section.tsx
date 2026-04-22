@@ -1,4 +1,5 @@
 import { FadeInOnView } from '@/components/motion/fade-in-on-view';
+import { WaveDivider } from '@/components/motion/wave-divider';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { TimelineItem } from '@/components/shared/timeline-item';
@@ -6,7 +7,10 @@ import { experiences } from '@/data/experience';
 
 export function ExperienceSection() {
   return (
-    <SectionContainer id="experience">
+    <SectionContainer
+      id="experience"
+      decoration={<WaveDivider className="section-continuity__section-wave-divider" />}
+    >
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Experience"

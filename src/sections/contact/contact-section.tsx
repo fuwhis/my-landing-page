@@ -1,3 +1,4 @@
+import { WaveDivider } from '@/components/motion/wave-divider';
 import { CtaButton } from '@/components/shared/cta-button';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
@@ -5,7 +6,10 @@ import { profile } from '@/data/profile';
 
 export function ContactSection() {
   return (
-    <SectionContainer id="contact">
+    <SectionContainer
+      id="contact"
+      decoration={<WaveDivider className="section-continuity__section-wave-divider" />}
+    >
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Contact"

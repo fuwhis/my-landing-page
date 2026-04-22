@@ -1,10 +1,14 @@
+import { WaveDivider } from '@/components/motion/wave-divider';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { profile } from '@/data/profile';
 
 export function AboutSection() {
   return (
-    <SectionContainer id="about">
+    <SectionContainer
+      id="about"
+      decoration={<WaveDivider className="section-continuity__section-wave-divider" />}
+    >
       <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr]">
         <SectionHeading
           eyebrow="About"

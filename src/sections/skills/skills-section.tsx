@@ -1,3 +1,4 @@
+import { WaveDivider } from '@/components/motion/wave-divider';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { TechStackList } from '@/components/shared/tech-stack-list';
@@ -5,7 +6,10 @@ import { skillGroups } from '@/data/skills';
 
 export function SkillsSection() {
   return (
-    <SectionContainer id="skills">
+    <SectionContainer
+      id="skills"
+      decoration={<WaveDivider className="section-continuity__section-wave-divider" />}
+    >
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Skills"

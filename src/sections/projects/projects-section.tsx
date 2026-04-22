@@ -1,4 +1,5 @@
 import { FadeInOnView } from '@/components/motion/fade-in-on-view';
+import { WaveDivider } from '@/components/motion/wave-divider';
 import { ProjectCard } from '@/components/shared/project-card';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
@@ -6,7 +7,10 @@ import { projects } from '@/data/projects';
 
 export function ProjectsSection() {
   return (
-    <SectionContainer id="projects">
+    <SectionContainer
+      id="projects"
+      decoration={<WaveDivider className="section-continuity__section-wave-divider" />}
+    >
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Projects"
