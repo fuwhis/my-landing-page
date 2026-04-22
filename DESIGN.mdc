@@ -1,4 +1,6 @@
-# Design System (Current Approved Website)
+# Design System (Current As-Built State)
+
+This document reflects the design currently implemented in code.
 
 ## 1. Brand Direction
 
@@ -14,7 +16,7 @@ This document is the source of truth for the currently approved implementation a
 
 ## 2. Core Tokens
 
-### Base Variables (`globals.css`)
+### Base Variables (`src/styles/globals.css`)
 
 - `--background`: `#fafafa`
 - `--foreground`: `#0a0a0a`
@@ -41,39 +43,39 @@ This document is the source of truth for the currently approved implementation a
 - Mono font: **Geist Mono** (`--font-geist-mono`)
 - Fallbacks: `Arial, Helvetica, sans-serif`
 
-### Principles
-
-- Prefer clarity over expressive display typography.
-- Use `font-semibold` for headings and key values.
-- Use neutral text colors and avoid low-contrast decorative copy.
-- Keep line-height relaxed for descriptive paragraphs (`leading-relaxed`).
-
-### Typical Scale (Current)
+### Practical Type Scale
 
 - Hero title: `text-4xl` -> `sm:text-5xl` -> `lg:text-6xl`
 - Section title: `text-2xl` -> `sm:text-3xl`
-- Body text: `text-sm` / `text-base`
-- Eyebrow labels: `text-xs` + uppercase tracking
+- Lead/support copy: `text-base` to `text-xl`
+- Eyebrow labels: `text-xs`, uppercase, tracked letters
 
 ## 4. Layout & Spacing
 
-### Section Container
+### Section Container (`components/shared/section-container.tsx`)
 
 - Vertical rhythm: `py-14 sm:py-20`
 - Content width: `max-w-6xl`
 - Horizontal padding: `px-6 sm:px-10`
+- Supports optional full-bleed decoration layer (`decoration` prop)
 
-### Grids
+### Page Section Order (`src/app/page.tsx`)
 
-- Feature/card sections commonly use `md:grid-cols-2` or `xl:grid-cols-3`.
-- Hero uses a two-column split on large screens and stacks on smaller screens.
+1. Hero
+2. Tech Stack
+3. About
+4. Experience
+5. Projects
+6. Skills
+7. Contact
 
-### Spacing Rhythm
+### Grid Patterns
 
-- Use Tailwind spacing scale (`gap-3`, `gap-6`, `space-y-8`, etc.).
-- Keep consistent spacing between heading, description, and content groups.
+- Hero: split layout on large screens (`lg:grid-cols-[1.15fr_0.85fr]`)
+- Card-heavy sections: `md:grid-cols-2`, projects extend to `xl:grid-cols-3`
+- Vertical timelines/lists: `space-y-*` stacks with staggered motion
 
-## 5. Components (Current Approved Style)
+## 5. Component Language
 
 ### Buttons (`components/ui/button.tsx`)
 
@@ -85,7 +87,7 @@ This document is the source of truth for the currently approved implementation a
   - default: `h-10 px-5`
   - lg: `h-11 px-6 text-base`
 
-### Tags (`components/shared/tag-badge.tsx`)
+### Tag Badge (`components/shared/tag-badge.tsx`)
 
 - Shape: full pill (`rounded-full`)
 - Surface: `bg-neutral-100`
@@ -93,21 +95,18 @@ This document is the source of truth for the currently approved implementation a
 - Label: `text-xs font-medium text-neutral-700`
 - Icon support: optional leading icon with `text-neutral-600`, aligned via `inline-flex items-center gap-1.5`
 
-### Cards (Project / Timeline / Metric / Skill Groups)
+### Cards (metrics, projects, timeline, stack groups)
 
-Current approved card baseline:
+Shared baseline:
 
-- Shape: `rounded-2xl`
-- Surface: `bg-white`
-- Border: `border-neutral-200`
-- Padding: typically `p-5` to `p-7`
-- Text hierarchy:
-  - title/value: `text-neutral-900`
-  - body/support: `text-neutral-600` / `text-neutral-700`
+- `rounded-2xl border border-neutral-200 bg-white`
+- Padding typically `p-5` to `p-7`
+- Neutral typography hierarchy
+- Optional sky accents for links or bullets
 
 ## 6. Motion & Hero Backdrop
 
-### Hero Motion Concept
+### Hero Motion Model
 
 Hero decoration now uses a layered **beach/ocean backdrop**:
 
@@ -143,39 +142,39 @@ Core tones:
 - Warm tones should remain limited to hero sunlight effects, not global UI accents.
 - Keep focus styles visible and keyboard-friendly.
 
-## 8. Content Tone Guidelines
+## 8. Content Tone
 
-The site is positioned for professional trust. Content should feel:
+Content style stays professional and high-signal:
 
 - specific
 - realistic
 - measurable
 - non-placeholder
 
-### Do
+### Preferred
 
-- Use concrete claims ("respond within 24 hours", "improved LCP by 30%").
-- Keep CTA labels direct ("View Resume", "Contact Me").
-- Use concise, high-signal section descriptions.
+- Direct CTA labels (e.g., "View Resume", "Contact Me")
+- Outcome-focused claims with context
+- Concise section descriptions
 
 ### Avoid
 
-- "Placeholder" wording in user-facing copy
-- vague claims without context
-- overly promotional language without proof
+- Placeholder phrasing
+- Vague claims without evidence
+- Overly promotional copy without substance
 
 ## 9. Prompt Guide for Future Edits
 
-Use these prompts when asking an AI/design tool for new UI:
+Use these prompts for AI-assisted UI iterations:
 
 - "Keep neutral white/black base with sky/cyan accents only. Preserve current portfolio tone and readability."
 - "Use Geist Sans hierarchy and clean recruiter-friendly copy. Avoid decorative typography."
 - "Match existing cards: rounded-2xl, white surface, neutral border, minimal shadow."
 - "For hero visuals, keep layered beach backdrop, gentle atmospheric motion, and reduced-motion fallback."
 
-## 10. Change Control
+## 10. Change Control Checklist
 
-Before accepting new visual changes:
+Before approving new visual changes:
 
 1. Confirm it still matches neutral + sky/cyan direction.
 2. Check consistency with existing card/button/tag language.

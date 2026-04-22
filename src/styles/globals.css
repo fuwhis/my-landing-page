@@ -812,7 +812,6 @@ body {
     height: 5.8rem;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .hero-beach-backdrop__sun-disc,
   .hero-beach-backdrop__sun-ray,
