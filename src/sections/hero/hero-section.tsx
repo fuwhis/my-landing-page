@@ -11,7 +11,7 @@ export function HeroSection() {
   return (
     <SectionContainer
       id="hero"
-      className="overflow-hidden pt-20 sm:pt-28"
+      className="overflow-x-hidden pt-20 sm:pt-28"
       decoration={<HeroBackdrop />}
     >
       <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">

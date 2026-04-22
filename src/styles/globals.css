@@ -316,6 +316,20 @@ body {
 .hero-beach-backdrop {
   contain: layout style;
   overflow: visible;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    rgb(0 0 0) 0%,
+    rgb(0 0 0) 78%,
+    rgb(0 0 0 / 0.86) 90%,
+    rgb(0 0 0 / 0) 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    rgb(0 0 0) 0%,
+    rgb(0 0 0) 78%,
+    rgb(0 0 0 / 0.86) 90%,
+    rgb(0 0 0 / 0) 100%
+  );
 }
 
 .hero-beach-backdrop > * {
@@ -568,32 +582,32 @@ body {
 }
 
 .hero-beach-backdrop__bridge-fade {
-  inset: auto -8% -6%;
-  height: 36%;
+  inset: auto -10% -10%;
+  height: 20%;
   background:
     linear-gradient(
-      90deg,
-      rgb(233 248 253 / 0.56) 0%,
-      rgb(238 250 253 / 0.34) 24%,
-      rgb(244 251 253 / 0.2) 52%,
-      rgb(238 249 252 / 0.3) 76%,
-      rgb(232 247 252 / 0.5) 100%
+      95deg,
+      rgb(236 249 253 / 0.2) 0%,
+      rgb(229 246 252 / 0.24) 22%,
+      rgb(212 239 250 / 0.34) 52%,
+      rgb(191 232 247 / 0.48) 78%,
+      rgb(166 221 241 / 0.62) 100%
     ),
     linear-gradient(
       180deg,
       rgb(234 248 253 / 0) 2%,
-      rgb(234 248 253 / 0.46) 54%,
-      rgb(244 251 253 / 0.84) 76%,
-      rgb(250 250 250 / 0.98) 100%
+      rgb(235 249 253 / 0.4) 50%,
+      rgb(238 250 253 / 0.74) 78%,
+      rgb(240 250 253 / 0.96) 100%
     ),
     radial-gradient(
       120% 70% at 50% 100%,
-      rgb(191 236 250 / 0.28),
-      rgb(191 236 250 / 0) 66%
+      rgb(191 236 250 / 0.2),
+      rgb(191 236 250 / 0) 68%
     );
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  opacity: 0.7;
+  -webkit-backdrop-filter: blur(2.8px);
+  backdrop-filter: blur(2.8px);
+  opacity: 0.84;
 }
 
 .hero-beach-backdrop__readability {
@@ -772,7 +786,8 @@ body {
   }
 
   .hero-beach-backdrop__bridge-fade {
-    height: 30%;
+    inset: auto -12% -8%;
+    height: 34%;
     -webkit-backdrop-filter: blur(1.1px);
     backdrop-filter: blur(1.1px);
   }
