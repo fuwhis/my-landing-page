@@ -59,7 +59,8 @@ body {
     transform: translate3d(var(--bubble-drift, 0px), -42vh, 0) scale(1);
   }
   100% {
-    transform: translate3d(calc(var(--bubble-drift, 0px) * 1.4), -108vh, 0) scale(0.75);
+    transform: translate3d(calc(var(--bubble-drift, 0px) * 1.4), -108vh, 0)
+      scale(0.75);
     opacity: 0;
   }
 }
@@ -114,115 +115,6 @@ body {
   animation-iteration-count: infinite;
   animation-duration: var(--bubble-duration, 14s);
   animation-delay: var(--bubble-delay, 0s);
-}
-
-.hero-fluid__bubble:nth-child(1) {
-  --bubble-x: 8%;
-  --bubble-size: 5px;
-  --bubble-delay: 0s;
-  --bubble-duration: 13s;
-  --bubble-peak-opacity: 0.34;
-  --bubble-mid-opacity: 0.28;
-  --bubble-drift: 6px;
-}
-.hero-fluid__bubble:nth-child(2) {
-  --bubble-x: 18%;
-  --bubble-size: 8px;
-  --bubble-delay: 2.2s;
-  --bubble-duration: 16s;
-  --bubble-peak-opacity: 0.42;
-  --bubble-mid-opacity: 0.3;
-  --bubble-drift: -10px;
-}
-.hero-fluid__bubble:nth-child(3) {
-  --bubble-x: 28%;
-  --bubble-size: 4px;
-  --bubble-delay: 5.1s;
-  --bubble-duration: 11s;
-  --bubble-peak-opacity: 0.3;
-  --bubble-mid-opacity: 0.22;
-  --bubble-drift: 4px;
-}
-.hero-fluid__bubble:nth-child(4) {
-  --bubble-x: 38%;
-  --bubble-size: 7px;
-  --bubble-delay: 1.4s;
-  --bubble-duration: 18s;
-  --bubble-peak-opacity: 0.38;
-  --bubble-mid-opacity: 0.26;
-  --bubble-drift: -14px;
-}
-.hero-fluid__bubble:nth-child(5) {
-  --bubble-x: 48%;
-  --bubble-size: 5px;
-  --bubble-delay: 7.8s;
-  --bubble-duration: 14s;
-  --bubble-peak-opacity: 0.33;
-  --bubble-mid-opacity: 0.24;
-  --bubble-drift: 8px;
-}
-.hero-fluid__bubble:nth-child(6) {
-  --bubble-x: 58%;
-  --bubble-size: 6px;
-  --bubble-delay: 3.6s;
-  --bubble-duration: 15s;
-  --bubble-peak-opacity: 0.4;
-  --bubble-mid-opacity: 0.3;
-  --bubble-drift: -6px;
-}
-.hero-fluid__bubble:nth-child(7) {
-  --bubble-x: 68%;
-  --bubble-size: 4px;
-  --bubble-delay: 9.2s;
-  --bubble-duration: 12s;
-  --bubble-peak-opacity: 0.28;
-  --bubble-mid-opacity: 0.2;
-  --bubble-drift: 12px;
-}
-.hero-fluid__bubble:nth-child(8) {
-  --bubble-x: 78%;
-  --bubble-size: 9px;
-  --bubble-delay: 0.8s;
-  --bubble-duration: 19s;
-  --bubble-peak-opacity: 0.36;
-  --bubble-mid-opacity: 0.27;
-  --bubble-drift: -8px;
-}
-.hero-fluid__bubble:nth-child(9) {
-  --bubble-x: 88%;
-  --bubble-size: 5px;
-  --bubble-delay: 4.4s;
-  --bubble-duration: 13.5s;
-  --bubble-peak-opacity: 0.32;
-  --bubble-mid-opacity: 0.25;
-  --bubble-drift: 5px;
-}
-.hero-fluid__bubble:nth-child(10) {
-  --bubble-x: 12%;
-  --bubble-size: 6px;
-  --bubble-delay: 11s;
-  --bubble-duration: 17s;
-  --bubble-peak-opacity: 0.35;
-  --bubble-mid-opacity: 0.23;
-  --bubble-drift: -12px;
-}
-.hero-fluid__bubble:nth-child(11) {
-  --bubble-x: 92%;
-  --bubble-size: 4px;
-  --bubble-delay: 6.3s;
-  --bubble-duration: 10.5s;
-  --bubble-peak-opacity: 0.29;
-  --bubble-mid-opacity: 0.21;
-  --bubble-drift: 9px;
-}
-.hero-fluid__bubble:nth-child(12) {
-  --bubble-x: 52%;
-  --bubble-size: 7px;
-  --bubble-delay: 8.5s;
-  --bubble-duration: 20s;
-  --bubble-peak-opacity: 0.37;
-  --bubble-mid-opacity: 0.26;
-  --bubble-drift: -5px;
 }
 
 @media (prefers-reduced-motion: reduce) {

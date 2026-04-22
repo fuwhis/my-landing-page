@@ -1,20 +1,20 @@
-# Design System (Current Approved Website)
+# Design System (Current As-Built State)
+
+This document reflects the design currently implemented in code.
 
 ## 1. Brand Direction
 
-This website uses a **clean neutral base** with a selective **indigo accent**.
-The visual tone is modern, product-focused, and recruiter-friendly:
+The website uses a **clean neutral base** with a **sky-blue accent system**.
+Overall tone is modern, product-oriented, and recruiter-friendly:
 
-- Neutral white/black surfaces for readability and trust
-- Indigo for interaction, links, and visual focus
-- Minimal decoration outside of the hero motion layer
-- Clear hierarchy, strong scannability, low visual noise
-
-This document is the source of truth for the currently approved implementation and near-term iteration.
+- Neutral surfaces for readability and trust
+- Sky accents for headings, links, focus rings, and motion highlights
+- Minimal decorative noise outside the hero motion layer
+- Strong hierarchy and clear scanning
 
 ## 2. Core Tokens
 
-### Base Variables (`globals.css`)
+### Base Variables (`src/styles/globals.css`)
 
 - `--background`: `#fafafa`
 - `--foreground`: `#0a0a0a`
@@ -23,15 +23,15 @@ This document is the source of truth for the currently approved implementation a
 
 ### Practical Color Roles
 
-- **Page background**: `#fafafa` (`bg-neutral-50`)
-- **Primary text**: `#0a0a0a` to `text-neutral-900`
-- **Secondary text**: `text-neutral-600` / `text-neutral-500`
-- **Borders**: `border-neutral-200` (global default)
-- **Accent**: Indigo (`text-indigo-600`, `bg-indigo-*`, selection tint)
+- **Page background**: `#fafafa`
+- **Primary text**: neutral 900 range (`#0a0a0a` / `text-neutral-900`)
+- **Secondary text**: `text-neutral-600` to `text-neutral-500`
+- **Borders**: `border-neutral-200` (global default via universal selector)
+- **Accent**: sky palette (`text-sky-600`, `text-sky-900`, `bg-sky-*`, `ring-sky-400`)
 
 ### Selection Color
 
-- `::selection`: `rgb(99 102 241 / 0.18)`
+- `::selection`: `rgb(14 165 233 / 0.18)`
 
 ## 3. Typography
 
@@ -41,145 +41,154 @@ This document is the source of truth for the currently approved implementation a
 - Mono font: **Geist Mono** (`--font-geist-mono`)
 - Fallbacks: `Arial, Helvetica, sans-serif`
 
-### Principles
-
-- Prefer clarity over expressive display typography.
-- Use `font-semibold` for headings and key values.
-- Use neutral text colors and avoid low-contrast decorative copy.
-- Keep line-height relaxed for descriptive paragraphs (`leading-relaxed`).
-
-### Typical Scale (Current)
+### Practical Type Scale
 
 - Hero title: `text-4xl` -> `sm:text-5xl` -> `lg:text-6xl`
 - Section title: `text-2xl` -> `sm:text-3xl`
-- Body text: `text-sm` / `text-base`
-- Eyebrow labels: `text-xs` + uppercase tracking
+- Lead/support copy: `text-base` to `text-xl`
+- Eyebrow labels: `text-xs`, uppercase, tracked letters
 
 ## 4. Layout & Spacing
 
-### Section Container
+### Section Container (`components/shared/section-container.tsx`)
 
 - Vertical rhythm: `py-14 sm:py-20`
 - Content width: `max-w-6xl`
 - Horizontal padding: `px-6 sm:px-10`
+- Supports optional full-bleed decoration layer (`decoration` prop)
 
-### Grids
+### Page Section Order (`src/app/page.tsx`)
 
-- Feature/card sections commonly use `md:grid-cols-2` or `xl:grid-cols-3`.
-- Hero uses a two-column split on large screens and stacks on smaller screens.
+1. Hero
+2. Tech Stack
+3. About
+4. Experience
+5. Projects
+6. Skills
+7. Contact
 
-### Spacing Rhythm
+### Grid Patterns
 
-- Use Tailwind spacing scale (`gap-3`, `gap-6`, `space-y-8`, etc.).
-- Keep consistent spacing between heading, description, and content groups.
+- Hero: split layout on large screens (`lg:grid-cols-[1.15fr_0.85fr]`)
+- Card-heavy sections: `md:grid-cols-2`, projects extend to `xl:grid-cols-3`
+- Vertical timelines/lists: `space-y-*` stacks with staggered motion
 
-## 5. Components (Current Approved Style)
+## 5. Component Language
 
 ### Buttons (`components/ui/button.tsx`)
 
 - Shape: `rounded-full`
-- Default: dark fill (`bg-neutral-900`, white text)
-- Outline: neutral border + neutral text
-- Focus: `focus-visible:ring-2 focus-visible:ring-indigo-400`
+- Default: `bg-neutral-900 text-white hover:bg-neutral-700`
+- Outline: `border-neutral-300 text-neutral-900 hover:bg-neutral-100`
+- Focus ring: `focus-visible:ring-2 focus-visible:ring-sky-400`
 - Sizes:
   - default: `h-10 px-5`
   - lg: `h-11 px-6 text-base`
 
-### Tags (`components/shared/tag-badge.tsx`)
+### Tag Badge (`components/shared/tag-badge.tsx`)
 
-- Shape: full pill (`rounded-full`)
-- Surface: `bg-neutral-100`
-- Border: `border-neutral-200`
-- Label: `text-xs font-medium text-neutral-700`
+- Pill shape with subtle surface
+- `border-neutral-200 bg-neutral-100`
+- `text-xs font-medium text-neutral-700`
 
-### Cards (Project / Timeline / Metric / Skill Groups)
+### Cards (metrics, projects, timeline, stack groups)
 
-Current approved card baseline:
+Shared baseline:
 
-- Shape: `rounded-2xl`
-- Surface: `bg-white`
-- Border: `border-neutral-200`
-- Padding: typically `p-5` to `p-7`
-- Text hierarchy:
-  - title/value: `text-neutral-900`
-  - body/support: `text-neutral-600` / `text-neutral-700`
+- `rounded-2xl border border-neutral-200 bg-white`
+- Padding typically `p-5` to `p-7`
+- Neutral typography hierarchy
+- Optional sky accents for links or bullets
 
 ## 6. Motion & Hero Backdrop
 
-### Hero Motion Concept
+### Hero Motion Model
 
 Hero decoration combines:
 
-1. Morphing organic blob (`hero-blob-morph`)
-2. Rising bubbles (`hero-bubble-rise`)
+1. Morphing organic blob (`hero-blob-morph`, 22s, alternate, infinite)
+2. Rising bubbles (`hero-bubble-rise`, transform/opacity animation)
 
-This creates a soft "fluid tech" feel while keeping core content readable.
+### Bubble System (Current Implementation)
 
-### Updated Water-like Palette
+- Bubble count: `40` (`BUBBLE_COUNT` in `hero-fluid-backdrop.tsx`)
+- Bubble props are generated per index via deterministic pseudo-random math
+- Runtime variables per bubble:
+  - `--bubble-x`
+  - `--bubble-size`
+  - `--bubble-delay`
+  - `--bubble-duration`
+  - `--bubble-peak-opacity`
+  - `--bubble-mid-opacity`
+  - `--bubble-drift`
+- No `nth-child` sequencing is used now; distribution is non-sequential across the width
 
-Blob:
+### Water-like Palette
+
+Blob gradient:
 
 - `rgb(186 230 253 / 0.38)`
 - `rgb(125 211 252 / 0.22)`
 - `rgb(56 189 248 / 0.1)`
 
-Bubble:
+Bubble gradient and glow:
 
-- Highlight center: `rgb(255 255 255 / 0.98)`
-- Mid tint: `rgb(224 242 254 / 0.72)`
-- Outer tint: `rgb(125 211 252 / 0.4)` to `rgb(56 189 248 / 0.12)`
+- `rgb(255 255 255 / 0.98)`
+- `rgb(224 242 254 / 0.72)`
+- `rgb(125 211 252 / 0.4)`
+- `rgb(56 189 248 / 0.12)`
 - Glow: `0 0 14px rgb(14 165 233 / 0.22)`
 
 ### Accessibility
 
-- Respect reduced motion:
-  - Disable blob animation
-  - Hide bubble animation under `prefers-reduced-motion: reduce`
+- Under `prefers-reduced-motion: reduce`:
+  - Blob animation is disabled
+  - Bubble animation is disabled and bubbles are hidden
 
 ## 7. Interaction Rules
 
-- Hover transitions are subtle and fast.
-- Accent color should remain indigo-focused for links and active affordances.
-- Avoid introducing warm-tone accent systems unless explicitly requested.
-- Keep focus styles visible and keyboard-friendly.
+- Hover transitions stay subtle and quick
+- Accent usage remains sky-focused for interactive emphasis
+- Keep keyboard focus visible on all actionable elements
+- Avoid introducing competing accent systems unless intentionally re-branding
 
-## 8. Content Tone Guidelines
+## 8. Content Tone
 
-The site is positioned for professional trust. Content should feel:
+Content style stays professional and high-signal:
 
 - specific
 - realistic
 - measurable
 - non-placeholder
 
-### Do
+### Preferred
 
-- Use concrete claims ("respond within 24 hours", "improved LCP by 30%").
-- Keep CTA labels direct ("View Resume", "Contact Me").
-- Use concise, high-signal section descriptions.
+- Direct CTA labels (e.g., "View Resume", "Contact Me")
+- Outcome-focused claims with context
+- Concise section descriptions
 
 ### Avoid
 
-- "Placeholder" wording in user-facing copy
-- vague claims without context
-- overly promotional language without proof
+- Placeholder phrasing
+- Vague claims without evidence
+- Overly promotional copy without substance
 
 ## 9. Prompt Guide for Future Edits
 
-Use these prompts when asking an AI/design tool for new UI:
+Use these prompts for AI-assisted UI iterations:
 
-- "Keep neutral white/black base with indigo accents only. Preserve current portfolio tone and readability."
-- "Use Geist Sans hierarchy and clean recruiter-friendly copy. Avoid decorative typography."
-- "Match existing cards: rounded-2xl, white surface, neutral border, minimal shadow."
-- "For hero visuals, keep water-like bubble palette and gentle motion, with reduced-motion fallback."
+- "Keep the neutral base with sky-blue accents and recruiter-friendly readability."
+- "Preserve Geist Sans hierarchy and concise, high-signal content."
+- "Match existing card language: rounded-2xl, white surface, neutral border."
+- "Preserve hero fluid backdrop with morphing blob + non-sequential rising bubbles and reduced-motion fallback."
 
-## 10. Change Control
+## 10. Change Control Checklist
 
-Before accepting new visual changes:
+Before approving new visual changes:
 
-1. Confirm it still matches neutral + indigo direction.
-2. Check consistency with existing card/button/tag language.
-3. Verify text credibility (no placeholder phrasing).
-4. Re-run lint and quickly review responsive behavior.
+1. Confirm alignment with neutral + sky design direction.
+2. Check consistency with button/card/tag language.
+3. Validate content credibility (no placeholders).
+4. Re-check responsive behavior and run lint/type checks.
 
-If a new direction is desired (e.g., warm editorial style), create a separate design version instead of mixing systems in-place.
+If a significantly different visual direction is needed, create a separate version rather than mixing systems in-place.
