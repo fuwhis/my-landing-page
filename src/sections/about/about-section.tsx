@@ -14,7 +14,10 @@ export function AboutSection() {
 
         <div className="space-y-6">
           {profile.aboutParagraphs.map((paragraph) => (
-            <p key={paragraph} className="text-base leading-relaxed text-neutral-600">
+            <p
+              key={paragraph}
+              className="text-base leading-relaxed text-neutral-600"
+            >
               {paragraph}
             </p>
           ))}

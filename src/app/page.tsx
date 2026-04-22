@@ -8,7 +8,7 @@ import { TechStackSection } from '@/sections/tech-stack/tech-stack-section';
 
 export default function Home() {
   return (
-    <main>
+    <main className="section-continuity">
       <HeroSection />
       <TechStackSection />
       <AboutSection />

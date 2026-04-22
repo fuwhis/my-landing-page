@@ -64,6 +64,7 @@ export function HeroBackdrop() {
       <CloudLayer />
       <PalmMotionLayer />
       <WaveLayer />
+      <div className="hero-beach-backdrop__bridge-fade" />
 
       {/* Readability veil keeps hero content visually dominant. */}
       <div className="hero-beach-backdrop__readability" />

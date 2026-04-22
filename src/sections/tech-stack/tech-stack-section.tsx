@@ -5,7 +5,7 @@ import { techStackGroups } from '@/data/tech-stack';
 
 export function TechStackSection() {
   return (
-    <SectionContainer id="tech-stack">
+    <SectionContainer id="tech-stack" className="tech-stack-continuity">
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Tech Stack"
