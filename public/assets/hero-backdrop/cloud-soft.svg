@@ -1,0 +1,14 @@
+<svg width="320" height="160" viewBox="0 0 320 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cloudMainA" x1="148" y1="14" x2="148" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FBFEFF"/>
+      <stop offset="1" stop-color="#EAF7FF"/>
+    </linearGradient>
+    <linearGradient id="cloudShadeA" x1="148" y1="66" x2="148" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CDE9F8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#CDE9F8" stop-opacity="0.62"/>
+    </linearGradient>
+  </defs>
+  <path d="M44 120C18 120 0 102 0 80C0 60 16 42 38 40C44 20 62 8 84 8C104 8 122 18 130 34C134 33 138 32 142 32C160 32 176 46 178 64H240C266 64 288 82 288 104C288 128 266 148 240 148H48C24 148 4 134 0 114C10 118 24 120 44 120Z" fill="url(#cloudMainA)"/>
+  <path d="M40 108H244C262 108 278 114 288 124C280 138 262 148 240 148H48C24 148 4 134 0 114C12 110 24 108 40 108Z" fill="url(#cloudShadeA)"/>
+</svg>

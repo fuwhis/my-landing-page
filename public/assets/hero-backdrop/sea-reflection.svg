@@ -1,0 +1,10 @@
+<svg width="220" height="560" viewBox="0 0 220 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="seaReflectV2" x1="110" y1="0" x2="110" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF9C9" stop-opacity="0.9"/>
+      <stop offset="0.34" stop-color="#FFF9C9" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#FFF9C9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M88 0C110 58 126 108 132 174C140 252 128 322 154 410C166 450 184 500 206 560H14C38 504 60 452 70 410C94 318 78 252 86 172C92 106 108 58 132 0H88Z" fill="url(#seaReflectV2)"/>
+</svg>

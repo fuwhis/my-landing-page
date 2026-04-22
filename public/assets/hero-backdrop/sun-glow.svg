@@ -1,0 +1,17 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sunCore" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 160) rotate(90) scale(160)">
+      <stop offset="0.08" stop-color="#FFF7B5"/>
+      <stop offset="0.4" stop-color="#FFEFA5" stop-opacity="0.88"/>
+      <stop offset="0.72" stop-color="#FFEFA5" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#FFEFA5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sunRing" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 160) rotate(90) scale(130)">
+      <stop offset="0.62" stop-color="#FFF4AB" stop-opacity="0"/>
+      <stop offset="0.88" stop-color="#FFF4AB" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#FFF4AB" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="160" cy="160" r="160" fill="url(#sunCore)"/>
+  <circle cx="160" cy="160" r="130" fill="url(#sunRing)"/>
+</svg>

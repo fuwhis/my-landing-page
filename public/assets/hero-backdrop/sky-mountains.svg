@@ -1,0 +1,21 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="800" y1="0" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2ABAF0"/>
+      <stop offset="0.48" stop-color="#7EDAF8"/>
+      <stop offset="1" stop-color="#D4F2FF"/>
+    </linearGradient>
+    <linearGradient id="mountainFar" x1="800" y1="290" x2="800" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5DCC8F"/>
+      <stop offset="1" stop-color="#2C9A6D"/>
+    </linearGradient>
+    <linearGradient id="mountainNear" x1="800" y1="220" x2="800" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4BC47E"/>
+      <stop offset="1" stop-color="#258B62"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#skyGrad)"/>
+  <path d="M-90 600C60 520 150 560 280 490C380 434 480 474 600 418C710 365 810 428 940 378C1060 333 1155 378 1280 346C1400 316 1480 344 1690 280V900H-90V600Z" fill="url(#mountainFar)" opacity="0.72"/>
+  <path d="M-80 640C120 520 250 540 410 436C530 358 650 370 780 275C890 196 1030 246 1140 320C1260 400 1380 406 1680 340V900H-80V640Z" fill="url(#mountainNear)" opacity="0.9"/>
+  <path d="M-40 706C100 664 224 684 360 640C508 592 608 618 746 584C902 546 1020 574 1174 538C1320 504 1436 512 1640 458V900H-40V706Z" fill="#2F996C" opacity="0.52"/>
+</svg>

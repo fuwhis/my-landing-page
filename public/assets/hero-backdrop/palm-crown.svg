@@ -1,0 +1,39 @@
+<svg width="280" height="220" viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leafMain" x1="74" y1="18" x2="218" y2="194" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B0F46E"/>
+      <stop offset="0.45" stop-color="#66CB57"/>
+      <stop offset="1" stop-color="#2D9448"/>
+    </linearGradient>
+    <linearGradient id="leafEdge" x1="138" y1="40" x2="156" y2="198" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D8FF9D" stop-opacity="0.56"/>
+      <stop offset="1" stop-color="#D8FF9D" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="leafVein" x1="150" y1="70" x2="126" y2="182" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2B8443" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#2B8443" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <path d="M146 112C110 84 84 64 66 38C102 48 128 66 146 112Z" fill="url(#leafMain)" fill-opacity="0.92"/>
+  <path d="M150 112C144 78 148 52 162 26C176 56 172 82 150 112Z" fill="url(#leafMain)" fill-opacity="0.9"/>
+  <path d="M154 114C178 88 206 78 240 80C212 104 186 116 154 114Z" fill="url(#leafMain)" fill-opacity="0.92"/>
+  <path d="M145 120C92 84 50 74 0 88C68 126 108 136 145 120Z" fill="url(#leafMain)"/>
+  <path d="M144 114C108 70 82 38 86 0C132 34 146 70 144 114Z" fill="url(#leafMain)"/>
+  <path d="M150 116C138 68 152 22 192 0C196 50 182 88 150 116Z" fill="url(#leafMain)"/>
+  <path d="M156 118C186 78 226 62 280 68C242 114 202 132 156 118Z" fill="url(#leafMain)"/>
+  <path d="M140 126C108 120 80 126 48 148C92 154 122 146 140 126Z" fill="url(#leafMain)" fill-opacity="0.96"/>
+  <path d="M160 128C188 136 206 150 220 176C186 168 166 154 160 128Z" fill="url(#leafMain)" fill-opacity="0.96"/>
+  <path d="M146 128C88 122 44 138 2 178C70 186 114 170 146 128Z" fill="url(#leafMain)"/>
+  <path d="M154 130C196 140 226 168 246 220C194 204 164 176 154 130Z" fill="url(#leafMain)"/>
+  <path d="M146 122C124 106 100 96 68 92" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M144 114C132 88 122 60 114 28" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M150 114C150 84 156 56 170 24" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M156 120C180 104 204 92 238 84" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M144 130C116 138 88 148 56 160" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M158 132C174 148 194 166 214 192" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M142 124C124 126 108 132 90 142" stroke="url(#leafVein)" stroke-width="1.9" stroke-linecap="round"/>
+  <path d="M160 126C174 132 188 142 200 156" stroke="url(#leafVein)" stroke-width="1.9" stroke-linecap="round"/>
+  <path d="M145 120C124 118 108 110 90 98" stroke="url(#leafEdge)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M154 122C176 124 192 116 208 106" stroke="url(#leafEdge)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="148" cy="122" r="10" fill="#4AAE50"/>
+</svg>

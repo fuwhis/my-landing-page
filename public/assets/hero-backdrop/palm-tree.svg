@@ -1,0 +1,53 @@
+<svg width="280" height="420" viewBox="0 0 280 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="trunkBody" x1="174" y1="66" x2="110" y2="410" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DFA465"/>
+      <stop offset="0.48" stop-color="#C4834B"/>
+      <stop offset="1" stop-color="#8A5734"/>
+    </linearGradient>
+    <linearGradient id="trunkHighlight" x1="140" y1="84" x2="122" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7CE97" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#F7CE97" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="segmentShade" x1="142" y1="112" x2="142" y2="388" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F4328" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6F4328" stop-opacity="0.36"/>
+    </linearGradient>
+    <linearGradient id="leafMain" x1="74" y1="18" x2="218" y2="194" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B0F46E"/>
+      <stop offset="0.45" stop-color="#66CB57"/>
+      <stop offset="1" stop-color="#2D9448"/>
+    </linearGradient>
+    <linearGradient id="leafEdge" x1="138" y1="40" x2="156" y2="198" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D8FF9D" stop-opacity="0.56"/>
+      <stop offset="1" stop-color="#D8FF9D" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="leafVein" x1="150" y1="70" x2="126" y2="182" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2B8443" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#2B8443" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <path d="M114 408C114 320 118 258 132 206C144 164 158 132 172 100C180 82 198 72 212 80C220 84 222 96 216 112C202 152 188 186 178 226C164 278 156 328 152 408H114Z" fill="url(#trunkBody)"/>
+  <path d="M126 404C126 324 130 262 142 214C152 178 164 146 174 116C178 104 188 100 196 104C186 140 176 170 166 208C154 256 146 316 142 404H126Z" fill="url(#trunkHighlight)"/>
+  <ellipse cx="162" cy="124" rx="34" ry="22" fill="url(#segmentShade)" fill-opacity="0.78"/>
+  <ellipse cx="154" cy="170" rx="34" ry="22" fill="url(#segmentShade)" fill-opacity="0.72"/>
+  <ellipse cx="146" cy="218" rx="33" ry="21" fill="url(#segmentShade)" fill-opacity="0.66"/>
+  <ellipse cx="140" cy="268" rx="31" ry="20" fill="url(#segmentShade)" fill-opacity="0.58"/>
+  <ellipse cx="136" cy="318" rx="30" ry="20" fill="url(#segmentShade)" fill-opacity="0.5"/>
+  <ellipse cx="132" cy="366" rx="28" ry="18" fill="url(#segmentShade)" fill-opacity="0.42"/>
+  <path d="M145 120C92 84 50 74 0 88C68 126 108 136 145 120Z" fill="url(#leafMain)"/>
+  <path d="M144 114C108 70 82 38 86 0C132 34 146 70 144 114Z" fill="url(#leafMain)"/>
+  <path d="M150 116C138 68 152 22 192 0C196 50 182 88 150 116Z" fill="url(#leafMain)"/>
+  <path d="M156 118C186 78 226 62 280 68C242 114 202 132 156 118Z" fill="url(#leafMain)"/>
+  <path d="M146 128C88 122 44 138 2 178C70 186 114 170 146 128Z" fill="url(#leafMain)"/>
+  <path d="M154 130C196 140 226 168 246 220C194 204 164 176 154 130Z" fill="url(#leafMain)"/>
+  <path d="M146 122C124 106 100 96 68 92" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M144 114C132 88 122 60 114 28" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M150 114C150 84 156 56 170 24" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M156 120C180 104 204 92 238 84" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M144 130C116 138 88 148 56 160" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M158 132C174 148 194 166 214 192" stroke="url(#leafVein)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M145 120C124 118 108 110 90 98" stroke="url(#leafEdge)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M154 122C176 124 192 116 208 106" stroke="url(#leafEdge)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="148" cy="122" r="10" fill="#4AAE50"/>
+</svg>

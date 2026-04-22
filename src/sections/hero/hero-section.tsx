@@ -1,6 +1,6 @@
 import { Mail, MapPin } from 'lucide-react';
 
-import { HeroFluidBackdrop } from '@/components/motion/hero-fluid-backdrop';
+import { HeroBackdrop } from '@/components/motion/hero-backdrop';
 import { CtaButton } from '@/components/shared/cta-button';
 import { MetricItem } from '@/components/shared/metric-item';
 import { SectionContainer } from '@/components/shared/section-container';
@@ -12,7 +12,7 @@ export function HeroSection() {
     <SectionContainer
       id="hero"
       className="overflow-hidden pt-20 sm:pt-28"
-      decoration={<HeroFluidBackdrop />}
+      decoration={<HeroBackdrop />}
     >
       <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div className="space-y-6">

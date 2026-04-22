@@ -1,0 +1,30 @@
+<svg width="280" height="420" viewBox="0 0 280 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="trunkBody" x1="174" y1="66" x2="110" y2="410" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DFA465"/>
+      <stop offset="0.48" stop-color="#C4834B"/>
+      <stop offset="1" stop-color="#8A5734"/>
+    </linearGradient>
+    <linearGradient id="trunkHighlight" x1="140" y1="84" x2="122" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7CE97" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#F7CE97" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="segmentShade" x1="142" y1="112" x2="142" y2="388" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F4328" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6F4328" stop-opacity="0.36"/>
+    </linearGradient>
+    <clipPath id="trunkClip">
+      <path d="M110 408C110 322 114 262 128 212C138 176 150 144 160 108C164 90 176 78 190 80C200 82 204 94 202 112C194 156 184 188 174 226C160 282 150 334 146 408H110Z"/>
+    </clipPath>
+  </defs>
+  <path d="M110 408C110 322 114 262 128 212C138 176 150 144 160 108C164 90 176 78 190 80C200 82 204 94 202 112C194 156 184 188 174 226C160 282 150 334 146 408H110Z" fill="url(#trunkBody)"/>
+  <path d="M122 404C122 326 126 266 138 220C146 186 156 154 164 124C166 112 174 106 182 108C176 144 168 176 160 212C148 264 140 322 136 404H122Z" fill="url(#trunkHighlight)"/>
+  <g clip-path="url(#trunkClip)">
+    <ellipse cx="152" cy="126" rx="32" ry="21" fill="url(#segmentShade)" fill-opacity="0.78"/>
+    <ellipse cx="146" cy="172" rx="32" ry="21" fill="url(#segmentShade)" fill-opacity="0.72"/>
+    <ellipse cx="140" cy="220" rx="31" ry="20" fill="url(#segmentShade)" fill-opacity="0.66"/>
+    <ellipse cx="136" cy="270" rx="29" ry="19" fill="url(#segmentShade)" fill-opacity="0.58"/>
+    <ellipse cx="132" cy="320" rx="28" ry="18" fill="url(#segmentShade)" fill-opacity="0.5"/>
+    <ellipse cx="128" cy="366" rx="26" ry="17" fill="url(#segmentShade)" fill-opacity="0.42"/>
+  </g>
+</svg>

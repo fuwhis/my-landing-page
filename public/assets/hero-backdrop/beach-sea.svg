@@ -1,0 +1,16 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sandGrad" x1="800" y1="470" x2="800" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F9E8A4"/>
+      <stop offset="1" stop-color="#F1D78A"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="800" y1="624" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9CEFFF"/>
+      <stop offset="0.58" stop-color="#27D4EE"/>
+      <stop offset="1" stop-color="#129CC6"/>
+    </linearGradient>
+  </defs>
+  <path d="M-40 620C180 538 370 566 558 526C752 484 922 540 1116 500C1294 464 1452 474 1640 418V738H-40V620Z" fill="url(#sandGrad)" opacity="0.9"/>
+  <path d="M-40 678C220 622 360 658 558 624C780 586 938 644 1144 614C1328 588 1470 590 1640 558V900H-40V678Z" fill="url(#seaGrad)" opacity="0.95"/>
+  <path d="M-30 678C130 642 234 676 380 654C542 632 646 654 812 624C962 598 1084 628 1242 606C1384 586 1508 600 1632 576" stroke="#EDFCFF" stroke-opacity="0.72" stroke-width="16" stroke-linecap="round"/>
+</svg>

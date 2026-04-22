@@ -1,0 +1,340 @@
+# Task
+Implement a hero-section-only animated beach backdrop for my portfolio website.
+
+I will provide 2 reference images.
+Use them as visual direction only, not as literal assets to copy.
+
+# Core Goal
+Create a soft, fresh, energetic summer beach atmosphere for the hero section.
+
+The backdrop should feel:
+- clean
+- bright
+- fresh
+- calm
+- subtly alive
+
+This is NOT a decorative full-page animation.
+This is a restrained background system behind hero content.
+
+---
+
+# Visual Direction
+
+## Camera / perspective
+- Straight-on view from the sea looking toward the beach
+- The beach sits in the midground
+- Distant green mountain range in the background for depth
+- Palm / coconut trees placed along the shore
+- Sun positioned on the right side of the composition
+- Very light clouds, not many
+
+## Mood
+- early summer morning
+- warm sunlight
+- fresh sea breeze
+- gentle, relaxing atmosphere
+- slightly dreamy but still modern and clean
+
+## Style
+- inspired by TanStack wordmark energy:
+  - vibrant but controlled gradients
+  - clean shapes
+  - modern and polished
+  - playful but not childish
+- avoid realistic cinematic rendering
+- avoid noisy textures
+- avoid overly saturated neon look
+- avoid too many details competing with text
+
+---
+
+# Hero Backdrop Rules
+
+## Scope
+- The animated backdrop must exist ONLY inside the hero section
+- It must not continue through the whole page
+- Content readability has higher priority than visual effects
+
+## Layering
+Build the hero using clear visual layers:
+
+1. background sky / mountain image
+2. beach + sea base image
+3. optional gradient overlay for readability
+4. motion layers:
+   - soft wave motion
+   - subtle tree sway
+   - slow cloud drift
+   - gentle sun ray shimmer
+5. foreground content layer:
+   - headline
+   - subheadline
+   - CTA
+   - social links / badges if any
+
+## Readability
+- The backdrop must be visually softer than the hero content
+- Reduce contrast behind text
+- Use blur / haze / translucent overlay if needed
+- Never let animation distract from the headline
+- Ensure the text remains readable on desktop and mobile
+
+---
+
+# Motion Design Principles
+
+## General motion philosophy
+All animations must be subtle, slow, and layered.
+The user should "feel" motion before they consciously notice it.
+
+Avoid:
+- fast movement
+- large amplitude motion
+- looping that feels obvious
+- dramatic parallax
+- aggressive glow
+- constant attention-seeking motion
+
+Use:
+- low amplitude
+- slow timing
+- staggered loops
+- slightly different durations
+- slight opacity changes
+- soft easing
+
+---
+
+# Required Animations
+
+## 1. Waves
+Goal:
+- gentle wave wash near the shore
+- chill and relaxing
+- not stormy
+- not cartoon bouncing
+
+Implementation direction:
+- animate only the shoreline / water highlight / wave edge
+- use slow horizontal and vertical distortion
+- tiny amplitude
+- layered wave movement is preferred over one obvious repeated wave
+
+Suggested behavior:
+- 2 to 3 wave layers
+- each layer moves at slightly different speed
+- motion should feel like soft water breathing
+- foam edge can shift subtly left-right and in-out
+
+Animation feeling:
+- 5s to 10s loop range
+- ease-in-out
+- no sharp repetition
+
+## 2. Tree sway
+Goal:
+- light summer breeze moving through the palms
+- the trees should feel alive, not bending dramatically
+
+Implementation direction:
+- only animate upper leaves / crowns, not whole trunks swinging heavily
+- use small rotational movement
+- slight independent motion per tree
+- do not sync all trees perfectly
+
+Animation feeling:
+- 3deg to 6deg max rotation
+- slow staggered loops
+- around 4s to 8s
+- very soft ease
+
+## 3. Clouds
+Goal:
+- a few clouds drifting lightly
+- sparse cloud composition
+- preserve open sky feeling
+
+Implementation direction:
+- only 2 to 4 cloud groups max
+- move slowly across the sky
+- slight opacity variation is okay
+- scale drift is optional but minimal
+
+Animation feeling:
+- very slow, almost imperceptible
+- 20s to 60s loop range
+- clouds should not dominate composition
+
+## 4. Sun rays / sunlight shimmer
+Goal:
+- sunlight gently shining from the right side
+- warm and soft, not dramatic god rays
+- subtle glow on sea surface and air
+
+Implementation direction:
+- use faint radial gradient or blurred light beams
+- apply very soft opacity pulse
+- optional shimmer reflection on water near right side
+- keep it elegant and restrained
+
+Animation feeling:
+- ultra subtle
+- 6s to 12s slow pulse
+- very low opacity changes
+
+---
+
+# Color Direction
+
+Use the palette from the provided reference images.
+
+Target color behavior:
+- bright cyan / turquoise sea
+- warm pale yellow sunlight
+- soft sky blue
+- fresh green palms and mountains
+- sandy white-yellow beach
+- smooth gradient transitions
+
+Important:
+- keep the backdrop less dominant than content
+- reduce saturation slightly if needed for readability
+- avoid pure white highlights that overpower text
+
+Suggested treatment:
+- add a soft overlay or haze layer above backdrop
+- slightly desaturate or blur the visual under the text region
+
+---
+
+# Technical Constraints
+
+## Performance
+This hero must feel lightweight.
+
+Prefer:
+- CSS transforms
+- opacity animation
+- GPU-friendly properties
+- layered divs / SVG / pseudo-elements
+- minimal JS
+- requestAnimationFrame only if truly needed
+
+Avoid:
+- heavy canvas rendering unless justified
+- expensive blur on huge full-screen moving layers
+- large JS animation libraries if CSS can handle it
+- overly complex particle systems
+
+## Responsiveness
+The hero must remain visually good on:
+- desktop
+- tablet
+- mobile
+
+On smaller screens:
+- reduce visual complexity
+- reduce number of animated layers
+- keep hero text area clean
+- ensure the sun / mountain / shoreline composition still feels balanced
+
+## Accessibility
+- respect prefers-reduced-motion
+- if reduced motion is enabled:
+  - keep only static backdrop
+  - or dramatically reduce all animation amplitudes and durations
+
+---
+
+# Implementation Guidance
+
+## Preferred architecture
+Create a dedicated component, for example:
+- `HeroBackdrop.tsx`
+or
+- `HeroScene.vue`
+
+Separate responsibilities:
+- `HeroBackdrop`
+- `WaveLayer`
+- `CloudLayer`
+- `SunGlowLayer`
+- `PalmMotionLayer`
+
+## Styling approach
+Use layered absolute-positioned elements inside the hero container.
+The hero section should be `position: relative; overflow: hidden;`.
+
+Recommended structure:
+- hero wrapper
+- backdrop base image layer
+- animated overlays
+- readability gradient / blur veil
+- content container with higher z-index
+
+## Suggested rendering strategy
+If using provided artwork:
+- set the artwork as the primary background visual
+- augment life through overlays instead of trying to redraw the whole scene
+
+Possible techniques:
+- background image + animated gradient overlays
+- SVG wave masks
+- CSS keyframes for palm sway
+- drifting cloud divs / SVG assets
+- radial gradient for sun glow
+- translucent blur overlay under content area
+
+---
+
+# Motion Tuning Requirements
+Before finalizing, tune motion so that:
+- the user notices the text first
+- the motion feels premium, not playful-demo-like
+- nothing flickers
+- the loop seams are hard to notice
+- the whole scene feels calm and breathable
+
+If the motion feels obvious within 2 seconds, it is too strong.
+Reduce amplitude, contrast, or speed.
+
+---
+
+# Deliverables
+Please produce:
+
+1. the hero backdrop component
+2. supporting styles / animations
+3. clean configurable constants for:
+   - wave speed
+   - sway amplitude
+   - cloud count
+   - glow intensity
+4. responsive behavior
+5. reduced motion support
+6. brief code comments explaining why each layer exists
+
+---
+
+# Acceptance Criteria
+The result is correct if:
+- it only appears in the hero section
+- it feels like a fresh summer beach morning
+- waves, trees, clouds, and sunlight all move subtly
+- the content stays clearly dominant
+- the scene has depth because of distant green mountains
+- the palette matches the reference images
+- it performs smoothly
+- it still looks good on mobile
+
+---
+
+# Visual Priority Order
+1. headline / CTA readability
+2. overall atmosphere
+3. depth and composition
+4. subtle motion quality
+5. decorative richness
+
+Never sacrifice readability for visual effects.

@@ -1,0 +1,34 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chairWood" x1="44" y1="36" x2="178" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F0B06B"/>
+      <stop offset="0.52" stop-color="#D68744"/>
+      <stop offset="1" stop-color="#9B5F2F"/>
+    </linearGradient>
+    <linearGradient id="chairWoodShade" x1="108" y1="76" x2="120" y2="164" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7F4823" stop-opacity="0"/>
+      <stop offset="1" stop-color="#7F4823" stop-opacity="0.36"/>
+    </linearGradient>
+    <linearGradient id="fabricRed" x1="112" y1="42" x2="124" y2="146" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF6460"/>
+      <stop offset="1" stop-color="#D53F43"/>
+    </linearGradient>
+    <linearGradient id="fabricWhite" x1="98" y1="44" x2="130" y2="148" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF8EE"/>
+      <stop offset="1" stop-color="#F7E8D6"/>
+    </linearGradient>
+  </defs>
+  <path d="M166 162L142 116C140 112 136 110 132 112L154 162H166Z" fill="url(#chairWood)"/>
+  <path d="M62 162L88 108C90 104 96 104 100 108L78 162H62Z" fill="url(#chairWood)"/>
+  <path d="M144 164L96 58C94 54 88 52 84 56L132 164H144Z" fill="url(#chairWood)"/>
+  <path d="M48 164L90 46C92 42 96 40 100 42L60 164H48Z" fill="url(#chairWood)"/>
+  <path d="M68 142L156 146C162 146 164 152 160 154L74 152C68 152 66 146 68 142Z" fill="url(#chairWood)"/>
+  <path d="M74 120L146 122C152 122 154 128 150 130L80 130C74 130 72 124 74 120Z" fill="url(#chairWood)"/>
+  <path d="M82 52L148 66L132 136L66 118L82 52Z" fill="url(#fabricRed)"/>
+  <path d="M90 54L106 58L90 122L74 118L90 54Z" fill="url(#fabricWhite)"/>
+  <path d="M114 60L130 64L114 128L98 124L114 60Z" fill="url(#fabricWhite)"/>
+  <path d="M138 66L146 68L130 132L122 130L138 66Z" fill="url(#fabricWhite)"/>
+  <path d="M84 124L152 128" stroke="#AD2D33" stroke-opacity="0.34" stroke-width="3" stroke-linecap="round"/>
+  <path d="M58 164L102 50" stroke="url(#chairWoodShade)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M146 164L100 62" stroke="url(#chairWoodShade)" stroke-width="4" stroke-linecap="round"/>
+</svg>

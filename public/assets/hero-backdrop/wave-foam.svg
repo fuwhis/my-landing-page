@@ -1,0 +1,11 @@
+<svg width="1200" height="140" viewBox="0 0 1200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="foamMain" x1="600" y1="18" x2="600" y2="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F6FFFF" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#D7F5FF" stop-opacity="0.32"/>
+    </linearGradient>
+  </defs>
+  <path d="M10 72C70 40 136 38 194 56C256 76 316 78 382 52C446 28 512 26 576 50C640 74 702 78 768 60C834 42 892 30 954 46C1020 64 1088 66 1188 30" stroke="url(#foamMain)" stroke-width="20" stroke-linecap="round"/>
+  <path d="M18 96C84 64 144 62 202 78C264 96 330 96 404 68C474 42 548 44 622 70C688 94 750 96 824 72C894 50 958 46 1024 58C1094 70 1152 66 1192 52" stroke="#F7FFFF" stroke-opacity="0.54" stroke-width="10" stroke-linecap="round"/>
+  <path d="M36 118C102 96 160 94 222 106C286 118 350 118 426 94C492 74 564 74 640 98C706 118 770 120 846 102C918 84 986 80 1048 90C1112 102 1162 100 1196 92" stroke="#ECFBFF" stroke-opacity="0.3" stroke-width="6" stroke-linecap="round"/>
+</svg>
