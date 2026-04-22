@@ -1,3 +1,248 @@
+# Backdrop Design Guideline
+
+## Purpose
+
+This document defines the production guideline for the landing-page visual continuity system:
+
+- hero-only animated beach backdrop
+- hero-to-tech-stack transition blend
+- subtle wave-divider continuity for sections below tech stack
+
+It replaces the original implementation brief and should be used as the source of truth for future tuning.
+
+---
+
+## Scope and Ownership
+
+### In scope
+
+- `src/components/motion/hero-backdrop.tsx`
+- `src/components/motion/wave-divider.tsx`
+- `src/sections/hero/hero-section.tsx`
+- `src/sections/tech-stack/tech-stack-section.tsx`
+- continuity styles in `src/styles/globals.css`
+
+### Out of scope
+
+- full-page animated background
+- decorative effects that reduce content readability
+- JS-heavy animation systems
+
+---
+
+## Design Principles
+
+1. **Content first**: hero copy and CTA always dominate visually.
+2. **Atmosphere over decoration**: motion should be felt before noticed.
+3. **Continuity without seams**: no visible hard line between hero and tech stack.
+4. **Softness over contrast**: avoid sharp highlights and saturated transitions.
+5. **Performance-safe motion**: prefer transform/opacity animations with low complexity.
+
+---
+
+## Current Visual Architecture
+
+## 1) Hero backdrop (hero section only)
+
+Implemented in `HeroBackdrop` with layered composition:
+
+1. `sky-mountains` base image
+2. `beach-sea` base image
+3. atmospheric overlay
+4. animated layers: sun, clouds, palms, shoreline waves
+5. `bridge-fade` transition layer at hero bottom
+6. readability veil above backdrop layers
+
+Important:
+
+- Backdrop exists only under `#hero`.
+- Hero container uses `overflow-x-hidden` (not full `overflow-hidden`) so vertical blending can extend naturally.
+- Backdrop uses mask fade-out at the bottom to remove hard clipping edges.
+
+## 2) Hero -> TechStack continuity
+
+Seamless blend is created by combining:
+
+- hero bottom fade (`.hero-beach-backdrop__bridge-fade`)
+- backdrop mask fade on `.hero-beach-backdrop`
+- slight overlap of `#tech-stack` via negative top margin (`.tech-stack-continuity`)
+- top haze cap on `#tech-stack::before`
+
+Rule:
+
+- if a seam is visible, first tune fade gradients and blend overlap, not wave intensity.
+
+## 3) Sections below tech stack
+
+- `About`, `Experience`, `Projects`, `Skills`, `Contact` each inject `WaveDivider` via `SectionContainer` decoration.
+- `Hero` and `TechStack` do not use this divider between them.
+- Divider must remain background-like and low-attention.
+
+---
+
+## Motion System Specification
+
+## Hero motion targets
+
+- **Shore waves**: soft horizontal drift, tiny vertical shift
+- **Palm crowns**: small rotation only (trunks stay stable)
+- **Clouds**: sparse and slow drift
+- **Sun glow/ray**: gentle pulse only
+
+Recommended tuning ranges:
+
+- shoreline waves: ~9-16s loops
+- palms: ~7-9s loops with per-tree offset
+- clouds: ~45-60s loops
+- sun shimmer: ~10-11s loops
+
+Do not introduce:
+
+- bouncing
+- fast parallax
+- large displacement
+- synchronized motion across all layers
+
+## WaveDivider motion targets
+
+WaveDivider layers must remain desynchronized and subtle:
+
+- unique duration + delay per layer
+- unique motion pattern per layer (`a/b/c/d`)
+- low drift amplitude and tiny breathe/scale movement
+- optional low-intensity opacity drift
+
+Current intended pace (can be tuned slightly):
+
+- `10s / 0s`
+- `13s / -2s`
+- `16s / -4s`
+- `19s / -6s`
+
+If motion pattern is clearly obvious within 2-3 seconds:
+
+- reduce opacity first
+- then reduce drift/breathe amplitude
+- then increase duration
+
+---
+
+## Color and Blend Guideline
+
+### Hero palette behavior
+
+- bright but controlled cyan/turquoise water
+- warm, soft sunlight (right side)
+- low-contrast cloud and haze treatment
+- no neon saturation
+
+### Transition palette behavior
+
+For `.hero-beach-backdrop__bridge-fade`:
+
+- left side stays lighter
+- right side gradually deepens toward sea-like cyan
+- vertical gradient must end near tech-stack top background values
+
+When adjusting:
+
+1. preserve smooth left-to-right density progression
+2. avoid abrupt stop jumps
+3. avoid pure white streaks near the seam
+
+---
+
+## Performance and Accessibility Rules
+
+### Performance
+
+- keep animations CSS-based where possible
+- animate only `transform` and `opacity`
+- use blur sparingly (small radii, limited layers)
+- avoid repaint-heavy large moving filters
+
+### Accessibility
+
+`@media (prefers-reduced-motion: reduce)` must keep:
+
+- sun shimmer disabled
+- cloud drift disabled
+- shoreline wave animation disabled
+- wave-divider layer animation disabled
+- palm sway disabled
+
+The static scene should still look intentional and readable.
+
+---
+
+## Responsive Behavior
+
+At smaller breakpoints:
+
+- reduce visual complexity
+- hide extra wave-divider layers where needed
+- simplify palm/cloud composition
+- keep transition seam smooth on mobile (do not rely on desktop-only values)
+
+Always verify:
+
+- 1440px desktop
+- 1024px tablet
+- 768px and 390px mobile
+
+---
+
+## Tuning Playbook
+
+Use this order when refining visuals:
+
+1. **Fix seams first** (`bridge-fade`, mask, section overlap).
+2. **Then tune readability** (veil opacity/gradient balance).
+3. **Then tune motion** (amplitude -> opacity -> speed).
+4. **Finally tune color richness** (saturation and contrast).
+
+### Seam troubleshooting checklist
+
+- Check hero clipping (`overflow-x-hidden` vs hidden).
+- Check bottom mask fade on `.hero-beach-backdrop`.
+- Check `bridge-fade` vertical end colors against `#tech-stack` top.
+- Check `#tech-stack` negative margin and `::before` haze.
+
+### Motion quality checklist
+
+- No obvious loop seam in first 2-3 seconds.
+- No two wave layers visually align for long.
+- Motion never competes with heading/CTA.
+
+---
+
+## Do / Don't
+
+### Do
+
+- keep effects restrained and premium
+- keep gradients soft and compositional
+- keep section continuity subtle and atmospheric
+- document any new visual token when adding one
+
+### Don't
+
+- reintroduce divider between Hero and TechStack
+- add high-contrast decorative lines at section boundaries
+- increase saturation globally to "fix" seam issues
+- add JS animation unless CSS cannot solve the requirement
+
+---
+
+## Definition of Done
+
+A visual update is complete when:
+
+1. Hero text remains clearly dominant.
+2. Hero-to-TechStack transition has no hard horizontal seam.
+3. Divider motion feels alive but non-distracting.
+4. Performance remains smooth on standard laptop/mobile hardware.
+5. Reduced-motion mode preserves aesthetics without animation.
 # Task
 Implement a hero-section-only animated beach backdrop for my portfolio website.
 
