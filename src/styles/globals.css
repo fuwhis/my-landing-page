@@ -27,7 +27,7 @@ body {
 }
 
 ::selection {
-  background: rgb(99 102 241 / 0.18);
+  background: rgb(14 165 233 / 0.18);
 }
 
 /* Hero fluid backdrop: morphing blob + rising bubbles (transform/opacity only on bubbles) */

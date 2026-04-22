@@ -28,7 +28,7 @@ export function TimelineItem({ item }: TimelineItemProps) {
       <ul className="mt-4 space-y-2 text-sm text-neutral-700">
         {item.highlights.map((highlight) => (
           <li key={highlight} className="flex gap-2">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
             <span>{highlight}</span>
           </li>
         ))}
