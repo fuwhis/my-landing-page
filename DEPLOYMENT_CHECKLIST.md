@@ -24,9 +24,9 @@
 - [x] Configure redirect from non-canonical domain to canonical domain.
 
 ## 5) CI Rules
-- [ ] Ensure `.github/workflows/ci.yml` passes on PRs.
-- [ ] Mark CI check as required before merge.
-- [ ] Do not merge when lint/build fails.
+- [x] Ensure `.github/workflows/ci.yml` passes on PRs.
+- [x] Mark CI check as required before merge.
+- [x] Do not merge when lint/build fails.
 
 ## 6) Production Readiness
 - [x] Update metadata URLs via `NEXT_PUBLIC_SITE_URL`.
