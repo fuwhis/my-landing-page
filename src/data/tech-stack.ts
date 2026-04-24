@@ -1,9 +1,9 @@
-import type { SkillGroup } from '@/types/content';
+import type { SkillGroup } from '@/types/content'
 
 export const techStackGroups: SkillGroup[] = [
   {
     title: 'Core',
-    items: ['JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
+    items: ['JavaScript', 'TypeScript', 'HTML5', 'SCSS'],
   },
   {
     title: 'Frameworks',
@@ -17,4 +17,4 @@ export const techStackGroups: SkillGroup[] = [
     title: 'UI & Delivery',
     items: ['Tailwind CSS', 'Ant Design', 'Material UI', 'Docker', 'Git'],
   },
-];
+]
