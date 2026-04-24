@@ -86,6 +86,7 @@ const iconicSlugAliases: Record<string, string> = {
   'Next.js': 'nextjs',
   'Nuxt 3': 'nuxt',
   'Vue 3': 'vue',
+  'Naive UI': 'naive',
   'Cursor IDE': 'cursor',
   'Tailwind CSS': 'tailwind',
   'Material UI': 'mui',
@@ -107,6 +108,7 @@ const localIconSlugs = new Set([
   'aws',
   'chatgpt',
   'github-actions',
+  'naive',
   'postgresql',
   'zustand',
 ]);
