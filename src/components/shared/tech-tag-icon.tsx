@@ -10,6 +10,7 @@ import {
   WandSparkles,
   Wrench,
 } from 'lucide-react';
+import Image from 'next/image';
 import { JSX } from 'react';
 import * as simpleIcons from 'simple-icons';
 
@@ -41,6 +42,7 @@ const simpleIconMap: Record<string, string> = {
   GraphQL: 'siGraphql',
   'Ant Design': 'siAntdesign',
   'Material UI': 'siMui',
+  'Shadcn UI': 'siShadcnui',
   ESLint: 'siEslint',
   Prettier: 'siPrettier',
   Vitest: 'siVitest',
@@ -79,6 +81,35 @@ const lucideFallbackMap: Record<string, IconFactory> = {
     <CheckCircle2 className={className} aria-hidden="true" />
   ),
 };
+
+const iconicSlugAliases: Record<string, string> = {
+  'Next.js': 'nextjs',
+  'Nuxt 3': 'nuxt',
+  'Vue 3': 'vue',
+  'Cursor IDE': 'cursor',
+  'Tailwind CSS': 'tailwind',
+  'Material UI': 'mui',
+  'CSS/SCSS': 'css',
+  SCSS: 'sass',
+  HTML: 'html',
+  JavaScript: 'js',
+  TypeScript: 'typescript',
+};
+
+const iconicIgnoredLabels = new Set([
+  'Prompt Engineering',
+  'AI-assisted debugging',
+  'AI-assisted refactoring',
+  'Manual validation before production',
+]);
+
+const localIconSlugs = new Set([
+  'aws',
+  'chatgpt',
+  'github-actions',
+  'postgresql',
+  'zustand',
+]);
 
 const categoryFallbacks: Array<{ pattern: RegExp; iconFactory: IconFactory }> =
   [
@@ -138,6 +169,53 @@ function renderMonogramIcon(label: string) {
   );
 }
 
+function renderLocalIcon(iconFileName: string) {
+  return (
+    <Image
+      src={`/icons/${iconFileName}`}
+      className="size-4 object-contain"
+      aria-hidden="true"
+      alt=""
+      width={14}
+      height={14}
+    />
+  );
+}
+
+function getIconicSlug(label: string) {
+  if (iconicIgnoredLabels.has(label)) {
+    return null;
+  }
+
+  const aliasedSlug = iconicSlugAliases[label];
+  if (aliasedSlug) {
+    return aliasedSlug;
+  }
+
+  const slug = label
+    .trim()
+    .toLowerCase()
+    .replace(/\./g, '')
+    .replace(/\+/g, 'plus')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+  return slug.length > 0 ? slug : null;
+}
+
+function getLocalIconSlug(label: string) {
+  const slug = getIconicSlug(label);
+  if (!slug) {
+    return null;
+  }
+
+  return localIconSlugs.has(slug) ? slug : null;
+}
+
+function getLocalIconFileName(slug: string) {
+  return `${slug}.svg`;
+}
+
 export function getTechTagIcon(label: string) {
   const normalizedLabel = iconLabelAliases[label] ?? label;
   const iconName = simpleIconMap[normalizedLabel];
@@ -152,6 +230,11 @@ export function getTechTagIcon(label: string) {
   const fallbackIconFactory = lucideFallbackMap[normalizedLabel];
   if (fallbackIconFactory) {
     return fallbackIconFactory('size-3.5');
+  }
+
+  const localIconSlug = getLocalIconSlug(normalizedLabel);
+  if (localIconSlug) {
+    return renderLocalIcon(getLocalIconFileName(localIconSlug));
   }
 
   const categoryFallback = categoryFallbacks.find((item) =>
