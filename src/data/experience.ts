@@ -15,10 +15,10 @@ export const experiences: ExperienceItem[] = [
       'Integrated REST APIs and maintained consistent data flow with Pinia.',
       'Used Tailwind CSS to keep styling modern and consistent.',
     ],
-    technologies: ['Vue 3', 'Nuxt 3', 'Tailwind CSS', 'Pinia', 'Naive UI', 'Nginx'],
+    technologies: ['Vue 3', 'Nuxt 3', 'Tailwind CSS', 'Pinia', 'Naive UI'],
   },
   {
-    company: 'Cloudsky Vietnam',
+    company: 'CloudSky Vietnam',
     role: 'Fullstack Developer',
     location: 'Ho Chi Minh City, Vietnam',
     period: 'Jan 2024 - May 2024',
@@ -33,7 +33,7 @@ export const experiences: ExperienceItem[] = [
     technologies: ['JavaScript', 'HTML', 'CSS/SCSS', 'Django', 'Python'],
   },
   {
-    company: 'Brickmate Group VN',
+    company: 'BrickMate Group VN',
     role: 'Software Developer',
     location: 'Ho Chi Minh City, Vietnam',
     period: 'Mar 2022 - Sep 2023',
@@ -52,7 +52,7 @@ export const experiences: ExperienceItem[] = [
     role: 'Frontend Developer',
     location: 'Ho Chi Minh City, Vietnam',
     period: 'Apr 2021 - Mar 2022',
-    summary: 'Participated in the Zalo-M360 project and delivered admin dashboard frontend features.',
+    summary: 'Participated in the Z-M360 project and delivered admin dashboard frontend features.',
     highlights: [
       'Built and maintained dashboard functionality for business operations.',
       'Integrated APIs and handled frontend state/data flow using Redux.',

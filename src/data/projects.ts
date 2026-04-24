@@ -29,7 +29,7 @@ export const projects: ProjectItem[] = [
     stack: ['React', 'TypeScript', 'Redux', 'Ant Design', 'Docker', 'SCSS'],
   },
   {
-    title: 'KNFT Kumho',
+    title: 'KNFT - Kumho NFT',
     category: 'Web Platform / Blockchain',
     description:
       'A blockchain-related web platform focused on NFT marketplace functionality in an e-commerce-oriented context.',
@@ -44,4 +44,4 @@ export const projects: ProjectItem[] = [
       'Expanded plugin features, refactored architecture with Svelte and Rollup, and improved loading performance.',
     stack: ['TypeScript', 'Svelte', 'Rollup', 'SCSS', 'HTML'],
   },
-];
+]
