@@ -7,7 +7,7 @@ export const profile: Profile = {
   location: 'Ho Chi Minh City, Vietnam',
   email: 'quynguyen.itengineer@gmail.com',
   resumeHref:
-    'https://www.topcv.vn/xem-cv/DlcDDldUUVRZCwcHUFhUWg0DCwsOVlRUA1BfAg7ae4',
+    '/resume/nguyen-phu-quy-cv.pdf',
   availability: 'Open to frontend engineering opportunities on product-focused teams',
   summary:
     'Experienced across React, Vue, Next.js, and Nuxt.js with a strong focus on performance, maintainable UI architecture, and responsive user-centric interfaces.',
@@ -21,7 +21,7 @@ export const profile: Profile = {
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/fuwhis' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/quynp01' },
-    { label: 'CV Online', href: 'https://www.topcv.vn/xem-cv/DlcDDldUUVRZCwcHUFhUWg0DCwsOVlRUA1BfAg7ae4' },
+    { label: 'CV Online', href: '/resume/nguyen-phu-quy-cv.pdf' },
   ],
   metrics: [
     { label: 'Years Experience', value: '4+', description: 'B2B and B2C products' },
