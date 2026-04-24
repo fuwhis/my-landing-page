@@ -1,9 +1,9 @@
-import type { SkillGroup } from '@/types/content';
+import type { SkillGroup } from '@/types/content'
 
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Frontend Engineering',
-    items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue 3', 'Nuxt 3', 'HTML', 'CSS', 'Tailwind CSS'],
+    items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue 3', 'Nuxt 3', 'HTML', 'SCSS', 'Tailwind CSS'],
   },
   {
     title: 'State & Data Flow',
@@ -11,7 +11,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: 'UI Systems',
-    items: ['Ant Design', 'Material UI', 'Tailwind CSS'],
+    items: ['Ant Design', 'Material UI', 'Shadcn UI', 'Tailwind CSS',],
   },
   {
     title: 'Quality & Workflow',
@@ -20,12 +20,16 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'AI-Augmented Workflow',
     items: [
-      'ChatGPT',
+      'chatGPT',
       'Cursor IDE',
       'Prompt Engineering',
-      'AI-assisted debugging',
-      'AI-assisted refactoring',
+      // 'AI-assisted debugging',
+      // 'AI-assisted refactoring',
       'Manual validation before production',
     ],
   },
-];
+  {
+    title: 'Deployment & Infrastructure',
+    items: ['AWS', 'Docker', 'Nginx', 'GitHub Actions'],
+  },
+]
