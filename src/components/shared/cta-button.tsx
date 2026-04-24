@@ -9,7 +9,11 @@ type CtaButtonProps = {
   variant?: 'default' | 'outline' | 'ghost';
 };
 
-export function CtaButton({ label, href, variant = 'default' }: CtaButtonProps) {
+export function CtaButton({
+  label,
+  href,
+  variant = 'default',
+}: CtaButtonProps) {
   if (!href) {
     return (
       <Button variant={variant} size="lg">
@@ -18,13 +22,26 @@ export function CtaButton({ label, href, variant = 'default' }: CtaButtonProps) 
     );
   }
 
+  const isExternal = href.startsWith('http');
+  const isFile = href.endsWith('.pdf');
+
+  const className = cn(buttonVariants({ variant, size: 'lg' }), 'w-fit');
+
+  if (isExternal || isFile) {
+    return (
+      <a
+        href={href}
+        className={className}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {label}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      className={cn(buttonVariants({ variant, size: 'lg' }), 'w-fit')}
-      target={href.startsWith('http') ? '_blank' : undefined}
-      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-    >
+    <Link href={href} className={className}>
       {label}
     </Link>
   );
