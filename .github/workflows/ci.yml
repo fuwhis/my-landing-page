@@ -2,12 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - feature/preview
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - feature/preview
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   NEXT_PUBLIC_SITE_URL: https://fuwhis.io.vn
 
 permissions:
@@ -24,10 +27,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
