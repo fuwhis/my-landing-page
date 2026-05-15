@@ -21,7 +21,7 @@ export const profile: Profile = {
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/fuwhis' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/quynp01' },
-    { label: 'CV Online', href: '/resume/nguyen-phu-quy-cv.pdf' },
+    { label: 'View my CV', href: '/resume/nguyen-phu-quy-cv.pdf' },
   ],
   metrics: [
     { label: 'Years Experience', value: '4+', description: 'B2B and B2C products' },
