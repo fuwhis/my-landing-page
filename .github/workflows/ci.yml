@@ -2,18 +2,26 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - 'feature/preview'
+    branches: [main]
   pull_request:
-    branches:
-      - main
-      - 'feature/preview'
+    branches: [main]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  NEXT_PUBLIC_SITE_URL: https://fuwhis.io.vn
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   quality:
     name: Lint and Build
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -31,6 +39,4 @@ jobs:
         run: npm run lint:check
 
       - name: Build
-        env:
-          NEXT_PUBLIC_SITE_URL: https://fuwhis.io.vn
         run: npm run build
