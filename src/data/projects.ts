@@ -1,4 +1,4 @@
-import type { ProjectItem } from '@/types/content'
+import type { ProjectItem } from '@/types/content';
 
 export const projects: ProjectItem[] = [
   {
@@ -33,15 +33,17 @@ export const projects: ProjectItem[] = [
     category: 'Web Platform / Blockchain',
     description:
       'A blockchain-related web platform focused on NFT marketplace functionality in an e-commerce-oriented context.',
-    impact: 'Built responsive frontend features, improved load time by over 30%, and used GraphQL-driven rendering.',
+    impact:
+      'Built responsive frontend features, improved load time by over 30%, and used GraphQL-driven rendering.',
     stack: ['React', 'Next.js', 'Redux', 'GraphQL', 'Docker', 'Ant Design'],
   },
   {
     title: 'BMG Color - Figma Plugin',
     category: 'Design Tooling / Figma Plugin',
-    description: 'A Figma plugin to manage and reuse design kits for better team workflow.',
+    description:
+      'A Figma plugin to manage and reuse design kits for better team workflow.',
     impact:
       'Expanded plugin features, refactored architecture with Svelte and Rollup, and improved loading performance.',
     stack: ['TypeScript', 'Svelte', 'Rollup', 'SCSS', 'HTML'],
   },
-]
+];

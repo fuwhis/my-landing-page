@@ -1,14 +1,15 @@
-import type { Profile } from '@/types/content'
+import type { Profile } from '@/types/content';
 
 export const profile: Profile = {
   fullName: 'Nguyen Phu Quy',
   role: 'Frontend Engineer', // | 'Developer'
-  tagline: 'Building high-converting products with scalable frontend architecture',
+  tagline:
+    'Building high-converting products with scalable frontend architecture',
   location: 'Ho Chi Minh City, Vietnam',
   email: 'quynguyen.itengineer@gmail.com',
-  resumeHref:
-    '/resume/nguyen-phu-quy-cv.pdf',
-  availability: 'Open to frontend engineering opportunities on product-focused teams',
+  resumeHref: '/resume/nguyen-phu-quy-cv.pdf',
+  availability:
+    'Open to frontend engineering opportunities on product-focused teams',
   summary:
     'Experienced across React, Vue, Next.js, and Nuxt.js with a strong focus on performance, maintainable UI architecture, and responsive user-centric interfaces.',
   aboutParagraphs: [
@@ -24,9 +25,21 @@ export const profile: Profile = {
     { label: 'View my CV', href: '/resume/nguyen-phu-quy-cv.pdf' },
   ],
   metrics: [
-    { label: 'Years Experience', value: '4+', description: 'B2B and B2C products' },
-    { label: 'Projects Shipped', value: '3+', description: 'From MVP to scale-up' },
+    {
+      label: 'Years Experience',
+      value: '4+',
+      description: 'B2B and B2C products',
+    },
+    {
+      label: 'Projects Shipped',
+      value: '3+',
+      description: 'From MVP to scale-up',
+    },
     // { label: 'Lighthouse Score', value: '95+', description: 'Across key landing pages' },
-    { label: 'Performance Impact', value: '30%', description: 'LCP improvement on production project' },
+    {
+      label: 'Performance Impact',
+      value: '30%',
+      description: 'LCP improvement on production project',
+    },
   ],
-}
+};

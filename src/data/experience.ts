@@ -1,4 +1,4 @@
-import type { ExperienceItem } from '@/types/content'
+import type { ExperienceItem } from '@/types/content';
 
 export const experiences: ExperienceItem[] = [
   {
@@ -45,14 +45,23 @@ export const experiences: ExperienceItem[] = [
       'Contributed to responsive UI, API integration, and performance optimization.',
       'Improved code structure and maintainability through collaboration and review.',
     ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'Redux', 'GraphQL', 'Docker', 'Svelte'],
+    technologies: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Redux',
+      'GraphQL',
+      'Docker',
+      'Svelte',
+    ],
   },
   {
     company: 'FPT Software',
     role: 'Frontend Developer',
     location: 'Ho Chi Minh City, Vietnam',
     period: 'Apr 2021 - Mar 2022',
-    summary: 'Participated in the Z-M360 project and delivered admin dashboard frontend features.',
+    summary:
+      'Participated in the Z-M360 project and delivered admin dashboard frontend features.',
     highlights: [
       'Built and maintained dashboard functionality for business operations.',
       'Integrated APIs and handled frontend state/data flow using Redux.',
@@ -61,4 +70,4 @@ export const experiences: ExperienceItem[] = [
     ],
     technologies: ['React', 'Ant Design', 'Redux', 'SCSS'],
   },
-]
+];

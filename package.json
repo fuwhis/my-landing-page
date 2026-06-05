@@ -9,6 +9,7 @@
     "lint:check": "next lint",
     "lint": "next lint --fix",
     "prettier": "prettier --write --ignore-unknown .",
+    "prettier:check": "prettier --check --ignore-unknown .",
     "serve": "next build && next start",
     "start": "next start"
   },

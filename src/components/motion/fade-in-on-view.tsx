@@ -11,7 +11,11 @@ type FadeInOnViewProps = {
   delay?: number;
 };
 
-export function FadeInOnView({ children, y = 16, delay = 0 }: FadeInOnViewProps) {
+export function FadeInOnView({
+  children,
+  y = 16,
+  delay = 0,
+}: FadeInOnViewProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -34,10 +38,10 @@ export function FadeInOnView({ children, y = 16, delay = 0 }: FadeInOnViewProps)
             start: 'top 85%',
             once: true,
           },
-        }
+        },
       );
     },
-    { scope: ref }
+    { scope: ref },
   );
 
   return <div ref={ref}>{children}</div>;
