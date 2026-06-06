@@ -45,7 +45,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'AI-Augmented Workflow',
     items: [
-      'chatGPT',
+      'ChatGPT',
       'Cursor IDE',
       'Prompt Engineering',
       // 'AI-assisted debugging',

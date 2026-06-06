@@ -51,7 +51,6 @@ const simpleIconMap: Record<string, string> = {
   GitLab: 'siGitlab',
   SourceTree: 'siSourcetree',
   Docker: 'siDocker',
-  ChatGPT: 'siOpenai',
   'Cursor IDE': 'siCursor',
   Nginx: 'siNginx',
   Django: 'siDjango',
@@ -65,6 +64,7 @@ const iconLabelAliases: Record<string, string> = {
   'Nuxt.js': 'Nuxt 3',
   HTML5: 'HTML',
   CSS3: 'CSS/SCSS',
+  chatGPT: 'ChatGPT',
 };
 
 const lucideFallbackMap: Record<string, IconFactory> = {
