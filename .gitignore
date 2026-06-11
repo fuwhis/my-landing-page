@@ -44,3 +44,10 @@ next-env.d.ts
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Harness durable layer
+harness.db
+harness.db-wal
+harness.db-shm
+scripts/bin/harness-cli
+scripts/bin/harness-cli.exe
