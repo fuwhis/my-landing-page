@@ -24,8 +24,17 @@ export function CtaButton({
 
   const isExternal = href.startsWith('http');
   const isFile = href.endsWith('.pdf');
+  const isHash = href.startsWith('#');
 
   const className = cn(buttonVariants({ variant, size: 'lg' }), 'w-fit');
+
+  if (isHash) {
+    return (
+      <a href={href} className={className}>
+        {label}
+      </a>
+    );
+  }
 
   if (isExternal || isFile) {
     return (

@@ -106,12 +106,17 @@ const iconicIgnoredLabels = new Set([
 
 const localIconSlugs = new Set([
   'aws',
+  'vercel',
   'chatgpt',
   'github-actions',
   'naive',
   'postgresql',
   'zustand',
 ]);
+
+const localIconFileOverrides: Record<string, string> = {
+  vercel: 'vercel_light.svg',
+};
 
 const categoryFallbacks: Array<{ pattern: RegExp; iconFactory: IconFactory }> =
   [
@@ -215,7 +220,7 @@ function getLocalIconSlug(label: string) {
 }
 
 function getLocalIconFileName(slug: string) {
-  return `${slug}.svg`;
+  return localIconFileOverrides[slug] ?? `${slug}.svg`;
 }
 
 export function getTechTagIcon(label: string) {
