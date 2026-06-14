@@ -38,11 +38,11 @@
 - [x] Update metadata URLs via `NEXT_PUBLIC_SITE_URL`.
 - [x] Validate `robots.txt` and `sitemap.xml` in production.
 - [ ] Check Lighthouse (performance/accessibility/SEO) on production URL.
-- [ ] Verify HTTPS lock icon and certificate validity.
+- [x] Verify HTTPS lock icon and certificate validity.
 
 ## 7) Post-Deploy Verification
 
-- [ ] Homepage loads without console errors.
+- [x] Homepage loads without console errors.
 - [ ] Navigation/scroll/animations work on desktop and mobile.
 - [ ] OpenGraph preview works for shared links.
 - [ ] Rollback procedure confirmed (redeploy previous successful build).
