@@ -117,6 +117,7 @@ pnpm install
 ```
 
 If old lockfile appear, remove them:
+
 ```bash
 rm -rf package-lock.json yarn.lock
 ```
