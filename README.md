@@ -16,38 +16,58 @@ A personal landing page built with Next.js App Router, React 19, Tailwind CSS v4
 
 ## Requirements
 
-- Node.js 22+ (matches CI)
-- npm 10+
+- Node.js 24.x (matches CI)
+- pnpm 10.x
+- Corepack enabled
 
-> This repository uses `npm` in CI (`npm ci`), so keep `package-lock.json` in sync with `package.json`.
+This project uses pnpm as the only package manager.
+
+Do not use:
+
+`npm install` or `yarn install`
+
+Do not commit:
+
+- `package-lock.json`
+- `yarn.lock`
+
+The only dependency lockfile should be:
+
+`pnpm-lock.yaml`
 
 ## Getting Started
 
-1. Install dependencies:
+1. Enable Corepack:
 
 ```bash
-npm install
+corepack enable
 ```
 
-2. Start the development server:
+2. Install dependencies:
 
 ```bash
-npm run dev
+pnpm install --frozen-lockfile
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000).
+3. Start the development server:
+
+```bash
+pnpm dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000).
 
 ## Available Scripts
 
-- `npm run dev`: Start development server (Turbopack).
-- `npm run build`: Create production build.
-- `npm run start`: Start production server.
-- `npm run serve`: Build then start production server.
-- `npm run lint:check`: Run ESLint checks.
-- `npm run lint`: Run ESLint with auto-fix.
-- `npm run prettier`: Format files with Prettier.
-- `npm run prettier:check`: Verify formatting (used in CI).
-- `npm run clean`: Remove `node_modules` and `.next`.
+- `pnpm dev`: Start development server (**Turbopack**).
+- `pnpm build`: Create production build.
+- `pnpm start`: Start production server.
+- `pnpm serve`: Build then start production server.
+- `pnpm lint:check`: Run ESLint checks.
+- `pnpm lint`: Run ESLint with auto-fix.
+- `pnpm prettier`: Format files with Prettier.
+- `pnpm prettier:check`: Verify formatting (used in CI).
+- `pnpm clean`: Remove `node_modules` and `.next`.
 
 ## Environment Variables
 
@@ -58,8 +78,8 @@ NEXT_PUBLIC_SITE_URL=<DOMAIN_NAME>
 ```
 
 - Used for canonical URL metadata, `robots.txt`, and `sitemap.xml`.
-- If not provided, the app falls back to `https://fuwhis.io.vn`.
-- CI sets `NEXT_PUBLIC_SITE_URL=https://fuwhis.io.vn` for consistent build metadata.
+- If not provided, the app falls back to `https://<DOMAIN_URL>`.
+- CI sets `NEXT_PUBLIC_SITE_URL=https://<DOMAIN_URL>` for consistent build metadata.
 
 ## Project Structure
 
@@ -81,18 +101,41 @@ src/
 
 GitHub Actions workflow (`.github/workflows/ci.yml`) runs on pushes and pull requests to `main` and `feature/preview`:
 
-1. `npm ci` (Node.js 22, npm cache)
-2. `npm run lint:check`
-3. `npm run prettier:check`
-4. `npm run build`
+1. `pnpm install --frozen-lockfile` (Node.js 24, pnpm global package manager)
+2. `pnpm lint:check`
+3. `pnpm prettier:check`
+4. `pnpm build`
 
-If CI fails with `npm ci` lockfile errors:
+If CI fails with pnpm lockfile issues:
+
+Firstly, it need to be removed the previous versions:
+
+Re-install pnpm packages:
 
 ```bash
-npm install
-git add package-lock.json
-git commit -m "update: sync lockfile with package changes"
+pnpm install
 ```
+
+If old lockfile appear, remove them:
+```bash
+rm -rf package-lock.json yarn.lock
+```
+
+Then commit the cleanup:
+
+```bash
+git add package.json pnpm-lock.yaml
+git rm -f package-lock.json yarn.lock 2>/dev/null || true
+git commit -m "chore: remove legacy lockfile"
+```
+
+If a dependency needs install/build scripts, approve it explicitly:
+
+```bash
+pnpm approve-builds
+```
+
+Then commit the generated or updated file: `pnpm-workspace.yaml` and should do not bypass this with npm or yarn.
 
 ## Deployment
 
