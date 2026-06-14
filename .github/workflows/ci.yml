@@ -31,9 +31,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        # explicit declare (not need if package.json has packageManager)
-        with:
-          version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
