@@ -25,7 +25,6 @@ type ContactFormValues = ContactFormFields & {
   company_website: string;
 };
 
-// const RECAPTCHA_SCRIPT_SRC = process.env.GOOGLE_RECAPTCHA_SCRIPT_URL;
 const RECAPTCHA_SCRIPT_SRC =
   'https://www.google.com/recaptcha/api.js?render=explicit';
 
@@ -47,6 +46,7 @@ export function ContactForm() {
 
   const recaptchaContainerRef = useRef<HTMLDivElement | null>(null);
   const recaptchaWidgetIdRef = useRef<number | null>(null);
+  const successPanelRef = useRef<HTMLDivElement | null>(null);
 
   const [status, setStatus] = useState<FormStatus>('idle');
   const [isLoading, setIsLoading] = useState(false);
@@ -243,6 +243,33 @@ export function ContactForm() {
     });
     return () => sub.unsubscribe();
   }, [watch, status]);
+
+  useEffect(() => {
+    if (status !== 'success') {
+      return;
+    }
+
+    if (window.location.hash === '#contact-form') {
+      const cleanUrl = `${window.location.pathname}${window.location.search}`;
+
+      window.history.replaceState(null, '', cleanUrl);
+    }
+
+    const animationFrameId = window.requestAnimationFrame(() => {
+      successPanelRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+
+      successPanelRef.current?.focus({
+        preventScroll: true,
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+    };
+  }, [status]);
 
   return (
     <div>
