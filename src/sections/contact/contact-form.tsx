@@ -404,7 +404,23 @@ export function ContactForm() {
         ) : null}
 
         <div className="space-y-2">
-          <div ref={recaptchaContainerRef} />
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="h-[66px] w-[258px] shrink-0 overflow-visible">
+              <div
+                ref={recaptchaContainerRef}
+                className="origin-top-left scale-[0.85]"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full shrink-0 sm:w-fit"
+              disabled={isLoading || isTemplateLoading}
+            >
+              {isLoading ? 'Sending...' : 'Send message'}
+            </Button>
+          </div>
 
           {!recaptchaSiteKey ? (
             <p className="text-sm text-red-600" role="alert">
@@ -422,15 +438,6 @@ export function ContactForm() {
             <p className="text-xs text-neutral-500">Loading reCAPTCHA...</p>
           ) : null}
         </div>
-
-        <Button
-          type="submit"
-          size="lg"
-          className="w-fit"
-          disabled={isLoading || isTemplateLoading}
-        >
-          {isLoading ? 'Sending...' : 'Send message'}
-        </Button>
       </form>
     </div>
   );

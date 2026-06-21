@@ -51,3 +51,6 @@ harness.db-wal
 harness.db-shm
 scripts/bin/harness-cli
 scripts/bin/harness-cli.exe
+
+# local files
+secret.md
