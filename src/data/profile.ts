@@ -18,7 +18,7 @@ export const profile: Profile = {
   ],
   contactTitle: 'Open to Front-end Engineering opportunities',
   contactDescription:
-    'I usually respond within 24 hours. Feel free to reach out via LinkedIn or email for frontend roles, project collaboration, or technical discussion.',
+    'I usually respond within 24 hours. Feel free to reach out via LinkedIn or Email for Frontend roles, project collaboration, or technical discussion.',
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/fuwhis' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fuwhis' },
