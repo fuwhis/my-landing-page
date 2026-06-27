@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 
+import { ToastProvider } from '@/components/ui/toast';
 import { ScrollResetOnReload } from './scroll-reset-on-reload';
 
 const geistSans = Geist({
@@ -75,7 +76,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-neutral-50 text-neutral-900 antialiased`}
       >
         <ScrollResetOnReload />
-        {children}
+        <ToastProvider>{children}</ToastProvider>
         <Analytics />
       </body>
     </html>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useToast } from '@/components/ui/toast';
 import emailjs from '@emailjs/browser';
 import { Sparkles } from 'lucide-react';
 import Script from 'next/script';
@@ -43,6 +44,8 @@ const fieldClassName = cn(
 
 export function ContactForm() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  const { success: showSuccessToast, error: showErrorToast } = useToast();
 
   const recaptchaContainerRef = useRef<HTMLDivElement | null>(null);
   const recaptchaWidgetIdRef = useRef<number | null>(null);
@@ -132,13 +135,26 @@ export function ContactForm() {
     setRecaptchaToken('');
   };
 
+  const removeContactHash = () => {
+    if (
+      typeof window === 'undefined' ||
+      window.location.hash !== '#contact-form'
+    ) {
+      return;
+    }
+
+    const cleanUrl = `${window.location.pathname}${window.location.search}`;
+
+    window.history.replaceState(null, '', cleanUrl);
+  };
+
   const applyRecruiterTemplate = async () => {
     if (isLoading || isTemplateLoading) {
       return;
     }
 
     setIsTemplateLoading(true);
-    setStatus('idle');
+    // setStatus('idle');
 
     try {
       const { buildRecruiterOutreachTemplate } =
@@ -156,7 +172,11 @@ export function ContactForm() {
         );
       }
 
-      setStatus('error');
+      // setStatus('error');
+      showErrorToast({
+        title: 'Could not load the recruiter template.',
+        description: 'Please type your message manually and try again.',
+      });
     } finally {
       setIsTemplateLoading(false);
     }
@@ -182,18 +202,24 @@ export function ContactForm() {
 
     if (!recaptchaToken) {
       setRecaptchaError('Please verify that you are not a robot.');
-      setStatus('idle');
+      // setStatus('idle');
       return;
     }
 
     setFieldErrors({});
     setRecaptchaError('');
-    setStatus('idle');
+    // setStatus('idle');
 
     const config = getEmailJsConfig();
 
     if (!config) {
-      setStatus('error');
+      // setStatus('error');
+      showErrorToast({
+        title: 'Contact form is unavailable.',
+        description:
+          'Please refresh the page or contact me directly by email instead.',
+      });
+
       resetRecaptcha();
       return;
     }
@@ -214,16 +240,30 @@ export function ContactForm() {
         { publicKey: config.publicKey },
       );
 
-      setStatus('success');
+      // setStatus('success');
       reset(defaultValues);
       resetRecaptcha();
+      removeContactHash();
+
+      showSuccessToast({
+        title: 'Message sent successfully.',
+        description:
+          'Thanks for reaching out. I will reply to the email address you provided.',
+      });
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('[ContactForm] EmailJS send failed:', error);
       }
 
-      setStatus('error');
+      // setStatus('error');
       resetRecaptcha();
+
+      showErrorToast({
+        title: 'Message was not sent.',
+        description:
+          'Please try again or contact me directly by email if the issue continues.',
+        duration: 8000,
+      });
     } finally {
       setIsLoading(false);
     }
@@ -236,40 +276,42 @@ export function ContactForm() {
     renderRecaptcha();
   }, [renderRecaptcha]);
 
-  // Thêm vào mỗi register hoặc dùng watch
-  useEffect(() => {
-    const sub = watch(() => {
-      if (status !== 'idle') setStatus('idle');
-    });
-    return () => sub.unsubscribe();
-  }, [watch, status]);
+  // useEffect(() => {
+  //   const sub = watch(() => {
+  //     if (status !== 'idle') {
+  //       setStatus('idle');
+  //     }
+  //   });
 
-  useEffect(() => {
-    if (status !== 'success') {
-      return;
-    }
+  //   return () => sub.unsubscribe();
+  // }, [watch, status]);
 
-    if (window.location.hash === '#contact-form') {
-      const cleanUrl = `${window.location.pathname}${window.location.search}`;
+  // useEffect(() => {
+  //   if (status !== 'success') {
+  //     return;
+  //   }
 
-      window.history.replaceState(null, '', cleanUrl);
-    }
+  //   if (window.location.hash === '#contact-form') {
+  //     const cleanUrl = `${window.location.pathname}${window.location.search}`;
 
-    const animationFrameId = window.requestAnimationFrame(() => {
-      successPanelRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
+  //     window.history.replaceState(null, '', cleanUrl);
+  //   }
 
-      successPanelRef.current?.focus({
-        preventScroll: true,
-      });
-    });
+  //   const animationFrameId = window.requestAnimationFrame(() => {
+  //     successPanelRef.current?.scrollIntoView({
+  //       behavior: 'smooth',
+  //       block: 'nearest',
+  //     });
 
-    return () => {
-      window.cancelAnimationFrame(animationFrameId);
-    };
-  }, [status]);
+  //     successPanelRef.current?.focus({
+  //       preventScroll: true,
+  //     });
+  //   });
+
+  //   return () => {
+  //     window.cancelAnimationFrame(animationFrameId);
+  //   };
+  // }, [status]);
 
   return (
     <div>
