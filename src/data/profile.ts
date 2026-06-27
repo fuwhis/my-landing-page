@@ -1,4 +1,4 @@
-import type { Profile } from '@/types/content'
+import type { Profile } from '@/types/content';
 
 export const profile: Profile = {
   fullName: 'Nguyen Phu Quy',
@@ -47,4 +47,4 @@ export const profile: Profile = {
       description: 'LCP improvement on production project',
     },
   ],
-}
+};
