@@ -101,7 +101,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         }
       });
 
-      timersRef.current.clear();
+      const currentTimers = timersRef.current;
+
+      currentTimers.clear();
     };
   }, []);
 
@@ -205,7 +207,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 const config = toastVariantConfig[toast.variant];
                 const Icon = config.icon;
 
-                const isVisible = toast.phase === 'open';
+                // const isVisible = toast.phase === 'open';
 
                 return (
                   <article
