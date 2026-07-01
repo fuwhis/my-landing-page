@@ -286,32 +286,28 @@ export function ContactForm() {
   //   return () => sub.unsubscribe();
   // }, [watch, status]);
 
-  // useEffect(() => {
-  //   if (status !== 'success') {
-  //     return;
-  //   }
+  useEffect(() => {
+    if (status !== 'success') {
+      return;
+    }
 
-  //   if (window.location.hash === '#contact-form') {
-  //     const cleanUrl = `${window.location.pathname}${window.location.search}`;
+    removeContactHash();
 
-  //     window.history.replaceState(null, '', cleanUrl);
-  //   }
+    const animationFrameId = window.requestAnimationFrame(() => {
+      successPanelRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
 
-  //   const animationFrameId = window.requestAnimationFrame(() => {
-  //     successPanelRef.current?.scrollIntoView({
-  //       behavior: 'smooth',
-  //       block: 'nearest',
-  //     });
+      successPanelRef.current?.focus({
+        preventScroll: true,
+      });
+    });
 
-  //     successPanelRef.current?.focus({
-  //       preventScroll: true,
-  //     });
-  //   });
-
-  //   return () => {
-  //     window.cancelAnimationFrame(animationFrameId);
-  //   };
-  // }, [status]);
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+    };
+  }, [status]);
 
   return (
     <div>
