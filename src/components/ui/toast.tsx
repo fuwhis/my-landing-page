@@ -86,24 +86,24 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setIsMounted(true);
 
+    const timersMap = timersRef.current;
+
     return () => {
-      timersRef.current.forEach((timers) => {
-        if (timers.enterFrame) {
+      timersMap.forEach((timers) => {
+        if (timers.enterFrame !== undefined) {
           window.cancelAnimationFrame(timers.enterFrame);
         }
-
-        if (timers.dismissTimer) {
+  
+        if (timers.dismissTimer !== undefined) {
           window.clearTimeout(timers.dismissTimer);
         }
-
-        if (timers.removeTimer) {
+  
+        if (timers.removeTimer !== undefined) {
           window.clearTimeout(timers.removeTimer);
         }
       });
-
-      const currentTimers = timersRef.current;
-
-      currentTimers.clear();
+  
+      timersMap.clear();
     };
   }, []);
 
