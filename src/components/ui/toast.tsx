@@ -93,16 +93,16 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         if (timers.enterFrame !== undefined) {
           window.cancelAnimationFrame(timers.enterFrame);
         }
-  
+
         if (timers.dismissTimer !== undefined) {
           window.clearTimeout(timers.dismissTimer);
         }
-  
+
         if (timers.removeTimer !== undefined) {
           window.clearTimeout(timers.removeTimer);
         }
       });
-  
+
       timersMap.clear();
     };
   }, []);
