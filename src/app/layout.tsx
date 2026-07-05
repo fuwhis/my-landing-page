@@ -1,5 +1,6 @@
 import { siteUrl } from '@/lib/site';
 import '@/styles/globals.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -71,6 +72,9 @@ export default function RootLayout({
         <Script id="scroll-restoration-manual" strategy="beforeInteractive">
           {`if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }`}
         </Script>
+        <GoogleAnalytics
+          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID!}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-neutral-50 text-neutral-900 antialiased`}
