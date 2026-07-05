@@ -12,15 +12,21 @@ const buttonVariants = cva(
         outline:
           'border border-neutral-300 text-neutral-900 hover:bg-neutral-100',
         ghost: 'text-neutral-700 hover:bg-neutral-100',
+        liquid: 'button-liquid text-stale-900',
       },
       size: {
         default: 'h-10 px-5',
         lg: 'h-11 px-6 text-base',
       },
+      glow: {
+        true: 'border-glow',
+        false: '',
+      },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
+      glow: false,
     },
   },
 );
@@ -31,11 +37,11 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, glow, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, glow }), className)}
         {...props}
       />
     );
