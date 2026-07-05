@@ -12,6 +12,7 @@ const buttonVariants = cva(
         outline:
           'border border-neutral-300 text-neutral-900 hover:bg-neutral-100',
         ghost: 'text-neutral-700 hover:bg-neutral-100',
+        liquid: 'button-liquid text-stale-900',
       },
       size: {
         default: 'h-10 px-5',
