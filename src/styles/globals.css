@@ -148,8 +148,24 @@ body {
   }
 }
 
-/* Toast motion */
+/* Border glow */
+.border-glow {
+  border: 1px solid rgb(56 189 248 / 0.75);
+  box-shadow:
+    0 0 0 1px rgb(56 189 248 / 0.16),
+    0 0 14px rgb(56 189 248 / 0.35),
+    0 0 28px rgb(56 189 248 / 0.16);
+}
 
+.border-glow:hover {
+  border-color: rgb(56 189 248 / 0.95);
+  box-shadow:
+    0 0 0 1px rgb(56 189 248 / 0.24),
+    0 0 18px rgb(56 189 248 / 0.5),
+    0 0 36px rgb(56 189 248 / 0.24);
+}
+
+/* Toast motion */
 .toast-surface {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);

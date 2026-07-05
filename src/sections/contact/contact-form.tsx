@@ -410,6 +410,7 @@ export function ContactForm() {
               type="button"
               variant="outline"
               size="default"
+              glow={true}
               className="h-9 gap-1.5 px-4 text-xs"
               onClick={applyRecruiterTemplate}
               disabled={isLoading || isTemplateLoading}
