@@ -345,7 +345,7 @@ export function ContactForm() {
             htmlFor="contact-name"
             className="text-sm font-medium text-neutral-800"
           >
-            Name
+            Your Name
           </label>
 
           <input
@@ -372,7 +372,7 @@ export function ContactForm() {
             htmlFor="contact-email"
             className="text-sm font-medium text-neutral-800"
           >
-            Email
+            Your Email
           </label>
 
           <input
