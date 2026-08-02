@@ -5,7 +5,7 @@ import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { TechStackList } from '@/components/shared/tech-stack-list';
 import { experienceTimeline } from '@/data/experience-timeline';
-import { getDurationMonths, toDateTime } from '@/lib/duration';
+import { toDateTime } from '@/lib/duration';
 import { scrollToProjectCard } from '@/lib/scroll-to-project';
 import { cn } from '@/lib/utils';
 import type { TimelineEntry } from '@/types/content';
@@ -42,9 +42,6 @@ function TimelineRecordEntry({
   isLast: boolean;
   animationDelay: number;
 }) {
-  const durationMonths = getDurationMonths(entry.startDate, entry.endDate);
-  const connectorHeight = `${Math.max(2.5, durationMonths * 0.35)}rem`;
-
   const content = (
     <>
       <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
@@ -85,10 +82,7 @@ function TimelineRecordEntry({
   );
 
   return (
-    <li
-      className="relative pl-8"
-      style={isLast ? undefined : { paddingBottom: connectorHeight }}
-    >
+    <li className="relative pl-8">
       <span
         aria-hidden="true"
         className="absolute top-1.5 left-0 z-10 size-3 rounded-full border-2 border-sky-500 bg-white"
@@ -96,8 +90,7 @@ function TimelineRecordEntry({
       {!isLast ? (
         <span
           aria-hidden="true"
-          className="absolute top-4 left-[5px] w-px bg-neutral-200"
-          style={{ height: `calc(100% - 0.5rem)` }}
+          className="absolute top-4 -bottom-10 left-[5px] w-px bg-neutral-200"
         />
       ) : null}
       <FadeInOnView delay={animationDelay}>{entryBody}</FadeInOnView>
@@ -115,7 +108,7 @@ export function TimelineRecordSection() {
           description="Focused on product outcomes, code quality, and collaborative delivery."
         />
 
-        <ol className="relative m-0 list-none p-0">
+        <ol className="relative m-0 list-none space-y-10 p-0">
           {experienceTimeline.map((entry, index) => (
             <TimelineRecordEntry
               key={entry.company}
