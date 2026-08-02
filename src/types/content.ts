@@ -19,6 +19,17 @@ export type ExperienceItem = {
   technologies: string[];
 };
 
+export type TimelineEntry = {
+  company: string;
+  role: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  outcome: string;
+  techTags: string[];
+  projectSlug?: string;
+};
+
 export type ProjectItem = {
   title: string;
   category: string;

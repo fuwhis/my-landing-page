@@ -18,7 +18,7 @@ export const experiences: ExperienceItem[] = [
     technologies: ['Vue 3', 'Nuxt 3', 'Tailwind CSS', 'Pinia', 'Naive UI'],
   },
   {
-    company: 'CloudSky Vietnam',
+    company: 'CloudSky',
     role: 'Fullstack Developer',
     location: 'Ho Chi Minh City, Vietnam',
     period: 'Jan 2024 - May 2024',
