@@ -408,10 +408,8 @@ export function ContactForm() {
 
             <Button
               type="button"
-              variant="liquid"
-              size="default"
-              glow={true}
-              className="h-9 gap-1.5 px-4 text-xs"
+              glow
+              className="h-9 gap-1.5 px-4 text-xs font-medium text-sky-800"
               onClick={applyRecruiterTemplate}
               disabled={isLoading || isTemplateLoading}
             >

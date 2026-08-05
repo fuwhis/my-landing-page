@@ -28,7 +28,7 @@ function createBubbleStyle(index: number): CSSProperties {
 
 /**
  * CSS-only hero ambiance: morphing gradient blob + rising bubbles.
- * Animations live in `globals.css` (`.hero-fluid*`); no GSAP / runtime JS.
+ * Animations live in `src/styles/components/hero-fluid.css`; no GSAP / runtime JS.
  */
 export function HeroFluidBackdrop() {
   return (

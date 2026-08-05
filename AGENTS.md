@@ -17,6 +17,8 @@ TypeScript, Tailwind CSS v4, GSAP, Vercel.
 | Product goal and scope              | `docs/product/overview.md`                         |
 | Homepage sections                   | `docs/product/sections.md`                         |
 | Design rules                        | `docs/product/design-system.md`, `docs/DESIGN.mdc` |
+| CSS structure                       | `docs/product/css-architecture.md`                 |
+| Button (`glow`)                     | `docs/product/components/button.md`                |
 | SEO / metadata                      | `docs/product/seo-and-metadata.md`                 |
 | Deploy / CI                         | `docs/product/deployment.md`, `README.md`          |
 | Architecture                        | `docs/ARCHITECTURE.md`                             |

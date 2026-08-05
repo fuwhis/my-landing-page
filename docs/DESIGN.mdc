@@ -14,7 +14,7 @@ Overall tone is modern, product-oriented, and recruiter-friendly:
 
 ## 2. Core Tokens
 
-### Base Variables (`src/styles/globals.css`)
+### Base Variables (`src/styles/base/tokens.css`, imported via `globals.css`)
 
 - `--background`: `#fafafa`
 - `--foreground`: `#0a0a0a`
@@ -81,6 +81,7 @@ Overall tone is modern, product-oriented, and recruiter-friendly:
 - Default: `bg-neutral-900 text-white hover:bg-neutral-700`
 - Outline: `border-neutral-300 text-neutral-900 hover:bg-neutral-100`
 - Focus ring: `focus-visible:ring-2 focus-visible:ring-sky-400`
+- Optional **`glow`**: GSAP edge shine + pointer spotlight (see `docs/product/components/button.md`)
 - Sizes:
   - default: `h-10 px-5`
   - lg: `h-11 px-6 text-base`

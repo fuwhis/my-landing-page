@@ -1,0 +1,10 @@
+/* Contact form status UI — reserved for countdown progress bars */
+
+@keyframes message-status-countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
