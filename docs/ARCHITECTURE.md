@@ -13,15 +13,15 @@ No API routes, database, workers, or mobile shell.
 
 ## Runtime Stack
 
-| Layer     | Choice                                                 |
-| --------- | ------------------------------------------------------ |
-| Framework | Next.js 15 (App Router, Turbopack dev)                 |
-| UI        | React 19, TypeScript                                   |
-| Styling   | Tailwind CSS v4 (`src/styles/globals.css`)             |
-| Motion    | GSAP + `@gsap/react` (hero and scroll-driven sections) |
-| Icons     | `lucide-react`, `simple-icons`                         |
-| Hosting   | Vercel                                                 |
-| Node      | 22+ (CI)                                               |
+| Layer     | Choice                                                                                |
+| --------- | ------------------------------------------------------------------------------------- |
+| Framework | Next.js 15 (App Router, Turbopack dev)                                                |
+| UI        | React 19, TypeScript                                                                  |
+| Styling   | Tailwind CSS v4 + modular CSS (`src/styles/`, see `docs/product/css-architecture.md`) |
+| Motion    | GSAP + `@gsap/react` (hero and scroll-driven sections)                                |
+| Icons     | `lucide-react`, `simple-icons`                                                        |
+| Hosting   | Vercel                                                                                |
+| Node      | 22+ (CI)                                                                              |
 
 ## Repository Layout
 
@@ -35,7 +35,9 @@ src/
   sections/         # Homepage sections (one folder per section)
   data/             # Static content modules (profile, projects, etc.)
   lib/              # siteUrl, utils, GSAP helpers
-  styles/           # Global CSS tokens
+  styles/           # Global CSS entry + modular stylesheets (see docs/product/css-architecture.md)
+    base/           # Design tokens
+    components/     # Feature-owned CSS (hero, button, toast, …)
   types/            # Shared TypeScript types (content models)
 docs/
   product/          # Living product contract
@@ -46,12 +48,12 @@ public/             # Static assets (favicon, resume PDF, icons)
 
 ## Core Domains
 
-| Domain            | Location                                | Contract doc                       |
-| ----------------- | --------------------------------------- | ---------------------------------- |
-| Profile & contact | `src/data/profile.ts`                   | `docs/product/overview.md`         |
-| Section layout    | `src/app/page.tsx`                      | `docs/product/sections.md`         |
-| Visual system     | `src/styles/globals.css`, components    | `docs/product/design-system.md`    |
-| SEO               | `src/app/layout.tsx`, `src/lib/site.ts` | `docs/product/seo-and-metadata.md` |
+| Domain            | Location                                | Contract doc                                                        |
+| ----------------- | --------------------------------------- | ------------------------------------------------------------------- |
+| Profile & contact | `src/data/profile.ts`                   | `docs/product/overview.md`                                          |
+| Section layout    | `src/app/page.tsx`                      | `docs/product/sections.md`                                          |
+| Visual system     | `src/styles/`, components               | `docs/product/design-system.md`, `docs/product/css-architecture.md` |
+| SEO               | `src/app/layout.tsx`, `src/lib/site.ts` | `docs/product/seo-and-metadata.md`                                  |
 
 ## Dependency Rule (Adapted)
 

@@ -28,7 +28,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const buttonRef = React.useRef<HTMLButtonElement>(null);
 
-    React.useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement);
+    React.useImperativeHandle(
+      ref,
+      () => buttonRef.current as HTMLButtonElement,
+    );
 
     useGSAP(
       () => {
@@ -70,12 +73,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <button
           ref={buttonRef}
           type={type}
-          className="button-glow rounded-full text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 disabled:pointer-events-none disabled:opacity-50"
+          className="button-glow rounded-full text-sm font-medium focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
           {...props}
         >
           <span className="button-glow__gradient" aria-hidden="true" />
           <span
-            className={cn('button-glow__surface', buttonVariants({ size }), className)}
+            className={cn(
+              'button-glow__surface',
+              buttonVariants({ size }),
+              className,
+            )}
           >
             {children}
           </span>

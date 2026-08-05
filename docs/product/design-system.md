@@ -18,12 +18,12 @@ Living product contract for visual and interaction rules. As-built detail lives 
 
 ## Components
 
-| Primitive         | Location                                      | Rules                                            |
-| ----------------- | --------------------------------------------- | ------------------------------------------------ |
-| Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` (GSAP edge + pointer highlight) |
-| Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                            |
-| Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width                 |
-| Cards             | Various sections                              | `rounded-2xl border border-neutral-200 bg-white` |
+| Primitive         | Location                                      | Rules                                                                                                      |
+| ----------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` — see `docs/product/components/button.md` |
+| Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                                                                                      |
+| Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width                                                                           |
+| Cards             | Various sections                              | `rounded-2xl border border-neutral-200 bg-white`                                                           |
 
 ## Motion
 
@@ -47,3 +47,4 @@ Before visual changes:
 4. Run `npm run lint:check` and `npm run build`.
 
 For full token values and bubble parameters, read `docs/DESIGN.mdc`.
+For CSS file layout and conventions, read `docs/product/css-architecture.md`.

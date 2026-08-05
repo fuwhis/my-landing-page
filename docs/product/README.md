@@ -3,13 +3,15 @@
 Living product contract for `my-landing-page`, derived from brownfield spec intake
 (`docs/spec-intake/2026-06-08-my-landing-page.md`).
 
-| File                  | Purpose                                                  |
-| --------------------- | -------------------------------------------------------- |
-| `overview.md`         | Goal, audience, scope, non-goals                         |
-| `sections.md`         | Homepage section order and data sources                  |
-| `design-system.md`    | Visual and motion contract (detail in `docs/DESIGN.mdc`) |
-| `seo-and-metadata.md` | Canonical URL, OG, robots, sitemap                       |
-| `deployment.md`       | Vercel, CI, post-deploy checks                           |
+| File                   | Purpose                                                  |
+| ---------------------- | -------------------------------------------------------- |
+| `overview.md`          | Goal, audience, scope, non-goals                         |
+| `sections.md`          | Homepage section order and data sources                  |
+| `design-system.md`     | Visual and motion contract (detail in `docs/DESIGN.mdc`) |
+| `css-architecture.md`  | CSS module layout under `src/styles/`                    |
+| `components/button.md` | Button variants and `glow` reuse guide                   |
+| `seo-and-metadata.md`  | Canonical URL, OG, robots, sitemap                       |
+| `deployment.md`        | Vercel, CI, post-deploy checks                           |
 
 ## Update Rule
 
