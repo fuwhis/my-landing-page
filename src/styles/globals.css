@@ -148,23 +148,6 @@ body {
   }
 }
 
-/* Border glow */
-.border-glow {
-  border: 1px solid rgb(56 189 248 / 0.75);
-  box-shadow:
-    0 0 0 1px rgb(56 189 248 / 0.16),
-    0 0 14px rgb(56 189 248 / 0.35),
-    0 0 28px rgb(56 189 248 / 0.16);
-}
-
-.border-glow:hover {
-  border-color: rgb(56 189 248 / 0.95);
-  box-shadow:
-    0 0 0 1px rgb(56 189 248 / 0.24),
-    0 0 18px rgb(56 189 248 / 0.5),
-    0 0 36px rgb(56 189 248 / 0.24);
-}
-
 /* Liquid button */
 @layer components {
   .button-liquid {
@@ -214,76 +197,122 @@ body {
   }
 
   /*
-   * Conic gradient tạo một dải sáng.
-   * Mask khoét rỗng phần giữa, chỉ giữ lại border.
+   * GSAP-style glow button (example/glow-button-gsap), adapted to sky brand + pill shape.
    */
-  .button-liquid-orbit::before {
-    content: '';
-
-    position: absolute;
-    inset: -1px;
-    z-index: 0;
-
-    pointer-events: none;
-    border-radius: inherit;
-    padding: 1.5px;
-
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg 260deg,
-      rgb(56 189 248 / 0.08) 274deg,
-      rgb(56 189 248 / 0.48) 286deg,
-      rgb(186 230 253 / 0.95) 300deg,
-      rgb(255 255 255 / 1) 314deg,
-      rgb(56 189 248 / 0.9) 328deg,
-      rgb(56 189 248 / 0.18) 345deg,
-      transparent 360deg
+  .button-glow {
+    --button-background: linear-gradient(
+      160deg,
+      rgb(240 249 255 / 0.98),
+      rgb(224 242 254 / 0.96) 55%,
+      rgb(186 230 253 / 0.42)
     );
+    --button-color: rgb(12 74 110);
+    --button-shadow: rgb(14 165 233 / 0.28);
+    --button-shine-left: rgb(14 165 233 / 0.72);
+    --button-shine-right: rgb(186 230 253 / 0.98);
+    --button-glow-start: #0284c7;
+    --button-glow-end: #38bdf8;
+    --button-glow: var(--button-glow-end);
+    --button-glow-opacity: 0;
+    --button-glow-duration: 0.5s;
+    --pointer-x: 0px;
+    --pointer-y: 0px;
 
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-
-    animation: liquid-orbit 3.6s linear infinite;
+    position: relative;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--button-color);
+    box-shadow: 0 8px 20px var(--button-shadow);
   }
 
-  .button-liquid-orbit:hover:not(:disabled) {
-    transform: translateY(-1px);
+  .button-glow__gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    transform: scaleY(1.02) scaleX(1.005) rotate(-0.35deg);
+  }
 
+  .button-glow__gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    background: linear-gradient(
+      90deg,
+      var(--button-shine-left),
+      var(--button-shine-right)
+    );
+    transform: scale(1.05) translateY(-44px) rotate(0deg) translateZ(0);
+    animation: button-glow-rotate 2s linear infinite;
+    will-change: transform;
+  }
+
+  .button-glow__surface {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.15px;
+    border-radius: inherit;
+    background: var(--button-background);
+    color: var(--button-color);
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 1),
-      inset 0 -1px 0 rgb(56 189 248 / 0.2),
-      0 9px 24px rgb(14 165 233 / 0.2),
-      0 0 0 1px rgb(125 211 252 / 0.15);
+      inset 0 1px 0 rgb(255 255 255 / 0.95),
+      inset 0 -1px 0 rgb(56 189 248 / 0.12);
   }
 
-  .button-liquid-orbit:hover:not(:disabled)::before {
-    animation-duration: 1.8s;
+  .button-glow__surface svg {
+    color: rgb(2, 133, 199);
   }
 
-  .button-liquid-orbit:active:not(:disabled) {
-    transform: translateY(0);
+  .button-glow__surface::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--button-glow);
+    opacity: var(--button-glow-opacity);
+    filter: blur(20px);
+    pointer-events: none;
+    transform: translate(var(--pointer-x), var(--pointer-y)) translateZ(0);
+    transition: opacity var(--button-glow-duration);
   }
 
-  @keyframes liquid-orbit {
+  .button-glow:hover:not(:disabled) {
+    --button-glow-opacity: 1;
+    --button-glow-duration: 0.25s;
+    --button-shadow: rgb(14 165 233 / 0.38);
+  }
+
+  @keyframes button-glow-rotate {
     to {
-      transform: rotate(1turn);
+      transform: scale(1.05) translateY(-44px) rotate(360deg) translateZ(0);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .button-liquid-orbit::before {
+    .button-glow__gradient::before {
       animation: none;
+      transform: scale(1.05) translateY(-44px) rotate(45deg) translateZ(0);
     }
 
-    .button-liquid-orbit:hover:not(:disabled) {
-      transform: none;
+    .button-glow:hover:not(:disabled) {
+      --button-glow-opacity: 0;
     }
   }
 }
