@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 
 import { gsap } from '@/lib/gsap';
 
-const SHOW_DELAY_MS = 300;
+const MIN_VISIBLE_MS = 500;
 const MAX_LOADING_MS = 3000;
 const EXIT_DURATION_S = 0.4;
 
-type LoadingPhase = 'waiting' | 'showing' | 'exiting' | 'gone';
+type LoadingPhase = 'showing' | 'exiting' | 'gone';
 
 function waitForPageReady(): Promise<void> {
   const fontsReady = document.fonts?.ready ?? Promise.resolve();
@@ -30,12 +30,17 @@ function waitForPageReady(): Promise<void> {
   );
 }
 
+function waitMs(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
 export function InitialPageLoading() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
-  const [phase, setPhase] = useState<LoadingPhase>('waiting');
+  const [phase, setPhase] = useState<LoadingPhase>('showing');
   const dismissedRef = useRef(false);
-  const shownRef = useRef(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -43,6 +48,8 @@ export function InitialPageLoading() {
     ).matches;
 
     document.body.setAttribute('aria-busy', 'true');
+
+    let maxTimer = 0;
 
     const clearBusy = () => {
       document.body.removeAttribute('aria-busy');
@@ -53,12 +60,6 @@ export function InitialPageLoading() {
         return;
       }
       dismissedRef.current = true;
-
-      if (!shownRef.current) {
-        clearBusy();
-        setPhase('gone');
-        return;
-      }
 
       setPhase('exiting');
 
@@ -80,30 +81,14 @@ export function InitialPageLoading() {
       });
     };
 
-    const showTimer = window.setTimeout(() => {
-      shownRef.current = true;
-      setPhase('showing');
-    }, SHOW_DELAY_MS);
+    maxTimer = window.setTimeout(finish, MAX_LOADING_MS);
 
-    const maxTimer = window.setTimeout(finish, MAX_LOADING_MS);
-
-    waitForPageReady().then(() => {
-      window.clearTimeout(showTimer);
-
-      if (!shownRef.current) {
-        dismissedRef.current = true;
-        window.clearTimeout(maxTimer);
-        clearBusy();
-        setPhase('gone');
-        return;
-      }
-
+    Promise.all([waitForPageReady(), waitMs(MIN_VISIBLE_MS)]).then(() => {
       window.clearTimeout(maxTimer);
       finish();
     });
 
     return () => {
-      window.clearTimeout(showTimer);
       window.clearTimeout(maxTimer);
       clearBusy();
     };
@@ -143,14 +128,10 @@ export function InitialPageLoading() {
     return null;
   }
 
-  const isVisible = phase === 'showing' || phase === 'exiting';
-
   return (
     <div
       ref={overlayRef}
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-50 ${
-        isVisible ? '' : 'pointer-events-none invisible'
-      }`}
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-50"
       role="status"
       aria-live="polite"
       aria-label="Loading portfolio"
