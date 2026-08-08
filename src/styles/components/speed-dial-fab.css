@@ -1,0 +1,70 @@
+/* Speed dial FAB motion (src/components/ui/speed-dial-fab) */
+
+.speed-dial-fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.speed-dial-fab__menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.75rem);
+  pointer-events: none;
+}
+
+.speed-dial-fab__action {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0) scale(0.86);
+  pointer-events: none;
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0ms;
+  will-change: transform, opacity;
+}
+
+.speed-dial-fab[data-open='true'] .speed-dial-fab__action {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  pointer-events: auto;
+  transition-delay: var(--speed-dial-stagger, 0ms);
+}
+
+.speed-dial-fab[data-open='false'] .speed-dial-fab__action {
+  transition-delay: 0ms;
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.speed-dial-fab[data-open='true'] .speed-dial-fab__menu {
+  pointer-events: auto;
+}
+
+.speed-dial-fab__trigger-icon {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.speed-dial-fab[data-open='true'] .speed-dial-fab__trigger-icon {
+  transform: rotate(-24deg) scale(1.05);
+}
+
+.speed-dial-fab__theme-option--selected {
+  border-color: rgb(14 165 233 / 0.45);
+  background: rgb(14 165 233 / 0.12);
+  color: rgb(2 132 199);
+}
+
+.dark .speed-dial-fab__theme-option--selected {
+  border-color: rgb(56 189 248 / 0.4);
+  background: rgb(56 189 248 / 0.16);
+  color: rgb(125 211 252);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speed-dial-fab__action,
+  .speed-dial-fab__trigger-icon {
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+  }
+}
