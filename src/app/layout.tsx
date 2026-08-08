@@ -7,6 +7,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 
 import { InitialPageLoading } from '@/components/loading/initial-page-loading';
+import { ThemeProvider } from '@/components/theme/theme-provider';
 import { ToastProvider } from '@/components/ui/toast';
 import { ScrollResetOnReload } from './scroll-reset-on-reload';
 
@@ -68,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script id="scroll-restoration-manual" strategy="beforeInteractive">
           {`if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }`}
@@ -78,12 +79,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-neutral-50 text-neutral-900 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
-        <ScrollResetOnReload />
-        <InitialPageLoading />
-        <ToastProvider>{children}</ToastProvider>
-        <Analytics />
+        <ThemeProvider>
+          <ScrollResetOnReload />
+          <InitialPageLoading />
+          <ToastProvider>{children}</ToastProvider>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
