@@ -17,7 +17,7 @@ Living product contract for visual and interaction rules. As-built detail lives 
   `subtle-foreground`.
 - Homepage surfaces use Tailwind utilities mapped to those tokens (e.g. `bg-surface`,
   `text-muted-foreground`, `border-border`) — not hard-coded light-only neutrals.
-- Visitor toggle UI: Speed Dial FAB (US-009). Foundation only in US-008.
+- Visitor toggle UI: Speed Dial FAB (`src/components/ui/speed-dial-fab.tsx`).
 - Decision: `docs/decisions/0008-next-themes-dark-mode.md`.
 
 ## Typography
@@ -29,12 +29,13 @@ Living product contract for visual and interaction rules. As-built detail lives 
 
 ## Components
 
-| Primitive         | Location                                      | Rules                                                                                                      |
-| ----------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` — see `docs/product/components/button.md` |
-| Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                                                                                      |
-| Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width                                                                           |
-| Cards             | Various sections                              | `rounded-2xl border border-border bg-surface`                                                              |
+| Primitive         | Location                                      | Rules                                                                                                                     |
+| ----------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Speed Dial FAB    | `src/components/ui/speed-dial-fab.tsx`        | Fixed bottom-right settings menu; theme toggle sub-action; sky focus ring; see `src/styles/components/speed-dial-fab.css` |
+| Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` — see `docs/product/components/button.md`                |
+| Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                                                                                                     |
+| Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width                                                                                          |
+| Cards             | Various sections                              | `rounded-2xl border border-border bg-surface`                                                                             |
 
 ## Motion
 

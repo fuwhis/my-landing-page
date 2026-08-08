@@ -8,6 +8,7 @@ import Script from 'next/script';
 
 import { InitialPageLoading } from '@/components/loading/initial-page-loading';
 import { ThemeProvider } from '@/components/theme/theme-provider';
+import { SpeedDialFab } from '@/components/ui/speed-dial-fab';
 import { ToastProvider } from '@/components/ui/toast';
 import { ScrollResetOnReload } from './scroll-reset-on-reload';
 
@@ -85,6 +86,7 @@ export default function RootLayout({
           <ScrollResetOnReload />
           <InitialPageLoading />
           <ToastProvider>{children}</ToastProvider>
+          <SpeedDialFab />
           <Analytics />
         </ThemeProvider>
       </body>
