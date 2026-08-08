@@ -168,7 +168,7 @@ function renderMonogramIcon(label: string) {
   const initial = label.trim().charAt(0).toUpperCase();
   return (
     <span
-      className="inline-flex size-3.5 items-center justify-center rounded-[3px] bg-neutral-200 text-[9px] font-semibold text-neutral-700"
+      className="bg-muted text-muted-foreground inline-flex size-3.5 items-center justify-center rounded-[3px] text-[9px] font-semibold"
       aria-hidden="true"
     >
       {initial || '?'}

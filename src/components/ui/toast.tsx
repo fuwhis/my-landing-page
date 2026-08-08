@@ -248,7 +248,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                       className={cn(
                         'flex size-8 shrink-0 items-center justify-center rounded-lg',
                         'opacity-70 transition hover:bg-black/5 hover:opacity-100',
-                        'focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none',
+                        'focus-visible:ring-foreground focus-visible:ring-2 focus-visible:outline-none',
                       )}
                     >
                       <X className="size-4" aria-hidden="true" />

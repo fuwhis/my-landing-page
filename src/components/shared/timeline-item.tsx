@@ -8,24 +8,26 @@ type TimelineItemProps = {
 
 export function TimelineItem({ item }: TimelineItemProps) {
   return (
-    <article className="relative rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7">
+    <article className="border-border bg-surface relative rounded-2xl border p-6 sm:p-7">
       <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-neutral-900">
+          <h3 className="text-surface-foreground text-lg font-semibold">
             {item.role}
           </h3>
-          <p className="text-sm text-neutral-600">
+          <p className="text-muted-foreground text-sm">
             {item.company} · {item.location}
           </p>
         </div>
-        <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase">
+        <p className="text-subtle-foreground text-xs font-semibold tracking-wide uppercase">
           {item.period}
         </p>
       </div>
 
-      <p className="text-sm leading-relaxed text-neutral-600">{item.summary}</p>
+      <p className="text-muted-foreground text-sm leading-relaxed">
+        {item.summary}
+      </p>
 
-      <ul className="mt-4 space-y-2 text-sm text-neutral-700">
+      <ul className="text-surface-foreground mt-4 space-y-2 text-sm">
         {item.highlights.map((highlight) => (
           <li key={highlight} className="flex gap-2">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />

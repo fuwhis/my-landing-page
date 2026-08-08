@@ -5,10 +5,9 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-neutral-900 text-white hover:bg-neutral-700',
-        outline:
-          'border border-neutral-300 text-neutral-900 hover:bg-neutral-100',
-        ghost: 'text-neutral-700 hover:bg-neutral-100',
+        default: 'bg-foreground text-background hover:bg-foreground/90',
+        outline: 'border border-border text-foreground hover:bg-muted',
+        ghost: 'text-muted-foreground hover:bg-muted',
         liquid: 'button-liquid text-stale-900',
       },
       size: {
