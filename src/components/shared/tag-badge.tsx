@@ -7,8 +7,8 @@ type TagBadgeProps = {
 
 export function TagBadge({ label, icon }: TagBadgeProps) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
-      {icon ? <span className="text-neutral-600">{icon}</span> : null}
+    <span className="border-border bg-muted text-surface-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+      {icon ? <span className="text-muted-foreground">{icon}</span> : null}
       {label}
     </span>
   );

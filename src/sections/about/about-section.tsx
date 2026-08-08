@@ -16,7 +16,7 @@ export function AboutSection() {
           {profile.aboutParagraphs.map((paragraph) => (
             <p
               key={paragraph}
-              className="text-base leading-relaxed text-neutral-600"
+              className="text-muted-foreground text-base leading-relaxed"
             >
               {paragraph}
             </p>

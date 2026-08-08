@@ -17,9 +17,9 @@ export function SkillsSection() {
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="space-y-3 rounded-2xl border border-neutral-200 bg-white p-6"
+              className="border-border bg-surface space-y-3 rounded-2xl border p-6"
             >
-              <h3 className="text-sm font-semibold tracking-wide text-neutral-800 uppercase">
+              <h3 className="text-surface-foreground text-sm font-semibold tracking-wide uppercase">
                 {group.title}
               </h3>
               <TechStackList items={group.items} />

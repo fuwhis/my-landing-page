@@ -4,10 +4,21 @@ Living product contract for visual and interaction rules. As-built detail lives 
 
 ## Brand Direction
 
-- Neutral base (`#fafafa` background, neutral text hierarchy).
+- Neutral base (`#fafafa` light / `#0a0a0a` dark background, semantic text hierarchy).
 - Sky-blue accent system for headings, links, focus rings, motion highlights.
 - Modern, recruiter-friendly, high scanning clarity.
 - Minimal decorative noise outside the hero motion layer.
+
+## Theme
+
+- Light and dark modes via `next-themes` (`class` on `<html>`, `defaultTheme="system"`).
+- Semantic tokens in `src/styles/base/tokens.css`: `background`, `foreground`,
+  `surface`, `surface-foreground`, `border`, `muted`, `muted-foreground`,
+  `subtle-foreground`.
+- Homepage surfaces use Tailwind utilities mapped to those tokens (e.g. `bg-surface`,
+  `text-muted-foreground`, `border-border`) — not hard-coded light-only neutrals.
+- Visitor toggle UI: Speed Dial FAB (US-009). Foundation only in US-008.
+- Decision: `docs/decisions/0008-next-themes-dark-mode.md`.
 
 ## Typography
 
@@ -23,7 +34,7 @@ Living product contract for visual and interaction rules. As-built detail lives 
 | Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` — see `docs/product/components/button.md` |
 | Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                                                                                      |
 | Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width                                                                           |
-| Cards             | Various sections                              | `rounded-2xl border border-neutral-200 bg-white`                                                           |
+| Cards             | Various sections                              | `rounded-2xl border border-border bg-surface`                                                              |
 
 ## Motion
 

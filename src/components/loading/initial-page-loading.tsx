@@ -131,13 +131,13 @@ export function InitialPageLoading() {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-50"
+      className="bg-background fixed inset-0 z-50 flex flex-col items-center justify-center"
       role="status"
       aria-live="polite"
       aria-label="Loading portfolio"
     >
       <div
-        className="mt-4 h-0.5 w-24 overflow-hidden rounded-full bg-neutral-200"
+        className="bg-border mt-4 h-0.5 w-24 overflow-hidden rounded-full"
         aria-hidden="true"
       >
         <div

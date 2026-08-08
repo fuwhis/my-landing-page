@@ -10,17 +10,17 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7">
-      <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase">
+    <article className="border-border bg-surface flex h-full flex-col rounded-2xl border p-6 sm:p-7">
+      <p className="text-subtle-foreground text-xs font-semibold tracking-wide uppercase">
         {project.category}
       </p>
-      <h3 className="text-lg font-semibold text-neutral-900">
+      <h3 className="text-surface-foreground text-lg font-semibold">
         {project.title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+      <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
         {project.description}
       </p>
-      <p className="mt-4 text-sm font-medium text-neutral-800">
+      <p className="text-surface-foreground mt-4 text-sm font-medium">
         {project.impact}
       </p>
 
@@ -41,7 +41,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.repoHref ? (
           <Link
             href={project.repoHref}
-            className="inline-flex items-center gap-1 text-sm font-medium text-neutral-600 hover:text-neutral-500"
+            className="text-muted-foreground hover:text-subtle-foreground inline-flex items-center gap-1 text-sm font-medium"
           >
             Source <Code2 className="h-4 w-4" />
           </Link>

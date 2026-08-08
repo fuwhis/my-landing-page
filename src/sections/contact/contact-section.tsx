@@ -26,13 +26,13 @@ export function ContactSection() {
 
         <div
           id="contact-form"
-          className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8"
+          className="border-border bg-surface rounded-2xl border p-6 sm:p-8"
         >
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-neutral-900">
+            <h3 className="text-surface-foreground text-lg font-semibold">
               Get in touch
             </h3>
-            <p className="text-sm text-neutral-600">
+            <p className="text-muted-foreground text-sm">
               Recruiters and hiring teams can reach out directly. I&apos;ll
               reply to the email address you provide.
             </p>

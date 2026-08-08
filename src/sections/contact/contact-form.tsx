@@ -37,8 +37,8 @@ const defaultValues: ContactFormValues = {
 };
 
 const fieldClassName = cn(
-  'w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900',
-  'placeholder:text-neutral-400',
+  'border-border bg-surface text-foreground w-full rounded-2xl border px-4 py-3 text-sm',
+  'placeholder:text-subtle-foreground',
   'focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:outline-none',
 );
 
@@ -343,7 +343,7 @@ export function ContactForm() {
         <div className="space-y-2">
           <label
             htmlFor="contact-name"
-            className="text-sm font-medium text-neutral-800"
+            className="text-surface-foreground text-sm font-medium"
           >
             Your Name
           </label>
@@ -370,7 +370,7 @@ export function ContactForm() {
         <div className="space-y-2">
           <label
             htmlFor="contact-email"
-            className="text-sm font-medium text-neutral-800"
+            className="text-surface-foreground text-sm font-medium"
           >
             Your Email
           </label>
@@ -401,7 +401,7 @@ export function ContactForm() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <label
               htmlFor="contact-message"
-              className="text-sm font-medium text-neutral-800"
+              className="text-surface-foreground text-sm font-medium"
             >
               Message
             </label>
@@ -435,7 +435,7 @@ export function ContactForm() {
             disabled={isLoading || isTemplateLoading}
           />
 
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-500">
+          <div className="text-subtle-foreground flex flex-wrap items-center justify-between gap-2 text-xs">
             {getError('message') ? (
               <p className="text-sm text-red-600" role="alert">
                 {getError('message')}
@@ -499,7 +499,9 @@ export function ContactForm() {
           ) : null}
 
           {recaptchaSiteKey && !isRecaptchaReady ? (
-            <p className="text-xs text-neutral-500">Loading reCAPTCHA...</p>
+            <p className="text-subtle-foreground text-xs">
+              Loading reCAPTCHA...
+            </p>
           ) : null}
         </div>
       </form>

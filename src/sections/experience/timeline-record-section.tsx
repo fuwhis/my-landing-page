@@ -21,7 +21,7 @@ function TimelineDateRange({
   const endDateTime = toDateTime(endDate);
 
   return (
-    <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase sm:text-right">
+    <p className="text-subtle-foreground text-xs font-semibold tracking-wide uppercase sm:text-right">
       <time dateTime={startDateTime}>{startDate}</time>
       {' – '}
       {endDateTime ? (
@@ -45,10 +45,12 @@ function TimelineRecordEntry({
   const content = (
     <>
       <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-        <p className="text-base font-semibold text-neutral-900">
+        <p className="text-foreground text-base font-semibold">
           {entry.company}
-          <span className="font-normal text-neutral-400"> · </span>
-          <span className="font-medium text-neutral-700">{entry.role}</span>
+          <span className="text-subtle-foreground font-normal"> · </span>
+          <span className="text-surface-foreground font-medium">
+            {entry.role}
+          </span>
         </p>
         <TimelineDateRange
           startDate={entry.startDate}
@@ -56,7 +58,7 @@ function TimelineRecordEntry({
         />
       </div>
 
-      <p className="text-sm leading-relaxed text-neutral-600">
+      <p className="text-muted-foreground text-sm leading-relaxed">
         {entry.outcome}
       </p>
 
@@ -72,7 +74,7 @@ function TimelineRecordEntry({
       onClick={() => scrollToProjectCard(entry.projectSlug!)}
       className={cn(
         'w-full rounded-xl text-left transition-colors',
-        'hover:bg-neutral-50 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none',
+        'hover:bg-muted focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none',
       )}
     >
       {content}
@@ -85,12 +87,12 @@ function TimelineRecordEntry({
     <li className="relative pl-8">
       <span
         aria-hidden="true"
-        className="absolute top-1.5 left-0 z-10 size-3 rounded-full border-2 border-sky-500 bg-white"
+        className="bg-surface absolute top-1.5 left-0 z-10 size-3 rounded-full border-2 border-sky-500"
       />
       {!isLast ? (
         <span
           aria-hidden="true"
-          className="absolute top-4 -bottom-10 left-[5px] w-px bg-neutral-200"
+          className="bg-border absolute top-4 -bottom-10 left-[5px] w-px"
         />
       ) : null}
       <FadeInOnView delay={animationDelay}>{entryBody}</FadeInOnView>
