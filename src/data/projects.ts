@@ -19,15 +19,15 @@ export const projects: ProjectItem[] = [
       'Implemented lightweight browser-side functionality and contributed to accessibility-oriented feature research.',
     stack: ['JavaScript', 'HTML', 'CSS/SCSS', 'Django', 'Python'],
   },
-  {
-    title: 'ES-Shoe',
-    category: 'Admin Dashboard / Footwear Tech',
-    description:
-      'A web-based admin dashboard used to manage feet measurement data for a mobile-first shoe ordering experience.',
-    impact:
-      'Built polished admin UI, integrated APIs with Redux-based state flow, and supported deployment consistency with Docker.',
-    stack: ['React', 'TypeScript', 'Redux', 'Ant Design', 'Docker', 'SCSS'],
-  },
+  // {
+  //   title: 'ES-Shoe',
+  //   category: 'Admin Dashboard / Footwear Tech',
+  //   description:
+  //     'A web-based admin dashboard used to manage feet measurement data for a mobile-first shoe ordering experience.',
+  //   impact:
+  //     'Built polished admin UI, integrated APIs with Redux-based state flow, and supported deployment consistency with Docker.',
+  //   stack: ['React', 'TypeScript', 'Redux', 'Ant Design', 'Docker', 'SCSS'],
+  // },
   {
     title: 'KNFT - Kumho NFT',
     category: 'Web Platform / Blockchain',
@@ -37,13 +37,13 @@ export const projects: ProjectItem[] = [
       'Built responsive frontend features, improved load time by over 30%, and used GraphQL-driven rendering.',
     stack: ['React', 'Next.js', 'Redux', 'GraphQL', 'Docker', 'Ant Design'],
   },
-  {
-    title: 'BMG Color - Figma Plugin',
-    category: 'Design Tooling / Figma Plugin',
-    description:
-      'A Figma plugin to manage and reuse design kits for better team workflow.',
-    impact:
-      'Expanded plugin features, refactored architecture with Svelte and Rollup, and improved loading performance.',
-    stack: ['TypeScript', 'Svelte', 'Rollup', 'SCSS', 'HTML'],
-  },
+  // {
+  //   title: 'BMG Color - Figma Plugin',
+  //   category: 'Design Tooling / Figma Plugin',
+  //   description:
+  //     'A Figma plugin to manage and reuse design kits for better team workflow.',
+  //   impact:
+  //     'Expanded plugin features, refactored architecture with Svelte and Rollup, and improved loading performance.',
+  //   stack: ['TypeScript', 'Svelte', 'Rollup', 'SCSS', 'HTML'],
+  // },
 ];

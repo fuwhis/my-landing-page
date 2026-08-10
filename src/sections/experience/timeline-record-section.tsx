@@ -72,10 +72,7 @@ function TimelineRecordEntry({
     <button
       type="button"
       onClick={() => scrollToProjectCard(entry.projectSlug!)}
-      className={cn(
-        'w-full rounded-xl text-left transition-colors',
-        'hover:bg-muted focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none',
-      )}
+      className={cn('w-full rounded-xl text-left transition-colors')}
     >
       {content}
     </button>

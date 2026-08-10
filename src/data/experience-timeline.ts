@@ -21,7 +21,7 @@ export const experienceTimeline: TimelineEntry[] = [
     outcome:
       'Built an accessibility-focused browser widget for a Japan-based SaaS product.',
     techTags: ['JavaScript', 'Django', 'HTML', 'SCSS'],
-    projectSlug: 'myliking',
+    projectSlug: 'my-liking',
   },
   {
     company: 'BrickMate Group VN',
@@ -32,6 +32,7 @@ export const experienceTimeline: TimelineEntry[] = [
     outcome:
       'Delivered frontend features across 4 products spanning NFT marketplace, footwear admin tools, and design tooling.',
     techTags: ['React', 'Next.js', 'TypeScript', 'Redux', 'GraphQL'],
+    projectSlug: 'knft-kumho-nft',
   },
   {
     company: 'FPT Software',
