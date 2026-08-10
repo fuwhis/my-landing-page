@@ -96,7 +96,8 @@ Do not store `durationMonths` in the data. Write a helper function `getDurationM
 - Vertical timeline: a vertical line on the left with a dot marking each entry. Do not reuse the current card layout (bordered box with a bullet list).
 - Each entry shows: company and role on the same line, dates on the right (stacked below company on mobile), the outcome sentence directly underneath, and tech tags as small pills at the bottom.
 - The line segment between two dots can scale slightly with `durationMonths` to hint at tenure. Keep this simple; clarity matters more than precision here.
-- If an entry has a `projectSlug`, the whole entry becomes a link or button that smooth-scrolls to the matching card in "Selected Work." No new tab.
+- If an entry has a `projectSlug`, the whole entry becomes a `<button>` that smooth-scrolls to the matching card in "Selected Work." No new tab.
+- Entries with `projectSlug` must look the same as entries without it — no hover background, focus ring, or other affordance that makes clickable rows visually distinct. Click behavior is the only difference.
 - Responsive: on mobile, dots sit near the left edge and company/dates stack instead of sharing a row.
 - Use the existing design tokens (colors, spacing, fonts) from the current theme. Check the theme or Tailwind config before styling. Do not introduce new tokens.
 - Reuse the icon component already used in the "Tech Stack" section for tech tags. Do not build a new icon set.
@@ -125,6 +126,7 @@ Effect: fade-in with a slight slide-up as each entry enters the viewport.
 - [ ] No responsibility-bullet content remains on the homepage in this section
 - [ ] Timeline works correctly on mobile (< 768px) and desktop
 - [ ] Clicking an entry with a `projectSlug` smooth-scrolls to the correct card in "Selected Work"
+- [ ] Entries with and without `projectSlug` share the same visual treatment (no hover/focus styling on clickable rows)
 - [ ] No new console warnings or errors, and no new build warnings
 - [ ] Nothing is deleted; `ExperienceSection` remains available for import elsewhere if needed later
 - [ ] Production build succeeds (`npm run build` or equivalent)

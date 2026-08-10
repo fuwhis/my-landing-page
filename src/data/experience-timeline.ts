@@ -32,6 +32,7 @@ export const experienceTimeline: TimelineEntry[] = [
     outcome:
       'Delivered frontend features across 4 products spanning NFT marketplace, footwear admin tools, and design tooling.',
     techTags: ['React', 'Next.js', 'TypeScript', 'Redux', 'GraphQL'],
+    projectSlug: 'knft-kumho-nft',
   },
   {
     company: 'FPT Software',
