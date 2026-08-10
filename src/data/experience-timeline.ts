@@ -21,7 +21,7 @@ export const experienceTimeline: TimelineEntry[] = [
     outcome:
       'Built an accessibility-focused browser widget for a Japan-based SaaS product.',
     techTags: ['JavaScript', 'Django', 'HTML', 'SCSS'],
-    projectSlug: 'myliking',
+    projectSlug: 'my-liking',
   },
   {
     company: 'BrickMate Group VN',

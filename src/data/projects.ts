@@ -1,4 +1,4 @@
-import type { ProjectItem } from '@/types/content'
+import type { ProjectItem } from '@/types/content';
 
 export const projects: ProjectItem[] = [
   {
@@ -46,4 +46,4 @@ export const projects: ProjectItem[] = [
   //     'Expanded plugin features, refactored architecture with Svelte and Rollup, and improved loading performance.',
   //   stack: ['TypeScript', 'Svelte', 'Rollup', 'SCSS', 'HTML'],
   // },
-]
+];

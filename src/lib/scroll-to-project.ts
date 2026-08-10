@@ -1,6 +1,6 @@
 const projectSlugToTitle: Record<string, string> = {
   'gia-phuoc-express': 'Gia Phuoc Express',
-  'myliking': 'MyLiking',
+  'my-liking': 'MyLiking',
   'knft-kumho-nft': 'KNFT - Kumho NFT',
 };
 
