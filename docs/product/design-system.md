@@ -34,12 +34,16 @@ Living product contract for visual and interaction rules. As-built detail lives 
 | Speed Dial FAB    | `src/components/ui/speed-dial-fab.tsx`        | Fixed bottom-right settings menu; theme toggle sub-action; sky focus ring; see `src/styles/components/speed-dial-fab.css` |
 | Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` — see `docs/product/components/button.md`                |
 | Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                                                                                                     |
-| Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width                                                                                          |
+| Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width; optional `decoration` (blob) and `bubbles` slots behind content                         |
 | Cards             | Various sections                              | `rounded-2xl border border-border bg-surface`                                                                             |
 
 ## Motion
 
-- Hero uses morphing blob + rising bubbles (`src/sections/hero/hero-fluid-backdrop.tsx`).
+- Hero uses independently importable fluid layers from `src/components/motion/hero-fluid-backdrop.tsx`:
+  `HeroFluidBlob` (inset, `size`, `morphDuration`, `scale` / `scaleX` / `scaleY` / `scaleZ` / `scale3d`)
+  via `decoration`, `HeroFluidBubbles` via `bubbles`.
+- Experience timeline reuses `HeroFluidBlob` with `position="left"` (horizontal mirror)
+  and inset props for placement.
 - Under `prefers-reduced-motion: reduce`, blob and bubble animations are disabled.
 - Do not add competing accent systems without an explicit re-brand decision.
 

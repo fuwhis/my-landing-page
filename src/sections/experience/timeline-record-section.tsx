@@ -1,6 +1,7 @@
 'use client';
 
 import { FadeInOnView } from '@/components/motion/fade-in-on-view';
+import { HeroFluidBlob } from '@/components/motion/hero-fluid-backdrop';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { TechStackList } from '@/components/shared/tech-stack-list';
@@ -99,7 +100,13 @@ function TimelineRecordEntry({
 
 export function TimelineRecordSection() {
   return (
-    <SectionContainer id="experience">
+    <SectionContainer
+      id="experience"
+      className="overflow-hidden"
+      decoration={
+        <HeroFluidBlob position="left" top="5px" left="1%" morphDuration={10} />
+      }
+    >
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Experience"
