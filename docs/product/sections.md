@@ -4,10 +4,10 @@
 
 The homepage (`src/app/page.tsx`) must render sections in this order:
 
-1. **Hero** — name, role, tagline, primary CTAs, metrics, fluid backdrop.
+1. **Hero** — name, role, tagline, primary CTAs, metrics, fluid blob (right) + rising bubbles.
 2. **Tech Stack** — grouped technologies with icons.
 3. **About** — summary paragraphs from profile data.
-4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card.
+4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card, fluid blob (left).
 5. **Projects** — featured work cards with links.
 6. **Skills** — categorized skill groups.
 7. **Contact** — availability, email, social links.
@@ -29,6 +29,7 @@ Changing order requires updating this doc, `src/app/page.tsx`, and the story pac
 ## Layout Contract
 
 - All sections use `SectionContainer` (`src/components/shared/section-container.tsx`).
+- Optional `decoration` and `bubbles` slots render full-bleed layers behind content (`z-10`).
 - Vertical rhythm: `py-14 sm:py-20`, max width `max-w-6xl`, horizontal padding `px-6 sm:px-10`.
 - Experience timeline entries with `projectSlug` are interactive buttons that scroll to the matching project card; they use the same surface styling as non-linked entries (no hover or focus background).
 

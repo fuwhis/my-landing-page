@@ -105,10 +105,20 @@ Shared baseline:
 
 ### Hero Motion Model
 
-Hero decoration combines:
+Fluid decoration is two independently importable layers
+(`src/components/motion/hero-fluid-backdrop.tsx`):
 
-1. Morphing organic blob (`hero-blob-morph`, 22s, alternate, infinite)
-2. Rising bubbles (`hero-bubble-rise`, transform/opacity animation)
+1. Morphing organic blob (`HeroFluidBlob`, `hero-blob-morph`, alternate, infinite)
+   - `position="right"` | `"left"` chooses side; left defaults to `scaleX(-1)` mirror
+   - Inset: `top` / `right` / `bottom` / `left` → `--blob-*`
+   - Size: `size` or `width` / `height` → `--blob-width` / `--blob-height` (default `min(52vw, 420px)`)
+   - Speed: `morphDuration` (seconds, default `22`) → `--blob-morph-duration`
+   - Transform: `scale`, `scaleX`, `scaleY`, `scaleZ`, or `scale3d` → `--blob-transform`
+   - Defaults: right blob `top: -18%` `right: -2%`; left blob `top: 5px` `left: 1%`
+2. Rising bubbles (`HeroFluidBubbles`, `hero-bubble-rise`, transform/opacity animation)
+
+Hero wires blob through `SectionContainer` `decoration` and bubbles through `bubbles`.
+Experience reuses only the left blob.
 
 ### Bubble System (Current Implementation)
 
@@ -181,7 +191,7 @@ Use these prompts for AI-assisted UI iterations:
 - "Keep the neutral base with sky-blue accents and recruiter-friendly readability."
 - "Preserve Geist Sans hierarchy and concise, high-signal content."
 - "Match existing card language: rounded-2xl, white surface, neutral border."
-- "Preserve hero fluid backdrop with morphing blob + non-sequential rising bubbles and reduced-motion fallback."
+- "Preserve independently importable fluid layers: morphing blob (left/right) + non-sequential rising bubbles and reduced-motion fallback."
 
 ## 10. Change Control Checklist
 

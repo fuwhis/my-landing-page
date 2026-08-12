@@ -25,7 +25,7 @@ Hero fluid backdrop (blob + bubbles) disables animation under `prefers-reduced-m
 
 ## Design Notes
 
-- Component: `src/sections/hero/hero-fluid-backdrop.tsx`
+- Component: `src/components/motion/hero-fluid-backdrop.tsx` (`HeroFluidBlob`, `HeroFluidBubbles`)
 - CSS media query: `prefers-reduced-motion: reduce`
 
 ## Validation

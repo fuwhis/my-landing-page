@@ -22,14 +22,14 @@ src/styles/globals.css
 
 ## Directory Layout
 
-| Path                                   | Responsibility                                                              |
-| -------------------------------------- | --------------------------------------------------------------------------- |
-| `src/styles/globals.css`               | Tailwind + ordered `@import` of modules                                     |
-| `src/styles/base/tokens.css`           | `:root` tokens, `@theme inline`, html/body, selection, default border color |
-| `src/styles/components/hero-fluid.css` | Hero blob + bubble animations (`.hero-fluid*`)                              |
-| `src/styles/components/button.css`     | Button variants: `.button-liquid`, `.button-glow*`                          |
-| `src/styles/components/toast.css`      | Toast enter/open/exit motion (`.toast-surface`)                             |
-| `src/styles/components/contact.css`    | Contact-specific keyframes (e.g. status countdown)                          |
+| Path                                   | Responsibility                                                                                |
+| -------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `src/styles/globals.css`               | Tailwind + ordered `@import` of modules                                                       |
+| `src/styles/base/tokens.css`           | `:root` tokens, `@theme inline`, html/body, selection, default border color                   |
+| `src/styles/components/hero-fluid.css` | Fluid blob + bubble animations (`.hero-fluid*`) — owners: `HeroFluidBlob`, `HeroFluidBubbles` |
+| `src/styles/components/button.css`     | Button variants: `.button-liquid`, `.button-glow*`                                            |
+| `src/styles/components/toast.css`      | Toast enter/open/exit motion (`.toast-surface`)                                               |
+| `src/styles/components/contact.css`    | Contact-specific keyframes (e.g. status countdown)                                            |
 
 Add a new file under `components/` when a feature owns **10+ lines** of custom CSS or
 has its own keyframes and reduced-motion rules. Wire it from `globals.css` in logical

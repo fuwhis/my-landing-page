@@ -24,6 +24,7 @@ Populated from brownfield spec intake (`docs/spec-intake/2026-06-08-my-landing-p
 | US-008 | Dark mode foundation                         | normal | implemented | `docs/stories/US-008-dark-mode-foundation.md`              |
 | US-009 | Speed dial FAB for theme toggle              | normal | implemented | `docs/stories/US-009-speed-dial-fab-theme-toggle.md`       |
 | US-010 | Speed Dial FAB hydration mismatch fix        | tiny   | implemented | `docs/stories/US-010-speed-dial-fab-hydration-mismatch.md` |
+| US-011 | Split fluid blob and bubbles for reuse       | tiny   | implemented | `docs/stories/US-011-fluid-layers-reuse.md`                |
 
 ## Slicing Rule
 
