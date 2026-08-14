@@ -5,7 +5,7 @@
 The homepage (`src/app/page.tsx`) must render sections in this order:
 
 1. **Hero** — name, role, tagline, primary CTAs, metrics, fluid blob (right) + rising bubbles.
-2. **Tech Stack** — grouped technologies with icons.
+2. **How I Engineer (V.A.S.T)** — Value-driven, Adaptable, System Thinking, Technical Depth; scroll-triggered entrance via GSAP.
 3. **About** — summary paragraphs from profile data.
 4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card, fluid blob (left).
 5. **Projects** — featured work cards with links.
@@ -16,15 +16,15 @@ Changing order requires updating this doc, `src/app/page.tsx`, and the story pac
 
 ## Content Sources
 
-| Section    | Data module                       | Component                                             |
-| ---------- | --------------------------------- | ----------------------------------------------------- |
-| Hero       | `src/data/profile.ts`             | `src/sections/hero/hero-section.tsx`                  |
-| Tech Stack | `src/data/tech-stack.ts`          | `src/sections/tech-stack/tech-stack-section.tsx`      |
-| About      | `src/data/profile.ts`             | `src/sections/about/about-section.tsx`                |
-| Experience | `src/data/experience-timeline.ts` | `src/sections/experience/timeline-record-section.tsx` |
-| Projects   | `src/data/projects.ts`            | `src/sections/projects/projects-section.tsx`          |
-| Skills     | `src/data/skills.ts`              | `src/sections/skills/skills-section.tsx`              |
-| Contact    | `src/data/profile.ts`             | `src/sections/contact/contact-section.tsx`            |
+| Section        | Data module                       | Component                                             |
+| -------------- | --------------------------------- | ----------------------------------------------------- |
+| Hero           | `src/data/profile.ts`             | `src/sections/hero/hero-section.tsx`                  |
+| How I Engineer | `src/data/vast.ts`                | `src/sections/vast/vast-section.tsx`                  |
+| About          | `src/data/profile.ts`             | `src/sections/about/about-section.tsx`                |
+| Experience     | `src/data/experience-timeline.ts` | `src/sections/experience/timeline-record-section.tsx` |
+| Projects       | `src/data/projects.ts`            | `src/sections/projects/projects-section.tsx`          |
+| Skills         | `src/data/skills.ts`              | `src/sections/skills/skills-section.tsx`              |
+| Contact        | `src/data/profile.ts`             | `src/sections/contact/contact-section.tsx`            |
 
 ## Layout Contract
 

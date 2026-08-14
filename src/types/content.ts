@@ -45,6 +45,12 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type VastItem = {
+  letter: string;
+  title: string;
+  description: string;
+};
+
 export type Profile = {
   fullName: string;
   role: string;

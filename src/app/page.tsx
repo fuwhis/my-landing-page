@@ -4,13 +4,13 @@ import { TimelineRecordSection } from '@/sections/experience/timeline-record-sec
 import { HeroSection } from '@/sections/hero/hero-section';
 import { ProjectsSection } from '@/sections/projects/projects-section';
 import { SkillsSection } from '@/sections/skills/skills-section';
-import { TechStackSection } from '@/sections/tech-stack/tech-stack-section';
+import { VastSection } from '@/sections/vast/vast-section';
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-      <TechStackSection />
+      <VastSection />
       <AboutSection />
       <TimelineRecordSection />
       <ProjectsSection />
