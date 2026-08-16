@@ -11,7 +11,7 @@ on:
       - feature/preview
 
 env:
-  NEXT_PUBLIC_SITE_URL: https://fuwhis.io.vn
+  NEXT_PUBLIC_SITE_URL: https://www.fuwhis.io.vn
 
 permissions:
   contents: read

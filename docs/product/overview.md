@@ -41,7 +41,7 @@ Content must stay specific, realistic, and measurable. Avoid placeholder phrasin
 
 ## Canonical Site URL
 
-Default: `https://fuwhis.io.vn` (overridable via `NEXT_PUBLIC_SITE_URL`). See `docs/product/seo-and-metadata.md`.
+Default: `https://www.fuwhis.io.vn` (overridable via `NEXT_PUBLIC_SITE_URL`). See `docs/product/seo-and-metadata.md`.
 
 ## Related Docs
 

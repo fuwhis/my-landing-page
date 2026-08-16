@@ -28,8 +28,8 @@ const siteDescription =
 const socialDescription =
   'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.';
 const ogImage = {
-  // Files under `public/` are served from site root — do not prefix with `/public`.
-  url: '/open-graph/og-thumb.jpeg',
+  // Absolute URL avoids host redirects (apex → www) that break Facebook image fetch.
+  url: `${siteUrl}/open-graph/og-thumb.jpeg`,
   width: 2048,
   height: 1152,
   alt: siteTitle,
