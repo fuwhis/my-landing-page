@@ -22,6 +22,18 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const siteTitle = 'Nguyen Phu Quy | Software Engineer';
+const siteDescription =
+  'Portfolio and CV of Nguyen Phu Quy, a Frontend Engineer with 4+ years delivering scalable, high-performance web products.';
+const socialDescription =
+  'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.';
+const ogImage = {
+  url: '/public/open-graph/og-thumb.jpeg',
+  width: 512,
+  height: 512,
+  alt: siteTitle,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   manifest: '/manifest.webmanifest',
@@ -31,11 +43,10 @@ export const metadata: Metadata = {
     apple: [{ url: '/favicon/apple-touch-icon.png', type: 'image/png' }],
   },
   title: {
-    default: 'Nguyen Phu Quy | Software Engineer',
+    default: siteTitle,
     template: '%s | Nguyen Phu Quy',
   },
-  description:
-    'Premium portfolio and CV of Nguyen Phu Quy, a Frontend Engineer with 4+ years delivering scalable, high-performance web products.',
+  description: siteDescription,
   keywords: [
     'Frontend Engineer',
     'React',
@@ -48,19 +59,19 @@ export const metadata: Metadata = {
     'CV',
   ],
   openGraph: {
-    title: 'Nguyen Phu Quy | Software Engineer',
-    description:
-      'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
+    title: siteTitle,
+    description: socialDescription,
     url: siteUrl,
     siteName: 'Nguyen Phu Quy Portfolio',
     locale: 'en_US',
     type: 'website',
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nguyen Phu Quy | Software Engineer',
-    description:
-      'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.',
+    title: siteTitle,
+    description: socialDescription,
+    images: [ogImage.url],
   },
 };
 
