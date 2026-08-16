@@ -20,7 +20,7 @@ Canonical site URL drives metadata, Open Graph, robots.txt, and sitemap.xml.
 
 - `metadataBase` and OG url use `siteUrl` from `src/lib/site.ts`.
 - Open Graph / Twitter tags come only from the Metadata API (no manual OG/Twitter/`description` metas in `<head>`).
-- `openGraph.images` (and `twitter.images`) resolve via `metadataBase`.
+- `openGraph.images` / `twitter.images` use `/open-graph/og-thumb.jpeg` (not `/public/...`).
 - `robots.ts` and `sitemap.ts` reference resolved canonical URL.
 - Default fallback is `https://fuwhis.io.vn` when env is unset.
 

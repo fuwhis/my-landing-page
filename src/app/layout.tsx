@@ -28,9 +28,10 @@ const siteDescription =
 const socialDescription =
   'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.';
 const ogImage = {
-  url: '/public/open-graph/og-thumb.jpeg',
-  width: 512,
-  height: 512,
+  // Files under `public/` are served from site root — do not prefix with `/public`.
+  url: '/open-graph/og-thumb.jpeg',
+  width: 2048,
+  height: 1152,
   alt: siteTitle,
 };
 

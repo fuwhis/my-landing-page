@@ -14,7 +14,7 @@ Defined in `src/app/layout.tsx`:
 - Default title and description reflect frontend engineering portfolio positioning.
 - Open Graph / Twitter: defined only via the Metadata API (no manual `<meta>` tags in `<head>`).
 - Open Graph: title, description, url, siteName, locale, images.
-- Social image: `/favicon/android-chrome-512x512.png` (resolved via `metadataBase`).
+- Social image: `/open-graph/og-thumb.jpeg` under `public/open-graph/` (URL path must **not** include `/public`; resolved absolute via `metadataBase`).
 - Icons and web manifest linked from `public/`.
 
 ## Discoverability Routes
