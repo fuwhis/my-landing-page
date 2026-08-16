@@ -12,7 +12,9 @@ Defined in `src/app/layout.tsx`:
 - `metadataBase` uses resolved `siteUrl`.
 - Title template: `%s | Nguyen Phu Quy`.
 - Default title and description reflect frontend engineering portfolio positioning.
+- Open Graph / Twitter: defined only via the Metadata API (no manual `<meta>` tags in `<head>`).
 - Open Graph: title, description, url, siteName, locale, images.
+- Social image: `/favicon/android-chrome-512x512.png` (resolved via `metadataBase`).
 - Icons and web manifest linked from `public/`.
 
 ## Discoverability Routes
