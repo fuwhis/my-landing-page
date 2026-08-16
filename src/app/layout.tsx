@@ -28,7 +28,7 @@ const siteDescription =
 const socialDescription =
   'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.';
 const ogImage = {
-  url: '/public/thumbnails/og-thumb.jpeg',
+  url: '/public/open-graph/og-thumb.jpeg',
   width: 512,
   height: 512,
   alt: siteTitle,
