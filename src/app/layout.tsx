@@ -29,7 +29,7 @@ const socialDescription =
   'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.';
 const ogImage = {
   // Absolute URL avoids host redirects (apex → www) that break Facebook image fetch.
-  url: `${siteUrl}/open-graph/og-thumb.jpeg`,
+  url: `${siteUrl}/open-graph/og-preview-thumbnail.png`,
   width: 2048,
   height: 1152,
   alt: siteTitle,

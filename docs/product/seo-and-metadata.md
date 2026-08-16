@@ -15,7 +15,7 @@ Defined in `src/app/layout.tsx`:
 - Default title and description reflect frontend engineering portfolio positioning.
 - Open Graph / Twitter: defined only via the Metadata API (no manual `<meta>` tags in `<head>`).
 - Open Graph: title, description, url, siteName, locale, images.
-- Social image: absolute URL `${siteUrl}/open-graph/og-thumb.jpeg` (file lives at `public/open-graph/og-thumb.jpeg`; never prefix with `/public`).
+- Social image: absolute URL `${siteUrl}/open-graph/og-preview-thumbnail.png` (file lives at `public/open-graph/og-preview-thumbnail.png`; never prefix with `/public`).
 - Icons and web manifest linked from `public/`.
 - `fb:app_id` is optional (Facebook Insights only). Not required for link preview title/description/image.
 
