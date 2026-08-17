@@ -30,8 +30,9 @@ const socialDescription =
 const ogImage = {
   // Absolute URL avoids host redirects (apex → www) that break Facebook image fetch.
   url: `${siteUrl}/open-graph/og-preview-thumbnail.png`,
-  width: 2048,
-  height: 1152,
+  type: 'image/png',
+  width: 2976,
+  height: 1182,
   alt: siteTitle,
 };
 
