@@ -20,12 +20,37 @@ export const profile: Profile = {
   contactDescription:
     'I usually respond within 24 hours. Feel free to reach out via LinkedIn or Email for Frontend roles, project collaboration, or technical discussion.',
   socialLinks: [
-    { label: 'GitHub', href: 'https://github.com/fuwhis' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fuwhis' },
-    { label: 'View my CV', href: '/resume/nguyen-phu-quy-cv.pdf' },
-    // { label: 'Contact me', href: '#contact-form' },
+    {
+      label: 'GitHub',
+      href: 'https://github.com/fuwhis',
+      icon: 'github',
+      visible: true,
+    },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/fuwhis',
+      icon: 'linkedin',
+      visible: true,
+    },
+    {
+      label: 'View my CV',
+      href: '/resume/nguyen-phu-quy-cv.pdf',
+      icon: 'cv',
+      visible: true,
+    },
+    // {
+    //   label: 'Contact me',
+    //   href: '#contact-form',
+    //   icon: 'mail',
+    //   visible: false,
+    // },
     // Replace href with a specific AWS or Azure badge URL when published.
-    { label: 'Credly Badge', href: 'https://www.credly.com' },
+    {
+      label: 'Credly Badge',
+      href: 'https://www.credly.com',
+      icon: 'credly',
+      visible: false,
+    },
   ],
   metrics: [
     {

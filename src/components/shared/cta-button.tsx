@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -8,25 +9,42 @@ type CtaButtonProps = {
   label: string;
   href?: string;
   variant?: 'default' | 'outline' | 'ghost';
+  size?: 'default' | 'lg' | 'sm';
   className?: string;
+  icon?: ReactNode;
+  visible?: boolean;
 };
 
 export function CtaButton({
   label,
   href,
   variant = 'default',
+  size = 'lg',
   className,
+  icon,
+  visible = true,
 }: CtaButtonProps) {
-  const classes = cn(
-    buttonVariants({ variant, size: 'lg' }),
-    'w-fit',
-    className,
+  if (!visible) {
+    return null;
+  }
+
+  const content = (
+    <>
+      {icon ? (
+        <span className="shrink-0" aria-hidden="true">
+          {icon}
+        </span>
+      ) : null}
+      {label}
+    </>
   );
+
+  const classes = cn(buttonVariants({ variant, size }), 'w-fit', className);
 
   if (!href) {
     return (
-      <Button variant={variant} size="lg" className={className}>
-        {label}
+      <Button variant={variant} size={size} className={className}>
+        {content}
       </Button>
     );
   }
@@ -38,7 +56,7 @@ export function CtaButton({
   if (isHash) {
     return (
       <a href={href} className={classes}>
-        {label}
+        {content}
       </a>
     );
   }
@@ -51,14 +69,14 @@ export function CtaButton({
         target="_blank"
         rel="noopener noreferrer"
       >
-        {label}
+        {content}
       </a>
     );
   }
 
   return (
     <Link href={href} className={classes}>
-      {label}
+      {content}
     </Link>
   );
 }
