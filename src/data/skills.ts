@@ -50,7 +50,7 @@ export const skillGroups: SkillGroup[] = [
       'Prompt Engineering',
       // 'AI-assisted debugging',
       // 'AI-assisted refactoring',
-      'Manual validation before production',
+      // 'Manual validation before production',
     ],
   },
   {

@@ -3,6 +3,7 @@
 import { Copy, Mail } from 'lucide-react';
 
 import { CtaButton } from '@/components/shared/cta-button';
+import { SocialLinkGlyph } from '@/components/shared/social-link-icon';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/toast';
 import { contactPanel } from '@/data/contact-panel';
@@ -98,14 +99,21 @@ export function ContactPanel() {
         <p className="text-surface-foreground text-sm font-medium">
           {contactPanel.profilesLabel}
         </p>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           {profile.socialLinks.map((link) => (
             <CtaButton
               key={link.label}
               label={link.label}
               href={link.href}
               variant="outline"
-              className="w-full"
+              size="default"
+              visible={link.visible}
+              icon={
+                link.icon ? (
+                  <SocialLinkGlyph icon={link.icon} className="size-5" />
+                ) : undefined
+              }
+              className="hover:bg-muted w-full justify-start shadow-none transition-[color,background-color,box-shadow] hover:shadow-sm"
             />
           ))}
         </div>

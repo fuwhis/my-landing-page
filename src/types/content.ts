@@ -1,6 +1,10 @@
+export type SocialLinkIcon = 'github' | 'linkedin' | 'cv' | 'credly' | 'mail';
+
 export type SocialLink = {
   label: string;
   href: string;
+  icon?: SocialLinkIcon;
+  visible?: boolean;
 };
 
 export type Metric = {

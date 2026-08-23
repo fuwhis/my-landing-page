@@ -12,14 +12,14 @@ Implementation guide for `src/components/ui/button.tsx` and related styles.
 
 ## Variants (CVA)
 
-| Prop                     | Class / behavior                       |
-| ------------------------ | -------------------------------------- |
-| `variant="default"`      | Neutral filled pill                    |
-| `variant="outline"`      | Neutral border pill                    |
-| `variant="ghost"`        | Text-only pill                         |
-| `variant="liquid"`       | Sky gradient surface (static; no GSAP) |
-| `size="default" \| "lg"` | Height / padding                       |
-| `glow`                   | GSAP edge-shine button (see below)     |
+| Prop                             | Class / behavior                              |
+| -------------------------------- | --------------------------------------------- |
+| `variant="default"`              | Neutral filled pill                           |
+| `variant="outline"`              | Neutral border pill                           |
+| `variant="ghost"`                | Text-only pill                                |
+| `variant="liquid"`               | Sky gradient surface (static; no GSAP)        |
+| `size="default" \| "lg" \| "sm"` | Height / padding; `sm` is `h-7` compact pills |
+| `glow`                           | GSAP edge-shine button (see below)            |
 
 Shape is always **`rounded-full`** (project button contract).
 

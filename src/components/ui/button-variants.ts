@@ -13,6 +13,7 @@ export const buttonVariants = cva(
       size: {
         default: 'h-10 px-5',
         lg: 'h-11 px-6 text-base',
+        sm: 'h-7 gap-1.5 px-3 text-xs',
       },
       glow: {
         true: '',

@@ -10,7 +10,7 @@ The homepage (`src/app/page.tsx`) must render sections in this order:
 4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card, fluid blob (left).
 5. **Projects** — featured work cards with links.
 6. **Skills** — categorized skill groups.
-7. **Contact** — heading from profile data; contact card with form plus Close kit (direct line, reply contract, profile CTAs including Credly Badge).
+7. **Contact** — heading from profile data; contact card with form plus Close kit (direct line, reply contract, profile CTAs). Credly Badge stays in `profile.socialLinks` with `visible: false`.
 
 Changing order requires updating this doc, `src/app/page.tsx`, and the story packet.
 

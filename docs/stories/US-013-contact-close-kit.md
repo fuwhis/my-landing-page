@@ -30,8 +30,9 @@ kept commented, not deleted.
 - Close kit content is read from `src/data/contact-panel.ts` plus
   `profile.email` and `profile.socialLinks`.
 - Email copy writes the address to the clipboard and confirms via toast.
-- Close kit renders GitHub, LinkedIn, View my CV, and Credly Badge as outline
-  CTAs. Contact me remains commented in `src/data/profile.ts`.
+- Close kit renders visible `profile.socialLinks` as compact outline CTAs with
+  icons. Each link has a `visible` prop. Credly Badge is present with
+  `visible: false`. Contact me remains commented in `src/data/profile.ts`.
 - Hero does not render the social CTA row (code commented in `hero-section.tsx`).
 - Close kit does not render Ask-me-about hooks, a faster-reply checklist,
   recruiter-template hint, or timezone.
@@ -43,8 +44,10 @@ kept commented, not deleted.
 
 - UI surfaces: Contact card (`src/sections/contact/contact-card.tsx`)
 - Data: `src/data/contact-panel.ts`, `src/data/profile.ts` `socialLinks`
-- Credly Badge `href` is a placeholder (`https://www.credly.com`) until a
-  specific AWS/Azure badge URL is added
+- Profile CTAs: `size="sm"` (`h-7`) outline pills with icons (`SocialLinkGlyph`),
+  `hover:bg-muted` plus light `hover:shadow-sm`. `visible: false` hides a link
+  without deleting it. GitHub/Credly use simple-icons; LinkedIn uses an inline
+  glyph (Lucide dropped brand icons).
 - Ask-me-about seeding remains on `ContactForm` (`seedMessage`) but is unwired
   from `ContactCard`
 - Message textarea shows a ghost `Clear message` control (top-right) only when it has characters; hidden when empty, disabled while sending or loading the recruiter template
@@ -72,4 +75,4 @@ None.
 
 ## Evidence
 
-- `npm run lint:check && npm run prettier:check && npm run build` (2026-08-24); profile CTAs moved to Close kit; Credly Badge placeholder
+- `npm run lint:check && npm run prettier:check && npm run build` (2026-08-24); compact profile CTAs with icons, hover fill/shadow, Credly hidden via `visible: false`

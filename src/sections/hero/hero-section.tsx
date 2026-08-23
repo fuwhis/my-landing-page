@@ -58,6 +58,7 @@ export function HeroSection() {
                 label={link.label}
                 href={link.href}
                 variant="outline"
+                visible={link.visible}
               />
             ))}
           </div>
