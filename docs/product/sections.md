@@ -10,21 +10,21 @@ The homepage (`src/app/page.tsx`) must render sections in this order:
 4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card, fluid blob (left).
 5. **Projects** — featured work cards with links.
 6. **Skills** — categorized skill groups.
-7. **Contact** — availability, email, social links.
+7. **Contact** — heading from profile data; contact card with form plus Close kit (direct channels, reply contract, Ask-me-about hooks).
 
 Changing order requires updating this doc, `src/app/page.tsx`, and the story packet.
 
 ## Content Sources
 
-| Section        | Data module                       | Component                                             |
-| -------------- | --------------------------------- | ----------------------------------------------------- |
-| Hero           | `src/data/profile.ts`             | `src/sections/hero/hero-section.tsx`                  |
-| How I Engineer | `src/data/vast.ts`                | `src/sections/vast/vast-section.tsx`                  |
-| About          | `src/data/profile.ts`             | `src/sections/about/about-section.tsx`                |
-| Experience     | `src/data/experience-timeline.ts` | `src/sections/experience/timeline-record-section.tsx` |
-| Projects       | `src/data/projects.ts`            | `src/sections/projects/projects-section.tsx`          |
-| Skills         | `src/data/skills.ts`              | `src/sections/skills/skills-section.tsx`              |
-| Contact        | `src/data/profile.ts`             | `src/sections/contact/contact-section.tsx`            |
+| Section        | Data module                                        | Component                                             |
+| -------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| Hero           | `src/data/profile.ts`                              | `src/sections/hero/hero-section.tsx`                  |
+| How I Engineer | `src/data/vast.ts`                                 | `src/sections/vast/vast-section.tsx`                  |
+| About          | `src/data/profile.ts`                              | `src/sections/about/about-section.tsx`                |
+| Experience     | `src/data/experience-timeline.ts`                  | `src/sections/experience/timeline-record-section.tsx` |
+| Projects       | `src/data/projects.ts`                             | `src/sections/projects/projects-section.tsx`          |
+| Skills         | `src/data/skills.ts`                               | `src/sections/skills/skills-section.tsx`              |
+| Contact        | `src/data/profile.ts`, `src/data/contact-panel.ts` | `src/sections/contact/contact-section.tsx`            |
 
 ## Layout Contract
 
@@ -32,6 +32,7 @@ Changing order requires updating this doc, `src/app/page.tsx`, and the story pac
 - Optional `decoration` and `bubbles` slots render full-bleed layers behind content (`z-10`).
 - Vertical rhythm: `py-14 sm:py-20`, max width `max-w-6xl`, horizontal padding `px-6 sm:px-10`.
 - Experience timeline entries with `projectSlug` are interactive buttons that scroll to the matching project card; they use the same surface styling as non-linked entries (no hover or focus background).
+- Contact `#contact-form` card: large screens use `lg:grid-cols-[minmax(0,36rem)_minmax(16rem,1fr)]` (form column + Close kit). Small screens stack intro, Close kit, then form. Close kit copy lives in `src/data/contact-panel.ts`.
 
 ## Acceptance Signals
 

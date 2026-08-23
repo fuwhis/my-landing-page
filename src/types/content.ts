@@ -51,6 +51,30 @@ export type VastItem = {
   description: string;
 };
 
+export type ContactHook = {
+  id: string;
+  label: string;
+  messagePrompt: string;
+};
+
+export type ContactPanelContent = {
+  eyebrow: string;
+  title: string;
+  directLineLabel: string;
+  emailLabel: string;
+  emailCopyLabel: string;
+  emailCopiedTitle: string;
+  emailCopyFailedTitle: string;
+  linkedInLabel: string;
+  contract: string;
+  nextStep: string;
+  hooksLabel: string;
+  hooksHint: string;
+  hooks: ContactHook[];
+  formIntroTitle: string;
+  formIntroDescription: string;
+};
+
 export type Profile = {
   fullName: string;
   role: string;

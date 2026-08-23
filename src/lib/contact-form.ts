@@ -46,6 +46,31 @@ export function validateContactForm(
   return errors;
 }
 
+export function mergeContactMessage(current: string, seed: string): string {
+  const trimmedCurrent = current.trim();
+  const trimmedSeed = seed.trim();
+
+  if (!trimmedSeed) {
+    return current;
+  }
+
+  if (trimmedCurrent.includes(trimmedSeed)) {
+    return trimmedCurrent;
+  }
+
+  if (!trimmedCurrent) {
+    return trimmedSeed.slice(0, CONTACT_FORM_LIMITS.messageMax);
+  }
+
+  const next = `${trimmedCurrent}\n\n${trimmedSeed}`;
+
+  if (next.length <= CONTACT_FORM_LIMITS.messageMax) {
+    return next;
+  }
+
+  return trimmedCurrent;
+}
+
 export function trimContactFormValues(
   values: ContactFormFields,
 ): ContactFormFields {

@@ -1,4 +1,4 @@
-/* Contact form status UI — reserved for countdown progress bars */
+/* Contact form — owner: src/sections/contact/contact-form.tsx */
 
 @keyframes message-status-countdown {
   from {
@@ -7,4 +7,37 @@
   to {
     transform: scaleX(0);
   }
+}
+
+.contact-message {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted-foreground) 40%, transparent)
+    transparent;
+}
+
+.contact-message::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contact-message::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.contact-message::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contact-message::-webkit-scrollbar-thumb {
+  background-color: color-mix(
+    in srgb,
+    var(--muted-foreground) 30%,
+    transparent
+  );
+  border-radius: 999px;
+}
+
+.contact-message::-webkit-scrollbar-corner {
+  background: transparent;
 }
