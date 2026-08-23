@@ -2,7 +2,7 @@
 
 import { useToast } from '@/components/ui/toast';
 import emailjs from '@emailjs/browser';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, X } from 'lucide-react';
 import Script from 'next/script';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -13,6 +13,7 @@ import {
   CONTACT_FORM_LIMITS,
   formatContactTimestamp,
   getEmailJsConfig,
+  mergeContactMessage,
   trimContactFormValues,
   validateContactForm,
   type ContactFormFieldErrors,
@@ -42,7 +43,15 @@ const fieldClassName = cn(
   'focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:outline-none',
 );
 
-export function ContactForm() {
+type ContactFormProps = {
+  seedMessage?: string | null;
+  onSeedConsumed?: () => void;
+};
+
+export function ContactForm({
+  seedMessage = null,
+  onSeedConsumed,
+}: ContactFormProps) {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const { success: showSuccessToast, error: showErrorToast } = useToast();
@@ -66,6 +75,7 @@ export function ContactForm() {
     reset,
     setValue,
     watch,
+    getValues,
     formState: { errors: rhfErrors },
   } = useForm<ContactFormValues>({
     defaultValues,
@@ -148,6 +158,30 @@ export function ContactForm() {
     window.history.replaceState(null, '', cleanUrl);
   };
 
+  const clearMessage = () => {
+    if (isLoading || isTemplateLoading) {
+      return;
+    }
+
+    setValue('message', '', { shouldDirty: true, shouldValidate: false });
+    setFieldErrors((current) => {
+      if (!current.message) {
+        return current;
+      }
+
+      const next = { ...current };
+      delete next.message;
+
+      return next;
+    });
+
+    const field = document.getElementById('contact-message');
+
+    if (field instanceof HTMLTextAreaElement) {
+      field.focus();
+    }
+  };
+
   const applyRecruiterTemplate = async () => {
     if (isLoading || isTemplateLoading) {
       return;
@@ -162,7 +196,7 @@ export function ContactForm() {
 
       setValue('message', buildRecruiterOutreachTemplate(profile.fullName), {
         shouldDirty: true,
-        shouldValidate: true,
+        shouldValidate: false,
       });
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
@@ -273,8 +307,38 @@ export function ContactForm() {
     fieldErrors[field] ?? rhfErrors[field]?.message;
 
   useEffect(() => {
+    setFieldErrors((current) => {
+      if (!current.message) {
+        return current;
+      }
+
+      const next = { ...current };
+      delete next.message;
+
+      return next;
+    });
+  }, [message]);
+
+  useEffect(() => {
     renderRecaptcha();
   }, [renderRecaptcha]);
+
+  useEffect(() => {
+    if (!seedMessage) {
+      return;
+    }
+
+    const next = mergeContactMessage(getValues('message') ?? '', seedMessage);
+    setValue('message', next, { shouldDirty: true, shouldValidate: false });
+    onSeedConsumed?.();
+
+    const field = document.getElementById('contact-message');
+
+    if (field instanceof HTMLTextAreaElement) {
+      field.focus();
+      field.setSelectionRange(next.length, next.length);
+    }
+  }, [seedMessage, getValues, setValue, onSeedConsumed]);
 
   // useEffect(() => {
   //   const sub = watch(() => {
@@ -420,31 +484,48 @@ export function ContactForm() {
             </Button>
           </div>
 
-          <textarea
-            {...register('message', { required: 'Message is required.' })}
-            id="contact-message"
-            name="message"
-            rows={6}
-            maxLength={CONTACT_FORM_LIMITS.messageMax}
-            placeholder="Share role details, team context, or next steps."
-            className={cn(
-              fieldClassName,
-              'min-h-[160px] resize-y',
-              getError('message') && 'border-red-300',
-            )}
-            disabled={isLoading || isTemplateLoading}
-          />
+          <div className="relative">
+            <textarea
+              {...register('message')}
+              id="contact-message"
+              name="message"
+              rows={6}
+              maxLength={CONTACT_FORM_LIMITS.messageMax}
+              placeholder="Share role details, team context, or next steps."
+              className={cn(
+                fieldClassName,
+                'contact-message min-h-[160px] resize-y pr-14',
+                getError('message') && 'border-red-300',
+              )}
+              disabled={isLoading || isTemplateLoading}
+            />
+
+            {message.length > 0 ? (
+              <Button
+                type="button"
+                variant="ghost"
+                aria-label="Clear message"
+                className="text-subtle-foreground hover:text-surface-foreground hover:bg-muted bg-surface absolute top-2.5 right-5 h-8 w-8 p-0"
+                onClick={clearMessage}
+                disabled={isLoading || isTemplateLoading}
+              >
+                <X className="h-3.5 w-3.5" aria-hidden="true" />
+              </Button>
+            ) : null}
+          </div>
 
           <div className="text-subtle-foreground flex flex-wrap items-center justify-between gap-2 text-xs">
             {getError('message') ? (
               <p className="text-sm text-red-600" role="alert">
                 {getError('message')}
               </p>
-            ) : (
+            ) : message.length < CONTACT_FORM_LIMITS.messageMin ? (
               <span>Minimum {CONTACT_FORM_LIMITS.messageMin} characters.</span>
-            )}
+            ) : null}
 
-            <span aria-live="polite">{messageCharsLeft} characters left</span>
+            <span className="ml-auto" aria-live="polite">
+              {messageCharsLeft} characters left
+            </span>
           </div>
         </div>
 

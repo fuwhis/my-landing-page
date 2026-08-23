@@ -29,7 +29,7 @@ src/styles/globals.css
 | `src/styles/components/hero-fluid.css` | Fluid blob + bubble animations (`.hero-fluid*`) — owners: `HeroFluidBlob`, `HeroFluidBubbles` |
 | `src/styles/components/button.css`     | Button variants: `.button-liquid`, `.button-glow*`                                            |
 | `src/styles/components/toast.css`      | Toast enter/open/exit motion (`.toast-surface`)                                               |
-| `src/styles/components/contact.css`    | Contact-specific keyframes (e.g. status countdown)                                            |
+| `src/styles/components/contact.css`    | Contact form: message textarea scrollbar, status countdown keyframes                          |
 
 Add a new file under `components/` when a feature owns **10+ lines** of custom CSS or
 has its own keyframes and reduced-motion rules. Wire it from `globals.css` in logical
