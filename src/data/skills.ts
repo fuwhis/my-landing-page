@@ -1,4 +1,4 @@
-import type { SkillGroup } from '@/types/content';
+import type { SkillGroup } from '@/types/content'
 
 export const skillGroups: SkillGroup[] = [
   {
@@ -50,11 +50,11 @@ export const skillGroups: SkillGroup[] = [
       'Prompt Engineering',
       // 'AI-assisted debugging',
       // 'AI-assisted refactoring',
-      'Manual validation before production',
+      // 'Manual validation before production',
     ],
   },
   {
     title: 'Deployment & Infrastructure',
     items: ['AWS', 'Vercel', 'Docker', 'Nginx', 'GitHub Actions'],
   },
-];
+]

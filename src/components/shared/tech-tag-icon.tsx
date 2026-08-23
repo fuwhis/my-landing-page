@@ -1,13 +1,13 @@
 import {
   Bot,
   Braces,
-  CheckCircle2,
   CircuitBoard,
   Code2,
   Database,
   Layers,
+  MessageSquareMore,
   Server,
-  WandSparkles,
+  ShieldCheck,
   Wrench,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -69,7 +69,7 @@ const iconLabelAliases: Record<string, string> = {
 
 const lucideFallbackMap: Record<string, IconFactory> = {
   'Prompt Engineering': (className) => (
-    <WandSparkles className={className} aria-hidden="true" />
+    <MessageSquareMore className={className} aria-hidden="true" />
   ),
   'AI-assisted debugging': (className) => (
     <Bot className={className} aria-hidden="true" />
@@ -78,7 +78,7 @@ const lucideFallbackMap: Record<string, IconFactory> = {
     <CircuitBoard className={className} aria-hidden="true" />
   ),
   'Manual validation before production': (className) => (
-    <CheckCircle2 className={className} aria-hidden="true" />
+    <ShieldCheck className={className} aria-hidden="true" />
   ),
 };
 
