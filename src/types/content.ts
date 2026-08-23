@@ -68,9 +68,10 @@ export type ContactPanelContent = {
   linkedInLabel: string;
   contract: string;
   nextStep: string;
-  hooksLabel: string;
-  hooksHint: string;
-  hooks: ContactHook[];
+  profilesLabel: string;
+  hooksLabel?: string;
+  hooksHint?: string;
+  hooks?: ContactHook[];
   formIntroTitle: string;
   formIntroDescription: string;
 };

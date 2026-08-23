@@ -11,10 +11,11 @@ normal
 ## Product Contract
 
 The Contact card fills its desktop right column (~400px) with a Close kit aside:
-direct channels, a 24-hour reply contract, and Ask-me-about hooks sourced from
-shipped project outcomes. Copy lives in `src/data/contact-panel.ts`. On small
-screens the kit stacks above the form. The kit does not include a faster-reply
-checklist or a timezone row.
+direct line (email copy), a 24-hour reply contract, and profile CTAs from
+`profile.socialLinks` (GitHub, LinkedIn, View my CV, Credly Badge). Copy lives in
+`src/data/contact-panel.ts`. On small screens the kit stacks above the form.
+Hero does not render the same CTA row. Ask-me-about hooks and Contact me are
+kept commented, not deleted.
 
 ## Relevant Product Docs
 
@@ -27,21 +28,25 @@ checklist or a timezone row.
   `minmax(0,36rem)`, Close kit `minmax(16rem,1fr)`.
 - Mobile (single column) order is form intro, Close kit, then the form.
 - Close kit content is read from `src/data/contact-panel.ts` plus
-  `profile.email` and the LinkedIn item in `profile.socialLinks`.
+  `profile.email` and `profile.socialLinks`.
 - Email copy writes the address to the clipboard and confirms via toast.
-- Close kit does not render a faster-reply checklist, recruiter-template hint, or timezone.
-- Ask-me-about hooks insert `messagePrompt` into the contact message field
-  (append when the field already has text) and focus the textarea.
-- No second Hero-style social button row. No new motion, providers, or API
-  routes.
+- Close kit renders GitHub, LinkedIn, View my CV, and Credly Badge as outline
+  CTAs. Contact me remains commented in `src/data/profile.ts`.
+- Hero does not render the social CTA row (code commented in `hero-section.tsx`).
+- Close kit does not render Ask-me-about hooks, a faster-reply checklist,
+  recruiter-template hint, or timezone.
+- No new motion, providers, or API routes.
 - `prefers-reduced-motion` is unchanged (no new animation).
 - `npm run lint:check && npm run prettier:check && npm run build` pass.
 
 ## Design Notes
 
 - UI surfaces: Contact card (`src/sections/contact/contact-card.tsx`)
-- Data: `src/data/contact-panel.ts`
-- Form seeding: `mergeContactMessage` in `src/lib/contact-form.ts`
+- Data: `src/data/contact-panel.ts`, `src/data/profile.ts` `socialLinks`
+- Credly Badge `href` is a placeholder (`https://www.credly.com`) until a
+  specific AWS/Azure badge URL is added
+- Ask-me-about seeding remains on `ContactForm` (`seedMessage`) but is unwired
+  from `ContactCard`
 - Message textarea shows a ghost `Clear message` control (top-right) only when it has characters; hidden when empty, disabled while sending or loading the recruiter template
 - `Message is required.` appears only after Send with an empty message; typing or clearing dismisses it
 - `Minimum 20 characters.` is a hint shown when `message.length < 20` (raw length, including special characters) and hidden at 20+
@@ -67,4 +72,4 @@ None.
 
 ## Evidence
 
-- `npm run lint:check && npm run prettier:check && npm run build` (2026-08-24); timezone removed; message clear control; message validation and scrollbar polish
+- `npm run lint:check && npm run prettier:check && npm run build` (2026-08-24); profile CTAs moved to Close kit; Credly Badge placeholder

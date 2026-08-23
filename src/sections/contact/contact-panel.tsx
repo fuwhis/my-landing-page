@@ -1,22 +1,15 @@
 'use client';
 
-import { ArrowUpRight, Copy, Mail } from 'lucide-react';
+import { Copy, Mail } from 'lucide-react';
 
+import { CtaButton } from '@/components/shared/cta-button';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/toast';
 import { contactPanel } from '@/data/contact-panel';
 import { profile } from '@/data/profile';
 
-type ContactPanelProps = {
-  onAskAbout: (prompt: string) => void;
-};
-
-export function ContactPanel({ onAskAbout }: ContactPanelProps) {
+export function ContactPanel() {
   const { success: showSuccessToast, error: showErrorToast } = useToast();
-
-  const linkedIn = profile.socialLinks.find(
-    (link) => link.label === contactPanel.linkedInLabel,
-  );
 
   const copyEmail = async () => {
     try {
@@ -75,6 +68,11 @@ export function ContactPanel({ onAskAbout }: ContactPanelProps) {
           </Button>
         </div>
 
+        {/* Duplicate LinkedIn text link — replaced by Profiles CTAs
+        const linkedIn = profile.socialLinks.find(
+          (link) => link.label === contactPanel.linkedInLabel,
+        );
+
         {linkedIn ? (
           <a
             href={linkedIn.href}
@@ -86,6 +84,7 @@ export function ContactPanel({ onAskAbout }: ContactPanelProps) {
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
         ) : null}
+        */}
       </div>
 
       <div className="space-y-1">
@@ -95,6 +94,24 @@ export function ContactPanel({ onAskAbout }: ContactPanelProps) {
         <p className="text-muted-foreground text-sm">{contactPanel.nextStep}</p>
       </div>
 
+      <div className="space-y-3">
+        <p className="text-surface-foreground text-sm font-medium">
+          {contactPanel.profilesLabel}
+        </p>
+        <div className="flex flex-col gap-3">
+          {profile.socialLinks.map((link) => (
+            <CtaButton
+              key={link.label}
+              label={link.label}
+              href={link.href}
+              variant="outline"
+              className="w-full"
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Ask me about — replaced by Profiles CTAs
       <div className="space-y-2">
         <p className="text-surface-foreground text-sm font-medium">
           {contactPanel.hooksLabel}
@@ -103,7 +120,7 @@ export function ContactPanel({ onAskAbout }: ContactPanelProps) {
           {contactPanel.hooksHint}
         </p>
         <div className="flex flex-col gap-2">
-          {contactPanel.hooks.map((hook) => (
+          {contactPanel.hooks?.map((hook) => (
             <button
               key={hook.id}
               type="button"
@@ -115,6 +132,7 @@ export function ContactPanel({ onAskAbout }: ContactPanelProps) {
           ))}
         </div>
       </div>
+      */}
     </aside>
   );
 }

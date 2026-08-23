@@ -4,7 +4,7 @@ import {
   HeroFluidBlob,
   HeroFluidBubbles,
 } from '@/components/motion/hero-fluid-backdrop';
-import { CtaButton } from '@/components/shared/cta-button';
+// import { CtaButton } from '@/components/shared/cta-button';
 import { MetricItem } from '@/components/shared/metric-item';
 import { SectionContainer } from '@/components/shared/section-container';
 import { TagBadge } from '@/components/shared/tag-badge';
@@ -50,6 +50,7 @@ export function HeroSection() {
             </span>
           </div>
 
+          {/* CTAs moved to Contact Close kit
           <div className="flex flex-wrap gap-3 pt-2">
             {profile.socialLinks.map((link) => (
               <CtaButton
@@ -60,6 +61,7 @@ export function HeroSection() {
               />
             ))}
           </div>
+          */}
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">

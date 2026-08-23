@@ -23,7 +23,9 @@ export const profile: Profile = {
     { label: 'GitHub', href: 'https://github.com/fuwhis' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fuwhis' },
     { label: 'View my CV', href: '/resume/nguyen-phu-quy-cv.pdf' },
-    { label: 'Contact me', href: '#contact-form' },
+    // { label: 'Contact me', href: '#contact-form' },
+    // Replace href with a specific AWS or Azure badge URL when published.
+    { label: 'Credly Badge', href: 'https://www.credly.com' },
   ],
   metrics: [
     {

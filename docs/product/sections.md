@@ -4,13 +4,13 @@
 
 The homepage (`src/app/page.tsx`) must render sections in this order:
 
-1. **Hero** — name, role, tagline, primary CTAs, metrics, fluid blob (right) + rising bubbles.
+1. **Hero** — name, role, tagline, location, email, metrics, fluid blob (right) + rising bubbles. Profile CTAs live in Contact Close kit.
 2. **How I Engineer (V.A.S.T)** — Value-driven, Adaptable, System Thinking, Technical Depth; scroll-triggered entrance via GSAP.
 3. **About** — summary paragraphs from profile data.
 4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card, fluid blob (left).
 5. **Projects** — featured work cards with links.
 6. **Skills** — categorized skill groups.
-7. **Contact** — heading from profile data; contact card with form plus Close kit (direct channels, reply contract, Ask-me-about hooks).
+7. **Contact** — heading from profile data; contact card with form plus Close kit (direct line, reply contract, profile CTAs including Credly Badge).
 
 Changing order requires updating this doc, `src/app/page.tsx`, and the story packet.
 
