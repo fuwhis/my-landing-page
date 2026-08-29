@@ -2,11 +2,11 @@
 
 @layer components {
   .tag-badge--animated {
-    transition: transform 0.2s ease;
+    transition: transform 0.25s ease;
   }
 
   .tag-badge--animated:hover {
-    transform: scale(1.05);
+    transform: scale(1.12);
   }
 
   @media (prefers-reduced-motion: reduce) {
