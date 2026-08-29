@@ -1,0 +1,21 @@
+/* Tag badge hover scale — owner: src/components/shared/tag-badge.tsx */
+
+@layer components {
+  .tag-badge--animated {
+    transition: transform 0.25s ease;
+  }
+
+  .tag-badge--animated:hover {
+    transform: scale(1.12);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tag-badge--animated {
+      transition: none;
+    }
+
+    .tag-badge--animated:hover {
+      transform: none;
+    }
+  }
+}

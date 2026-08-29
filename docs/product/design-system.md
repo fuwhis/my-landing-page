@@ -33,7 +33,7 @@ Living product contract for visual and interaction rules. As-built detail lives 
 | ----------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | Speed Dial FAB    | `src/components/ui/speed-dial-fab.tsx`        | Fixed bottom-right settings menu; theme toggle sub-action; sky focus ring; see `src/styles/components/speed-dial-fab.css` |
 | Button            | `src/components/ui/button.tsx`                | `rounded-full`, neutral default, sky focus ring; optional `glow` — see `docs/product/components/button.md`                |
-| Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface                                                                                                     |
+| Tag badge         | `src/components/shared/tag-badge.tsx`         | Pill, neutral surface; optional `animate` prop for hover scale (`src/styles/components/tag-badge.css`)                    |
 | Section container | `src/components/shared/section-container.tsx` | Shared vertical rhythm and width; optional `decoration` (blob) and `bubbles` slots behind content                         |
 | Cards             | Various sections                              | `rounded-2xl border border-border bg-surface`                                                                             |
 
