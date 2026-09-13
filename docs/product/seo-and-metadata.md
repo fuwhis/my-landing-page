@@ -16,7 +16,8 @@ Defined in `src/app/layout.tsx`:
 - Open Graph / Twitter: defined only via the Metadata API (no manual `<meta>` tags in `<head>`).
 - Open Graph: title, description, url, siteName, locale, images.
 - Social image: absolute URL `${siteUrl}/open-graph/og-preview-thumbnail.png` (file lives at `public/open-graph/og-preview-thumbnail.png`; never prefix with `/public`). Width/height must match the file so crawlers do not reject the image.
-- Icons and web manifest linked from `public/`.
+- Icons: `/favicon.ico` plus PNG sizes `16x16` / `32x32` and apple-touch from `public/favicon/`.
+- Web app manifest: `public/favicon/site.fuwhis.webmanifest`, linked from `layout.tsx` as `/favicon/site.fuwhis.webmanifest` (Android chrome icons + install metadata).
 - `fb:app_id` is optional (Facebook Insights only). Not required for link preview title/description/image.
 
 ## Discoverability Routes
