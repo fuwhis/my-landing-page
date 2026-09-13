@@ -40,7 +40,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   manifest: '/manifest.webmanifest',
   icons: {
-    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    icon: [
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      {
+        url: '/favicon/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
     shortcut: [{ url: '/favicon.ico', type: 'image/x-icon' }],
     apple: [{ url: '/favicon/apple-touch-icon.png', type: 'image/png' }],
   },
