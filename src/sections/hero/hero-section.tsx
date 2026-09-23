@@ -4,7 +4,7 @@ import {
   HeroFluidBlob,
   HeroFluidBubbles,
 } from '@/components/motion/hero-fluid-backdrop';
-// import { CtaButton } from '@/components/shared/cta-button';
+import { Typewriter } from '@/components/motion/typewriter';
 import { MetricItem } from '@/components/shared/metric-item';
 import { SectionContainer } from '@/components/shared/section-container';
 import { TagBadge } from '@/components/shared/tag-badge';
@@ -32,12 +32,7 @@ export function HeroSection() {
             {profile.fullName}
           </h1>
           <TagBadge label={`${profile.role} · 4+ Years`} />
-          <p className="text-surface-foreground max-w-2xl text-xl font-medium">
-            {profile.tagline}
-          </p>
-          <p className="text-muted-foreground max-w-2xl text-base leading-relaxed">
-            {profile.summary}
-          </p>
+          <Typewriter text={profile.heroTypewriterLines} />
 
           <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
             <span className="inline-flex items-center gap-2">
@@ -49,20 +44,6 @@ export function HeroSection() {
               {profile.email}
             </span>
           </div>
-
-          {/* CTAs moved to Contact Close kit
-          <div className="flex flex-wrap gap-3 pt-2">
-            {profile.socialLinks.map((link) => (
-              <CtaButton
-                key={link.label}
-                label={link.label}
-                href={link.href}
-                variant="outline"
-                visible={link.visible}
-              />
-            ))}
-          </div>
-          */}
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">

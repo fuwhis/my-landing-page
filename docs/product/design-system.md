@@ -48,8 +48,12 @@ Living product contract for visual and interaction rules. As-built detail lives 
   scroll-once LTR highlight reveal on selected phrases; fill color from
   `--text-highlighter-color` in `tokens.css` (overridable via `highlightColor`
   prop; GSAP + Tailwind/inline — see `docs/decisions/0009-gsap-first-fancy-motion-roadmap.md`).
+- Hero supporting copy uses `Typewriter` (`src/components/motion/typewriter.tsx`)
+  cycling `profile.heroTypewriterLines` (React timers + CSS caret; no Motion).
+  Document `h1` stays `profile.fullName`.
 - Under `prefers-reduced-motion: reduce`, blob, bubble, and highlighter entrance
-  animations are disabled (highlighter stays fully painted).
+  animations are disabled (highlighter stays fully painted); typewriter shows
+  static lines with no caret loop.
 - Do not add competing accent systems without an explicit re-brand decision.
 - Do not add `motion` / Framer Motion without superseding decision 0009.
 

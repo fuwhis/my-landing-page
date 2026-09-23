@@ -97,6 +97,8 @@ export type Profile = {
   resumeHref: string;
   availability: string;
   summary: string;
+  /** Hero typewriter cycle lines (replaces tagline/summary in the Hero UI). */
+  heroTypewriterLines: string[];
   aboutParagraphs: AboutParagraph[];
   contactTitle: string;
   contactDescription: string;
