@@ -48,8 +48,12 @@ Living product contract for visual and interaction rules. As-built detail lives 
   scroll-once LTR highlight reveal on selected phrases; fill color from
   `--text-highlighter-color` in `tokens.css` (overridable via `highlightColor`
   prop; GSAP + Tailwind/inline — see `docs/decisions/0009-gsap-first-fancy-motion-roadmap.md`).
-- Under `prefers-reduced-motion: reduce`, blob, bubble, and highlighter entrance
-  animations are disabled (highlighter stays fully painted).
+- V.A.S.T decorative letters use `Letter3DSwap`
+  (`src/components/motion/letter-3d-swap.tsx`): hover on fine pointer; auto-swap
+  in-view on touch/coarse; static under reduced-motion.
+- Under `prefers-reduced-motion: reduce`, blob, bubble, highlighter entrance, and
+  letter-3d swap animations are disabled (highlighter stays fully painted;
+  letters stay static).
 - Do not add competing accent systems without an explicit re-brand decision.
 - Do not add `motion` / Framer Motion without superseding decision 0009.
 
