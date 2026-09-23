@@ -2,7 +2,7 @@
 
 ## Status
 
-in progress
+implemented — awaiting visual review before merge
 
 ## Lane
 
@@ -65,4 +65,7 @@ None beyond story matrix row.
 
 ## Evidence
 
-Pending validation after implementation.
+- `npm run lint:check && npm run prettier:check && npm run build` — pass
+- Hero uses `Typewriter` + `heroTypewriterLines`; `h1` remains `fullName`
+- Reduced-motion / pending: static lines; animate mode: type/delete + CSS caret
+- PR: https://github.com/fuwhis/my-landing-page/pull/65
