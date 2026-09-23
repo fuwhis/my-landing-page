@@ -30,8 +30,8 @@ export function HeroSection() {
       <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div className="space-y-6">
           <PageMascot
-              directions="/mascots/otter-directions.webp"
-              reactions="/mascots/otter-reactions.webp"
+            directions="/mascots/otter-directions.webp"
+            reactions="/mascots/otter-reactions.webp"
             size={112}
             label={`${profile.fullName} mascot`}
             className="shrink-0"
