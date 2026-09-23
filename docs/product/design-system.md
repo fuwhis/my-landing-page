@@ -45,8 +45,9 @@ Living product contract for visual and interaction rules. As-built detail lives 
 - Experience timeline reuses `HeroFluidBlob` with `position="left"` (horizontal mirror)
   and inset props for placement.
 - About uses `TextHighlighter` (`src/components/motion/text-highlighter.tsx`) for
-  scroll-once LTR highlight reveal on selected phrases (sky gradient tokens;
-  GSAP + CSS only — see `docs/decisions/0009-gsap-first-fancy-motion-roadmap.md`).
+  scroll-once LTR highlight reveal on selected phrases; fill color from
+  `--text-highlighter-color` in `tokens.css` (overridable via `highlightColor`
+  prop; GSAP + Tailwind/inline — see `docs/decisions/0009-gsap-first-fancy-motion-roadmap.md`).
 - Under `prefers-reduced-motion: reduce`, blob, bubble, and highlighter entrance
   animations are disabled (highlighter stays fully painted).
 - Do not add competing accent systems without an explicit re-brand decision.

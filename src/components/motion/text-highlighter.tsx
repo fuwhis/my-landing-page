@@ -39,8 +39,8 @@ type TextHighlighterProps = {
   };
   className?: string;
   /**
-   * CSS color for the highlight fill. When omitted, uses sky token via
-   * `--text-highlighter-color` (light/dark in CSS).
+   * CSS color for the highlight fill. When omitted, uses
+   * `--text-highlighter-color` from `tokens.css` (light/dark).
    */
   highlightColor?: string;
   /** @default "ltr" */
@@ -225,15 +225,13 @@ export const TextHighlighter = forwardRef<
     delay,
   ]);
 
+  const fillColor = highlightColor ?? 'var(--text-highlighter-color)';
+
   const highlightStyle = {
-    backgroundImage: highlightColor
-      ? `linear-gradient(${highlightColor}, ${highlightColor})`
-      : undefined,
+    backgroundImage: `linear-gradient(${fillColor}, ${fillColor})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition,
     backgroundSize: collapsedSize,
-    boxDecorationBreak: 'clone',
-    WebkitBoxDecorationBreak: 'clone',
   } as React.CSSProperties;
 
   return (
@@ -253,7 +251,10 @@ export const TextHighlighter = forwardRef<
     >
       <span
         ref={highlightRef}
-        className={cn('text-highlighter', className)}
+        className={cn(
+          'inline rounded-[0.2em] bg-transparent box-decoration-clone px-[0.12em] text-inherit not-italic',
+          className,
+        )}
         style={highlightStyle}
       >
         {children}
