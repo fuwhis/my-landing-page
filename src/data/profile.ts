@@ -10,9 +10,9 @@ export const profile: Profile = {
   availability:
     'Open to Front-end Engineering opportunities on product-focused teams',
   summary:
-    "Hi — I'm Quy (Fuwhis). I build frontend for real products: clear for users, kind to the people who maintain it.",
+    "Hi — I'm Quy Nguyen (Fuwhis). I build frontend for real products: clear for users, kind to the people who maintain it.",
   heroTypewriterLines: [
-    "Hi 👋 I'm Quy Nguyen (Fuwhis).",
+    "Hi 👋, I'm Quy Nguyen (Fuwhis).",
     'Code today, ship our futures.',
   ],
   aboutParagraphs: [
