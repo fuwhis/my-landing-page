@@ -1,3 +1,4 @@
+import { TextHighlighter } from '@/components/motion/text-highlighter';
 import { SectionContainer } from '@/components/shared/section-container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { profile } from '@/data/profile';
@@ -13,12 +14,20 @@ export function AboutSection() {
         />
 
         <div className="space-y-6">
-          {profile.aboutParagraphs.map((paragraph) => (
+          {profile.aboutParagraphs.map((paragraph, paragraphIndex) => (
             <p
-              key={paragraph}
+              key={paragraphIndex}
               className="text-muted-foreground text-base leading-relaxed"
             >
-              {paragraph}
+              {paragraph.segments.map((segment, segmentIndex) =>
+                segment.kind === 'highlight' ? (
+                  <TextHighlighter key={segmentIndex}>
+                    {segment.text}
+                  </TextHighlighter>
+                ) : (
+                  <span key={segmentIndex}>{segment.text}</span>
+                ),
+              )}
             </p>
           ))}
         </div>

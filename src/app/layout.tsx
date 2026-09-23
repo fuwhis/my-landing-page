@@ -24,9 +24,9 @@ const geistMono = Geist_Mono({
 
 const siteTitle = 'Nguyen Phu Quy | Software Engineer';
 const siteDescription =
-  'Portfolio and CV of Nguyen Phu Quy, a Frontend Engineer with 4+ years delivering scalable, high-performance web products.';
+  'Portfolio of Nguyen Phu Quy (Fuwhis) — frontend engineer building clear, production-ready web products with React, Vue, Next.js, and Nuxt.';
 const socialDescription =
-  'Portfolio and CV showcasing product-focused frontend engineering work, experience, and selected projects.';
+  'Frontend engineer. Code today, ship our futures. Selected work, experience, and ways to reach Quy.';
 const ogImage = {
   // Absolute URL avoids host redirects (apex → www) that break Facebook image fetch.
   url: `${siteUrl}/open-graph/og-preview-thumbnail.png`,
