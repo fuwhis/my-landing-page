@@ -6,7 +6,8 @@ The homepage (`src/app/page.tsx`) must render sections in this order:
 
 1. **Hero** — name, role, tagline, location, email, metrics, fluid blob (right) + rising bubbles. Profile CTAs live in Contact Close kit.
 2. **How I Engineer (V.A.S.T)** — Value-driven, Adaptable, System Thinking, Technical Depth; scroll-triggered entrance via GSAP.
-3. **About** — summary paragraphs from profile data.
+3. **About** — summary paragraphs from profile data; optional GSAP text
+   highlighters on selected phrases (`TextHighlighter`).
 4. **Experience** — vertical timeline of roles, one outcome sentence per entry, optional scroll link to a matching project card, fluid blob (left).
 5. **Projects** — featured work cards with links.
 6. **Skills** — categorized skill groups.

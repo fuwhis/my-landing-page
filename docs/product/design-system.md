@@ -44,8 +44,14 @@ Living product contract for visual and interaction rules. As-built detail lives 
   via `decoration`, `HeroFluidBubbles` via `bubbles`.
 - Experience timeline reuses `HeroFluidBlob` with `position="left"` (horizontal mirror)
   and inset props for placement.
-- Under `prefers-reduced-motion: reduce`, blob and bubble animations are disabled.
+- About uses `TextHighlighter` (`src/components/motion/text-highlighter.tsx`) for
+  scroll-once LTR highlight reveal on selected phrases; fill color from
+  `--text-highlighter-color` in `tokens.css` (overridable via `highlightColor`
+  prop; GSAP + Tailwind/inline — see `docs/decisions/0009-gsap-first-fancy-motion-roadmap.md`).
+- Under `prefers-reduced-motion: reduce`, blob, bubble, and highlighter entrance
+  animations are disabled (highlighter stays fully painted).
 - Do not add competing accent systems without an explicit re-brand decision.
+- Do not add `motion` / Framer Motion without superseding decision 0009.
 
 ## Content Tone
 

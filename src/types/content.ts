@@ -80,6 +80,14 @@ export type ContactPanelContent = {
   formIntroDescription: string;
 };
 
+export type AboutSegment =
+  | { kind: 'text'; text: string }
+  | { kind: 'highlight'; text: string };
+
+export type AboutParagraph = {
+  segments: AboutSegment[];
+};
+
 export type Profile = {
   fullName: string;
   role: string;
@@ -89,7 +97,7 @@ export type Profile = {
   resumeHref: string;
   availability: string;
   summary: string;
-  aboutParagraphs: string[];
+  aboutParagraphs: AboutParagraph[];
   contactTitle: string;
   contactDescription: string;
   socialLinks: SocialLink[];
