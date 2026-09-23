@@ -21,7 +21,11 @@ type HighlightDirection = 'ltr' | 'rtl' | 'ttb' | 'btt';
 
 type TextHighlighterProps = {
   children: React.ReactNode;
-  /** @default "mark" */
+  /**
+   * Wrapper element. Prefer `span` for inline copy.
+   * If you pass `mark`, UA yellow fill is cleared via transparent background.
+   * @default "span"
+   */
   as?: ElementType;
   /** @default "inView" */
   triggerType?: 'hover' | 'ref' | 'inView' | 'auto';
@@ -86,7 +90,7 @@ function getBackgroundPosition(direction: HighlightDirection): string {
 
 /**
  * Fancy-style text highlighter, orchestrated with GSAP (no Motion).
- * Supports hover / inView / ref / auto triggers and ltr|rtl|ttb|btt directions.
+ * Single paint surface — only `background-image` carries the fill color.
  */
 export const TextHighlighter = forwardRef<
   TextHighlighterRef,
@@ -94,7 +98,7 @@ export const TextHighlighter = forwardRef<
 >(function TextHighlighter(
   {
     children,
-    as: ElementTag = 'mark',
+    as: ElementTag = 'span',
     triggerType = 'inView',
     duration = HIGHLIGHT_DURATION,
     delay = 0,
@@ -102,12 +106,14 @@ export const TextHighlighter = forwardRef<
     className,
     highlightColor,
     direction = 'ltr',
+    onMouseEnter,
+    onMouseLeave,
+    style,
     ...props
   },
   ref,
 ) {
-  const containerRef = useRef<HTMLElement>(null);
-  const highlightRef = useRef<HTMLSpanElement>(null);
+  const nodeRef = useRef<HTMLElement>(null);
 
   const inViewOnce = useInViewOptions?.once ?? true;
   const inViewAmount = useInViewOptions?.amount ?? 0.1;
@@ -139,8 +145,8 @@ export const TextHighlighter = forwardRef<
       return;
     }
 
-    const container = containerRef.current;
-    if (!container) {
+    const node = nodeRef.current;
+    if (!node) {
       return;
     }
 
@@ -149,7 +155,7 @@ export const TextHighlighter = forwardRef<
     );
 
     const trigger = ScrollTrigger.create({
-      trigger: container,
+      trigger: node,
       start: `top ${startOffset}%`,
       onEnter: () => {
         setIsInView(true);
@@ -192,7 +198,7 @@ export const TextHighlighter = forwardRef<
   );
 
   useEffect(() => {
-    const el = highlightRef.current;
+    const el = nodeRef.current;
     if (!el) {
       return;
     }
@@ -227,38 +233,39 @@ export const TextHighlighter = forwardRef<
 
   const fillColor = highlightColor ?? 'var(--text-highlighter-color)';
 
-  const highlightStyle = {
-    backgroundImage: `linear-gradient(${fillColor}, ${fillColor})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition,
-    backgroundSize: collapsedSize,
-  } as React.CSSProperties;
-
   return (
     <ElementTag
-      ref={containerRef}
-      onMouseEnter={() => {
+      {...props}
+      ref={nodeRef as React.Ref<HTMLElement>}
+      className={cn(
+        'inline rounded-[0.2em] bg-transparent box-decoration-clone px-[0.12em] text-inherit not-italic',
+        className,
+      )}
+      style={
+        {
+          ...style,
+          // Kill UA <mark> background-color so only background-image paints.
+          backgroundColor: 'transparent',
+          backgroundImage: `linear-gradient(${fillColor}, ${fillColor})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition,
+          backgroundSize: collapsedSize,
+        } as React.CSSProperties
+      }
+      onMouseEnter={(event: React.MouseEvent<HTMLElement>) => {
+        onMouseEnter?.(event);
         if (triggerType === 'hover') {
           setIsHovered(true);
         }
       }}
-      onMouseLeave={() => {
+      onMouseLeave={(event: React.MouseEvent<HTMLElement>) => {
+        onMouseLeave?.(event);
         if (triggerType === 'hover') {
           setIsHovered(false);
         }
       }}
-      {...props}
     >
-      <span
-        ref={highlightRef}
-        className={cn(
-          'inline rounded-[0.2em] bg-transparent box-decoration-clone px-[0.12em] text-inherit not-italic',
-          className,
-        )}
-        style={highlightStyle}
-      >
-        {children}
-      </span>
+      {children}
     </ElementTag>
   );
 });
