@@ -81,7 +81,7 @@ export function VastSection() {
         >
           {vastItems.map((item, index) => {
             const rotateDirection = (
-              ['top', 'right', 'left', 'bottom'] as const
+              ['top', 'right', 'bottom', 'left'] as const
             )[index % 4];
 
             return (
