@@ -7,13 +7,13 @@ import { cn } from '@/lib/utils';
 type TypewriterProps = {
   /** Lines to type, delete, and cycle. */
   text: string | string[];
-  /** Typing speed in ms per character. @default 55 */
+  /** Typing speed in ms per grapheme. @default 55 */
   speed?: number;
-  /** Delete speed in ms per character. @default 35 */
+  /** Delete speed in ms per grapheme. @default 35 */
   deleteSpeed?: number;
   /** Pause after a line is fully typed. @default 1800 */
   waitTime?: number;
-  /** Delay before the first character. @default 400 */
+  /** Delay before the first grapheme. @default 400 */
   initialDelay?: number;
   /** Loop through lines. @default true */
   loop?: boolean;
@@ -28,7 +28,22 @@ function prefersReducedMotion(): boolean {
 }
 
 /**
+ * Split by user-perceived characters (emoji, ZWJ sequences, etc.).
+ * Avoids slicing UTF-16 surrogate pairs mid-glyph (broken 👋 → �).
+ */
+function splitIntoGraphemes(value: string): string[] {
+  if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+    const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+    return Array.from(segmenter.segment(value), ({ segment }) => segment);
+  }
+  // Fallback: Array.from still splits most emoji as single code points better
+  // than String#slice by index, but may not cover all ZWJ sequences.
+  return Array.from(value);
+}
+
+/**
  * Fancy-style typewriter without Motion — React timers + CSS caret blink.
+ * Advances by grapheme so emoji / complex scripts stay intact.
  */
 export function Typewriter({
   text,
@@ -46,9 +61,14 @@ export function Typewriter({
     [text],
   );
 
+  const graphemeLines = useMemo(
+    () => lines.map((line) => splitIntoGraphemes(line)),
+    [lines],
+  );
+
   const [displayText, setDisplayText] = useState('');
   const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+  const [graphemeIndex, setGraphemeIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [started, setStarted] = useState(false);
   const [motionMode, setMotionMode] = useState<
@@ -60,7 +80,7 @@ export function Typewriter({
   }, []);
 
   useEffect(() => {
-    if (motionMode !== 'animate' || lines.length === 0) {
+    if (motionMode !== 'animate' || graphemeLines.length === 0) {
       return;
     }
 
@@ -71,47 +91,47 @@ export function Typewriter({
       return () => window.clearTimeout(kickoff);
     }
 
-    const currentLine = lines[lineIndex] ?? '';
+    const currentGraphemes = graphemeLines[lineIndex] ?? [];
     let timeout: number;
 
-    if (!isDeleting && charIndex < currentLine.length) {
+    if (!isDeleting && graphemeIndex < currentGraphemes.length) {
       timeout = window.setTimeout(() => {
-        setDisplayText(currentLine.slice(0, charIndex + 1));
-        setCharIndex((prev) => prev + 1);
+        setDisplayText(currentGraphemes.slice(0, graphemeIndex + 1).join(''));
+        setGraphemeIndex((prev) => prev + 1);
       }, speed);
-    } else if (!isDeleting && charIndex >= currentLine.length) {
-      if (lines.length === 1 && !loop) {
+    } else if (!isDeleting && graphemeIndex >= currentGraphemes.length) {
+      if (graphemeLines.length === 1 && !loop) {
         return;
       }
       timeout = window.setTimeout(() => {
         setIsDeleting(true);
       }, waitTime);
-    } else if (isDeleting && charIndex > 0) {
+    } else if (isDeleting && graphemeIndex > 0) {
       timeout = window.setTimeout(() => {
-        setDisplayText(currentLine.slice(0, charIndex - 1));
-        setCharIndex((prev) => prev - 1);
+        setDisplayText(currentGraphemes.slice(0, graphemeIndex - 1).join(''));
+        setGraphemeIndex((prev) => prev - 1);
       }, deleteSpeed);
     } else {
-      const nextIndex = (lineIndex + 1) % lines.length;
+      const nextIndex = (lineIndex + 1) % graphemeLines.length;
       if (!loop && nextIndex === 0) {
         setIsDeleting(false);
-        setDisplayText(currentLine);
-        setCharIndex(currentLine.length);
+        setDisplayText(currentGraphemes.join(''));
+        setGraphemeIndex(currentGraphemes.length);
         return;
       }
       timeout = window.setTimeout(() => {
         setIsDeleting(false);
         setLineIndex(nextIndex);
-        setCharIndex(0);
+        setGraphemeIndex(0);
         setDisplayText('');
       }, 0);
     }
 
     return () => window.clearTimeout(timeout);
   }, [
-    lines,
+    graphemeLines,
     lineIndex,
-    charIndex,
+    graphemeIndex,
     isDeleting,
     speed,
     deleteSpeed,
