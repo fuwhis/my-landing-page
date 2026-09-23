@@ -4,6 +4,7 @@ import {
   HeroFluidBlob,
   HeroFluidBubbles,
 } from '@/components/motion/hero-fluid-backdrop';
+import { PageMascot } from '@/components/motion/page-mascot';
 import { Typewriter } from '@/components/motion/typewriter';
 import { MetricItem } from '@/components/shared/metric-item';
 import { SectionContainer } from '@/components/shared/section-container';
@@ -28,9 +29,18 @@ export function HeroSection() {
     >
       <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div className="space-y-6">
-          <h1 className="text-foreground max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            {profile.fullName}
-          </h1>
+          <PageMascot
+            directions="/mascots/otter-directions.webp"
+            reactions="/mascots/otter-reactions.webp"
+            size={112}
+            label={`${profile.fullName} mascot`}
+            className="shrink-0"
+          />
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
+            <h1 className="text-foreground max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              {profile.fullName}
+            </h1>
+          </div>
           <TagBadge label={`${profile.role} · 4+ Years`} />
           <Typewriter text={profile.heroTypewriterLines} />
 

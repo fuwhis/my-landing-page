@@ -51,6 +51,10 @@ Living product contract for visual and interaction rules. As-built detail lives 
 - Hero supporting copy uses `Typewriter` (`src/components/motion/typewriter.tsx`)
   cycling `profile.heroTypewriterLines` (React timers + CSS caret; no Motion).
   Document `h1` stays `profile.fullName`.
+- Hero brand row uses `PageMascot` (`src/components/motion/page-mascot.tsx`) from
+  the `page-mascot` dependency with otter sheets in `public/mascots/`. Library
+  disables cursor tracking without a fine pointer and honours reduced-motion on
+  click squash.
 - Under `prefers-reduced-motion: reduce`, blob, bubble, and highlighter entrance
   animations are disabled (highlighter stays fully painted); typewriter shows
   static lines with no caret loop.
