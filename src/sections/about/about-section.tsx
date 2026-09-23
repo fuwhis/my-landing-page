@@ -21,7 +21,7 @@ export function AboutSection() {
             >
               {paragraph.segments.map((segment, segmentIndex) =>
                 segment.kind === 'highlight' ? (
-                  <TextHighlighter key={segmentIndex}>
+                  <TextHighlighter key={segmentIndex} direction="ltr">
                     {segment.text}
                   </TextHighlighter>
                 ) : (

@@ -1,37 +1,34 @@
-/* Owner: src/components/motion/text-highlighter.tsx */
+/* Owner: src/components/motion/text-highlighter.tsx
+ * Fancy-style highlight fill; color via --text-highlighter-color (override with prop). */
 
 @layer components {
   .text-highlighter {
+    --text-highlighter-color: rgb(14 165 233 / 0.28);
+
     color: inherit;
     font-style: inherit;
     background-color: transparent;
     padding-inline: 0.12em;
-    border-radius: 0.4em;
+    border-radius: 0.2em;
     background-image: linear-gradient(
-      transparent 12%,
-      rgb(14 165 233 / 0.28) 12%,
-      rgb(14 165 233 / 0.28) 88%,
-      transparent 88%
+      var(--text-highlighter-color),
+      var(--text-highlighter-color)
     );
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 0% 0%;
     background-size: 0% 100%;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
 
   .dark .text-highlighter {
-    background-image: linear-gradient(
-      transparent 12%,
-      rgb(56 189 248 / 0.32) 12%,
-      rgb(56 189 248 / 0.32) 88%,
-      transparent 88%
-    );
+    --text-highlighter-color: rgb(56 189 248 / 0.32);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .text-highlighter {
-      background-size: 100% 100%;
+      /* Size is driven by GSAP / component state; keep fill token ready. */
+      transition: none;
     }
   }
 }

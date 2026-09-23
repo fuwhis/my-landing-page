@@ -1,60 +1,267 @@
 'use client';
 
-import { useRef } from 'react';
+import {
+  type ElementType,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
-import { gsap, useGSAP } from '@/lib/gsap';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { cn } from '@/lib/utils';
 
-/** Matches `FadeInOnView` / V.A.S.T entrance language. */
-const HIGHLIGHT_DURATION = 0.85;
+/** Approximate Fancy spring `{ type: "spring", duration: 1, bounce: 0 }`. */
+const HIGHLIGHT_DURATION = 1;
 const HIGHLIGHT_EASE = 'power2.out';
-const HIGHLIGHT_START = 'top 85%';
+
+type HighlightDirection = 'ltr' | 'rtl' | 'ttb' | 'btt';
 
 type TextHighlighterProps = {
   children: React.ReactNode;
+  /** @default "mark" */
+  as?: ElementType;
+  /** @default "inView" */
+  triggerType?: 'hover' | 'ref' | 'inView' | 'auto';
+  /** Seconds; maps Fancy `transition.duration`. @default 1 */
+  duration?: number;
+  /** Delay before the reveal tween starts. @default 0 */
+  delay?: number;
+  /**
+   * In-view options when `triggerType` is `"inView"`.
+   * `amount` is approximated via ScrollTrigger `start`.
+   */
+  useInViewOptions?: {
+    once?: boolean;
+    amount?: number;
+  };
   className?: string;
+  /**
+   * CSS color for the highlight fill. When omitted, uses sky token via
+   * `--text-highlighter-color` (light/dark in CSS).
+   */
+  highlightColor?: string;
+  /** @default "ltr" */
+  direction?: HighlightDirection;
+} & Omit<React.HTMLAttributes<HTMLElement>, 'as' | 'children' | 'className'>;
+
+export type TextHighlighterRef = {
+  animate: (direction?: HighlightDirection) => void;
+  reset: () => void;
 };
 
+function prefersReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function getBackgroundSize(
+  direction: HighlightDirection,
+  animated: boolean,
+): string {
+  switch (direction) {
+    case 'ttb':
+    case 'btt':
+      return animated ? '100% 100%' : '100% 0%';
+    case 'ltr':
+    case 'rtl':
+    default:
+      return animated ? '100% 100%' : '0% 100%';
+  }
+}
+
+function getBackgroundPosition(direction: HighlightDirection): string {
+  switch (direction) {
+    case 'rtl':
+      return '100% 0%';
+    case 'btt':
+      return '0% 100%';
+    case 'ttb':
+    case 'ltr':
+    default:
+      return '0% 0%';
+  }
+}
+
 /**
- * Scroll-triggered LTR highlight reveal via CSS gradient `background-size`.
- * GSAP + CSS only — no Motion.
+ * Fancy-style text highlighter, orchestrated with GSAP (no Motion).
+ * Supports hover / inView / ref / auto triggers and ltr|rtl|ttb|btt directions.
  */
-export function TextHighlighter({ children, className }: TextHighlighterProps) {
-  const ref = useRef<HTMLElement>(null);
+export const TextHighlighter = forwardRef<
+  TextHighlighterRef,
+  TextHighlighterProps
+>(function TextHighlighter(
+  {
+    children,
+    as: ElementTag = 'mark',
+    triggerType = 'inView',
+    duration = HIGHLIGHT_DURATION,
+    delay = 0,
+    useInViewOptions,
+    className,
+    highlightColor,
+    direction = 'ltr',
+    ...props
+  },
+  ref,
+) {
+  const containerRef = useRef<HTMLElement>(null);
+  const highlightRef = useRef<HTMLSpanElement>(null);
 
-  useGSAP(
-    () => {
-      const el = ref.current;
-      if (!el) {
-        return;
+  const inViewOnce = useInViewOptions?.once ?? true;
+  const inViewAmount = useInViewOptions?.amount ?? 0.1;
+
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [currentDirection, setCurrentDirection] =
+    useState<HighlightDirection>(direction);
+
+  useEffect(() => {
+    setCurrentDirection(direction);
+  }, [direction]);
+
+  useImperativeHandle(ref, () => ({
+    animate: (animationDirection?: HighlightDirection) => {
+      if (animationDirection) {
+        setCurrentDirection(animationDirection);
       }
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        gsap.set(el, { backgroundSize: '100% 100%' });
-        return;
-      }
-
-      gsap.fromTo(
-        el,
-        { backgroundSize: '0% 100%' },
-        {
-          backgroundSize: '100% 100%',
-          duration: HIGHLIGHT_DURATION,
-          ease: HIGHLIGHT_EASE,
-          scrollTrigger: {
-            trigger: el,
-            start: HIGHLIGHT_START,
-            once: true,
-          },
-        },
-      );
+      setIsAnimating(true);
     },
-    { scope: ref },
+    reset: () => {
+      setIsAnimating(false);
+    },
+  }));
+
+  useEffect(() => {
+    if (triggerType !== 'inView') {
+      return;
+    }
+
+    const container = containerRef.current;
+    if (!container) {
+      return;
+    }
+
+    const startOffset = Math.round(
+      (1 - Math.min(Math.max(inViewAmount, 0), 1)) * 100,
+    );
+
+    const trigger = ScrollTrigger.create({
+      trigger: container,
+      start: `top ${startOffset}%`,
+      onEnter: () => {
+        setIsInView(true);
+      },
+      onLeaveBack: () => {
+        if (!inViewOnce) {
+          setIsInView(false);
+        }
+      },
+      once: inViewOnce,
+    });
+
+    return () => {
+      trigger.kill();
+    };
+  }, [triggerType, inViewOnce, inViewAmount]);
+
+  const shouldAnimate =
+    triggerType === 'hover'
+      ? isHovered
+      : triggerType === 'inView'
+        ? isInView
+        : triggerType === 'ref'
+          ? isAnimating
+          : triggerType === 'auto'
+            ? true
+            : false;
+
+  const animatedSize = useMemo(
+    () => getBackgroundSize(currentDirection, shouldAnimate),
+    [shouldAnimate, currentDirection],
   );
+  const collapsedSize = useMemo(
+    () => getBackgroundSize(currentDirection, false),
+    [currentDirection],
+  );
+  const backgroundPosition = useMemo(
+    () => getBackgroundPosition(currentDirection),
+    [currentDirection],
+  );
+
+  useEffect(() => {
+    const el = highlightRef.current;
+    if (!el) {
+      return;
+    }
+
+    const targetSize = shouldAnimate ? animatedSize : collapsedSize;
+
+    if (prefersReducedMotion()) {
+      gsap.set(el, {
+        backgroundSize: shouldAnimate
+          ? getBackgroundSize(currentDirection, true)
+          : collapsedSize,
+      });
+      return;
+    }
+
+    gsap.killTweensOf(el);
+    gsap.to(el, {
+      backgroundSize: targetSize,
+      duration,
+      delay,
+      ease: HIGHLIGHT_EASE,
+      overwrite: true,
+    });
+  }, [
+    shouldAnimate,
+    animatedSize,
+    collapsedSize,
+    currentDirection,
+    duration,
+    delay,
+  ]);
+
+  const highlightStyle = {
+    backgroundImage: highlightColor
+      ? `linear-gradient(${highlightColor}, ${highlightColor})`
+      : undefined,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition,
+    backgroundSize: collapsedSize,
+    boxDecorationBreak: 'clone',
+    WebkitBoxDecorationBreak: 'clone',
+  } as React.CSSProperties;
 
   return (
-    <mark ref={ref} className={cn('text-highlighter', className)}>
-      {children}
-    </mark>
+    <ElementTag
+      ref={containerRef}
+      onMouseEnter={() => {
+        if (triggerType === 'hover') {
+          setIsHovered(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (triggerType === 'hover') {
+          setIsHovered(false);
+        }
+      }}
+      {...props}
+    >
+      <span
+        ref={highlightRef}
+        className={cn('text-highlighter', className)}
+        style={highlightStyle}
+      >
+        {children}
+      </span>
+    </ElementTag>
   );
-}
+});
+
+TextHighlighter.displayName = 'TextHighlighter';
+
+export default TextHighlighter;

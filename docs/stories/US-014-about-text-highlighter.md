@@ -25,7 +25,9 @@ required before merge.
 
 ## Acceptance Criteria
 
-- [ ] Shared `TextHighlighter` client component under `src/components/motion/`.
+- [ ] Shared `TextHighlighter` client component under `src/components/motion/`
+      (Fancy-aligned API: `triggerType`, `direction`, imperative `ref`; GSAP
+      orchestration, no `motion`).
 - [ ] About section wraps exactly the highlight segments defined in
       `src/data/profile.ts` (content boundary: no hard-coded phrase strings in
       the section JSX beyond data).
