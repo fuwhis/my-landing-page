@@ -4,7 +4,7 @@
 
 The homepage (`src/app/page.tsx`) must render sections in this order:
 
-1. **Hero** — name, role badge, typewriter lines (`heroTypewriterLines`), location, email, metrics, fluid blob (right) + rising bubbles. Profile CTAs live in Contact Close kit.
+1. **Hero** — interactive page-mascot (otter) beside name, role badge, typewriter lines (`heroTypewriterLines`), location, email, metrics, fluid blob (right) + rising bubbles. Profile CTAs live in Contact Close kit.
 2. **How I Engineer (V.A.S.T)** — Value-driven, Adaptable, System Thinking, Technical Depth; scroll-triggered entrance via GSAP.
 3. **About** — summary paragraphs from profile data; optional GSAP text
    highlighters on selected phrases (`TextHighlighter`).
