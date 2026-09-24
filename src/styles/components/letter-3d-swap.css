@@ -1,0 +1,73 @@
+/* Owner: src/components/motion/letter-3d-swap.tsx
+ * Structure mirrors Fancy Letter 3D Swap CharBox; motion is GSAP-owned. */
+
+@layer components {
+  .letter-3d-swap {
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 1;
+    cursor: default;
+    perspective: 800px;
+  }
+
+  .letter-3d-swap-word {
+    display: inline-flex;
+  }
+
+  .letter-3d-swap-space {
+    white-space: pre;
+  }
+
+  /* Parent keeps the centering / face-offset transform permanently. */
+  .letter-3d-swap-char-box {
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  /* Child is the GSAP tween target (rotation only). */
+  .letter-3d-swap-char-box-item {
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  .letter-3d-swap-char-face-front,
+  .letter-3d-swap-char-face-second {
+    height: 1lh;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .letter-3d-swap-char-face-front {
+    position: relative;
+    display: inline-block;
+  }
+
+  .letter-3d-swap-char-face-second {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .letter-3d-swap-char-box {
+      transform: none !important;
+    }
+
+    .letter-3d-swap-char-box-item {
+      transform: none !important;
+    }
+
+    .letter-3d-swap-char-face-second {
+      display: none;
+    }
+
+    .letter-3d-swap-char-face-front {
+      transform: none !important;
+    }
+  }
+}

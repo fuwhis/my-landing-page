@@ -55,9 +55,12 @@ Living product contract for visual and interaction rules. As-built detail lives 
   the `page-mascot` dependency with otter sheets in `public/mascots/`. Library
   disables cursor tracking without a fine pointer and honours reduced-motion on
   click squash.
-- Under `prefers-reduced-motion: reduce`, blob, bubble, and highlighter entrance
-  animations are disabled (highlighter stays fully painted); typewriter shows
-  static lines with no caret loop.
+- V.A.S.T decorative letters use `Letter3DSwap`
+  (`src/components/motion/letter-3d-swap.tsx`): hover on fine pointer; auto-swap
+  in-view on touch/coarse; static under reduced-motion.
+- Under `prefers-reduced-motion: reduce`, blob, bubble, highlighter entrance, and
+  letter-3d swap animations are disabled (highlighter stays fully painted;
+  letters stay static); typewriter shows static lines with no caret loop.
 - Do not add competing accent systems without an explicit re-brand decision.
 - Do not add `motion` / Framer Motion without superseding decision 0009.
 
