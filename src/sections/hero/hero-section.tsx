@@ -32,7 +32,7 @@ export function HeroSection() {
           <PageMascot
             directions="/mascots/otter-directions.webp"
             reactions="/mascots/otter-reactions.webp"
-            size={112}
+            size={150}
             label={`${profile.fullName} mascot`}
             className="shrink-0"
           />
