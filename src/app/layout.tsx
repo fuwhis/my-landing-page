@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 
 const siteTitle = 'Nguyen Phu Quy | Software Engineer';
 const siteDescription =
-  'Portfolio of Nguyen Phu Quy (Fuwhis) — frontend engineer building clear, production-ready web products with React, Vue, Next.js, and Nuxt.';
+  'Portfolio of Nguyen Phu Quy (Fuwhis) — frontend engineer building clear, production-ready web products with React, Vue, Next.js and Nuxt.';
 const socialDescription =
   'Frontend engineer. Code today, ship our futures. Selected work, experience, and ways to reach Quy.';
 const ogImage = {
