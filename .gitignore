@@ -56,3 +56,6 @@ scripts/bin/harness-cli.exe
 
 # local files
 secret.md
+
+# redis
+dump.rdb
