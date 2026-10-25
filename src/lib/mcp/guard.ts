@@ -2,7 +2,7 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
 export const MAX_BODY_BYTES = 16 * 1024;
-export const RATE_LIMT = 30; // requests
+export const RATE_LIMIT = 30; // requests
 export const RATE_WINDOW_MS = 60000; // 60s
 
 type LimitResult = { success: boolean; resetAt: number };
@@ -34,7 +34,7 @@ function createMemoryLimiter(): Limiter {
       return { success: true, resetAt };
     }
     cur.count += 1;
-    return { success: cur.count <= RATE_LIMT, resetAt: cur.resetAt };
+    return { success: cur.count <= RATE_LIMIT, resetAt: cur.resetAt };
   };
 }
 
@@ -42,8 +42,10 @@ function createMemoryLimiter(): Limiter {
 function createUpstashLimiter(): Limiter {
   const rl = new Ratelimit({
     redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(RATE_LIMT, `${RATE_WINDOW_MS / 1000} s`),
+    // fixedWindow = 2 Redis commands per allowed request (slidingWindow = 4): matters on the free tier.
+    limiter: Ratelimit.fixedWindow(RATE_LIMIT, `${RATE_WINDOW_MS / 1000} s`),
     prefix: 'mcp',
+    timeout: 1_500, // default is 5000ms: if Redis is slow, allow the request instead of stalling it
   });
 
   return async (key) => {
@@ -52,10 +54,21 @@ function createUpstashLimiter(): Limiter {
   };
 }
 
-const limiter: Limiter =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? createUpstashLimiter()
-    : createMemoryLimiter();
+const useUpstash = Boolean(
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN,
+);
+
+const limiter: Limiter = useUpstash
+  ? createUpstashLimiter()
+  : createMemoryLimiter();
+
+// A misspelled env var silently falls back to in-memory, so make the active backend visible.
+console.log(
+  JSON.stringify({
+    evt: 'mcp_ratelimit_backend',
+    backend: useUpstash ? 'upstash' : 'memory',
+  }),
+);
 
 const jsonRpcError = (
   status: number,
