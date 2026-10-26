@@ -1,10 +1,14 @@
 import {
   ContactSchema,
+  ExperienceResultSchema,
   ProfileSchema,
   ProjectsResultSchema,
+  SkillsSchema,
+  findExperience,
   findProjects,
   getPublicContact,
   getPublicProfile,
+  getPublicSkills,
 } from '@/lib/mcp/content';
 import { guard } from '@/lib/mcp/guard';
 import { respond } from '@/lib/mcp/respond';
@@ -63,6 +67,39 @@ const handler = createMcpHandler(
         annotations: READ_ONLY,
       },
       async () => respond('get_contact', getPublicContact),
+    );
+
+    server.registerTool(
+      'get_experience',
+      {
+        title: 'Get experience',
+        description:
+          "Fuwhis's employment history, most recent first: company, role, location, start and end month, outcome, highlights and technologies used. Use it for questions about years of experience, employers, roles and responsibilities. For the products he built use get_projects.",
+        inputSchema: z.object({
+          tech: z
+            .string()
+            .max(50)
+            .optional()
+            .describe(
+              "Only roles where this technology was used, partial and case-insensitive. Examples: 'React', 'pinia', 'GraphQL'.",
+            ),
+        }),
+        outputSchema: ExperienceResultSchema,
+        annotations: READ_ONLY,
+      },
+      async ({ tech }) => respond('get_experience', () => findExperience(tech)),
+    );
+
+    server.registerTool(
+      'get_skills',
+      {
+        title: 'Get skills',
+        description:
+          "Fuwhis's self-reported technical skills grouped by category (frontend, state and data flow, UI systems, quality and workflow, AI-augmented workflow, deployment). This is a claimed list, not proof of depth: for evidence of use see get_experience and get_projects.",
+        outputSchema: SkillsSchema,
+        annotations: READ_ONLY,
+      },
+      async () => respond('get_skills', getPublicSkills),
     );
   },
   {
