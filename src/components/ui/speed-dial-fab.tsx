@@ -55,8 +55,9 @@ export function SpeedDialFab() {
   const selectTheme = useCallback(
     (mode: ThemeMode) => {
       setTheme(mode);
+      close();
     },
-    [setTheme],
+    [setTheme, close],
   );
 
   useEffect(() => {
