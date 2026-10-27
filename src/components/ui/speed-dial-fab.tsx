@@ -35,6 +35,7 @@ export function SpeedDialFab() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const themeReady = mounted;
   const activeMode: ThemeMode =
@@ -55,10 +56,25 @@ export function SpeedDialFab() {
   const selectTheme = useCallback(
     (mode: ThemeMode) => {
       setTheme(mode);
-      close();
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+
+      closeTimerRef.current = setTimeout(() => {
+        close();
+      }, 150);
     },
     [setTheme, close],
   );
+
+  // Don rac switch theme
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {

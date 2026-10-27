@@ -17,7 +17,8 @@
   opacity: 0;
   transform: translate3d(0, 12px, 0) scale(0.86);
   pointer-events: none;
-  transition-property: transform, opacity;
+  transition-property:
+    transform, opacity, background-color, border-color, color;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: 0ms;
@@ -34,7 +35,8 @@
 .speed-dial-fab[data-open='false'] .speed-dial-fab__action {
   transition-delay: 0ms;
   transition-duration: 220ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  /* transition-timing-function: cubic-bezier(0.4, 0, 1, 1); */
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .speed-dial-fab[data-open='true'] .speed-dial-fab__menu {
