@@ -69,7 +69,7 @@ export const profile: Profile = {
       label: 'View my CV',
       href: '/resume/nguyen-phu-quy-cv.pdf',
       icon: 'cv',
-      visible: true,
+      visible: false,
     },
     // {
     //   label: 'Contact me',

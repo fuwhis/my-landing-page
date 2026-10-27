@@ -27,7 +27,7 @@ theme system delivered in US-008.
 - [x] `SpeedDialFab` at `src/components/ui/speed-dial-fab.tsx`, mounted from
       `src/app/layout.tsx`.
 - [x] Upward speed dial with theme toggle sub-action above main FAB.
-- [x] Open/close via main FAB click, click outside, and Escape.
+- [x] Open/close via main FAB click, click outside, and Escape, and after selected theme.
 - [x] CSS transitions for motion (`src/styles/components/speed-dial-fab.css`).
 - [x] `prefers-reduced-motion` minimizes animation; visibility still toggles.
 - [x] Theme sub-action uses `useTheme` from US-008 only.
